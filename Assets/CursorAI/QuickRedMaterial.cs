@@ -6,20 +6,19 @@ public class QuickRedMaterial : MonoBehaviour
     public void ApplyRedMaterial()
     {
         // Создадим красный материал с URP шейдером
-        Material redMaterial = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        var redMaterial = new Material(Shader.Find("Universal Render Pipeline/Lit"));
         redMaterial.color = Color.red;
-        
+
         // Найдем все сферы в сцене
-        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-        
-        int appliedCount = 0;
-        
+        var allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+
+        var appliedCount = 0;
+
         // Применим красный материал ко всем сферам
-        foreach (GameObject obj in allObjects)
-        {
+        foreach (var obj in allObjects)
             if (obj.name.StartsWith("Sphere"))
             {
-                MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
+                var renderer = obj.GetComponent<MeshRenderer>();
                 if (renderer != null)
                 {
                     renderer.material = redMaterial;
@@ -27,10 +26,7 @@ public class QuickRedMaterial : MonoBehaviour
                     Debug.Log($"Applied red material to {obj.name}");
                 }
             }
-        }
-        
+
         Debug.Log($"Red material applied to {appliedCount} spheres!");
     }
 }
-
-
