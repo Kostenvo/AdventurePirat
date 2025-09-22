@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scriptes.Creatures.Hero
 {
-    public class HeroMove : MoveBase
+    public class HeroMove : MoveBase,IMovable
     {
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float _jampSpeed = 5f;
@@ -41,7 +41,7 @@ namespace Scriptes.Creatures.Hero
         {
             if (isJamping)
             {
-                if (_groundChecker?.CheckSurface() == true)
+                if (_groundChecker?.CheckSurface() == true && _rb.linearVelocity.y < 0.1f)
                     _rb.AddForceY(_jampSpeed, ForceMode2D.Impulse);
             }
             else if (_rb.linearVelocity.y > 0)
@@ -52,7 +52,6 @@ namespace Scriptes.Creatures.Hero
 
         private void Move()
         {
-            if (_groundChecker?.CheckSurface() == true)
                 _rb.linearVelocityX = _moveDirection.x * moveSpeed;
         }
     }

@@ -1,13 +1,17 @@
-﻿using System;
+﻿
+using EditorTools;
 using PlayerInput;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 
 namespace Scriptes.Creatures.Hero
 {
     [RequireComponent(typeof(MoveBase))]
     public class InputHero : MonoBehaviour
     {
+        [Interface(typeof(IMovable))]
+        [SerializeField] private Object _movableObject;
         [SerializeField] private  MoveBase _move;
         private InputSystem_Actions _actions;
 
