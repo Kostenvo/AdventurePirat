@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scriptes.Creatures.Hero
+namespace Scripts.Creatures.Hero
 {
     public abstract class MoveBase: MonoBehaviour
     {

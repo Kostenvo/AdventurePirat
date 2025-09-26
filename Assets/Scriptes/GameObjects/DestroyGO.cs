@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scriptes.GameObjects
+namespace Scripts.GameObjects
 {
     public class DestroyGO : MonoBehaviour
     {

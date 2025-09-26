@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Scriptes.Level
+namespace Scripts.Level
 {
     public class ReloadLevelComponent :MonoBehaviour
     {

@@ -1,11 +1,13 @@
 ﻿
 using EditorTools;
 using PlayerInput;
+using Scripts.Checkers;
+using Scripts.Interact;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
 
-namespace Scriptes.Creatures.Hero
+namespace Scripts.Creatures.Hero
 {
     [RequireComponent(typeof(MoveBase))]
     public class InputHero : MonoBehaviour
@@ -13,6 +15,7 @@ namespace Scriptes.Creatures.Hero
         [Interface(typeof(IMovable))]
         [SerializeField] private Object _movableObject;
         [SerializeField] private  MoveBase _move;
+        [SerializeField] private CheckInteractableObject _interaction;
         private InputSystem_Actions _actions;
 
         private void Awake()
@@ -33,6 +36,7 @@ namespace Scriptes.Creatures.Hero
             _actions.Enable();
             _actions.Player.Move.performed += OnMovePerformedHandler;
             _actions.Player.Move.canceled += OnMoveCanceledHandler;
+            _actions.Player.Interact.performed += OnInteractPerformedHandler;
         }
 
         private void OnDisable()
@@ -40,8 +44,14 @@ namespace Scriptes.Creatures.Hero
             _actions.Disable();
             _actions.Player.Move.performed -= OnMovePerformedHandler;
             _actions.Player.Move.canceled -= OnMoveCanceledHandler;
+            _actions.Player.Interact.performed -= OnInteractPerformedHandler;
         }
-        
+
+        private void OnInteractPerformedHandler(InputAction.CallbackContext obj)
+        {
+            _interaction.Check();
+        }
+
         private void OnMovePerformedHandler(InputAction.CallbackContext context)
         {
             var moveDirection = context.ReadValue<Vector2>();

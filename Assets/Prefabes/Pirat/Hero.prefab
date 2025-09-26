@@ -58,12 +58,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3410733804051077928}
   - component: {fileID: 489336635149547253}
+  - component: {fileID: 4113245417671130113}
   - component: {fileID: 4331928884179627566}
   - component: {fileID: 580971379886772813}
   - component: {fileID: 2184807272373671385}
   - component: {fileID: 8407902795506722921}
   - component: {fileID: 4108548580237463246}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -142,6 +143,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4113245417671130113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358055760198012537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0642cdae6d40739b47d866bdfe21d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4331928884179627566
 MonoBehaviour:
   m_ObjectHideFlags: 0

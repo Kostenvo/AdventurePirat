@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 
-namespace Scriptes.Animation
+namespace Scripts.Animation
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class SpriteAnimationComponent : MonoBehaviour
@@ -24,12 +24,12 @@ namespace Scriptes.Animation
             RestartAnim();
         }
 
-        private void Update() => Animeted();
+        private void Update() => Animated();
         private void OnEnable() => RestartAnim();
 
         public void SetLoopAnimation(bool value) => _loop = value;
 
-        private void Animeted()
+        private void Animated()
         {
             if (Time.time < _nextFrameTime) return;
             if (_frameIndex >= _sprites.Length)

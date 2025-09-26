@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76b11143a7186340b4c52d731592c86, type: 3}
+  m_Name: FolderAppearanceSettings
+  m_EditorClassIdentifier: 
+  enableDefaultColors: 1
+  defaultColorAlpha: 0.542
+  useGradientDefaults: 1
+  hueStart: 0.188
+  hueEnd: 1
+  gradientSaturation: 0.445
+  gradientValue: 1
+  varyByDepth: 1
+  depthValueStep: 0.486
+  depthSaturationStep: 0.106
+  autoContrastText: 1
+  alwaysDrawLabelOnTop: 1
+  overrideLabelColor: {r: 1, g: 1, b: 1, a: 1}
+  drawLabelShadow: 0
+  labelFontStyle: 1
+  labelFontSize: 15
+  listIconScale: 2.178
+  gridIconScale: 1.073
+  drawInitialsWhenNoIcon: 1
+  initialsColor: {r: 1, g: 1, b: 1, a: 0.95}
+  initialsFontSize: 9
+  initialsFontStyle: 1
+  rules:
+  - guid: 5d0ceddb7983ed04bbc0dc29e8342c3b
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 0}
+    useCustomIcon: 0
+  - guid: fe0d357df5a738e4bae9c405d040de82
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 2800000, guid: ac602b99c2252e1448d44a5140ed2a4b, type: 3}
+    useCustomIcon: 1
+  - guid: 96eec23bd4568124f84a72a1b439cdf2
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 2800000, guid: 6ddf2bfc52901e444b3a504290574066, type: 3}
+    useCustomIcon: 0
+  - guid: 2f76040fd9bbf594f989dd10bf533401
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 2800000, guid: 0cbaa6f350618fc4db22772ed2e83dea, type: 3}
+    useCustomIcon: 1
