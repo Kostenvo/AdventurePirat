@@ -1,16 +1,17 @@
 ﻿using System;
 using Scripts.Checkers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scripts.Creatures.Hero
 {
     public class HeroMove : MoveBase, IMovable
     {
-        [SerializeField] private float _moveSpeed = 5f;
-        [SerializeField] private float _jumpSpeed = 5f;
-        [SerializeField] private float _jumpDamageValue = 5f;
-        [SerializeField] private CheckerSurfaceBase _groundChecker;
-        [SerializeField] private Animator _animator;
+        [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float jumpSpeed = 8f;
+        [SerializeField] private float jumpDamageValue = 8f;
+        [SerializeField] private CheckerSurfaceBase groundChecker;
+        [SerializeField] private Animator animator;
 
         private readonly int _moveKey = Animator.StringToHash("Move");
         private readonly int _jumpKey = Animator.StringToHash("VerticalVelocity");
@@ -21,7 +22,7 @@ namespace Scripts.Creatures.Hero
         private bool _isDoubleJump = true;
         private bool IsJumping => _moveDirection.y > 0;
 
-        private bool IsGrounded => _groundChecker.CheckSurface();
+        private bool IsGrounded => groundChecker.CheckSurface();
         private void Awake() => _rb = GetComponent<Rigidbody2D>();
 
         private void FixedUpdate()
@@ -33,8 +34,8 @@ namespace Scripts.Creatures.Hero
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            if (_groundChecker == null)
-                _groundChecker = GetComponentInChildren<CheckerSurfaceBase>();
+            if (groundChecker == null)
+                groundChecker = GetComponentInChildren<CheckerSurfaceBase>();
         }
 #endif
         public override void SetDirection(Vector2 dir) => _moveDirection = dir;
@@ -42,8 +43,8 @@ namespace Scripts.Creatures.Hero
         public void SetDamage()
         {
             _isDamage = true;
-            if(_rb.linearVelocity.y > 0f) return;
-            _rb.AddForceY(_jumpDamageValue, ForceMode2D.Impulse);
+            if (_rb.linearVelocity.y > 0f) return;
+            _rb.AddForceY(jumpDamageValue, ForceMode2D.Impulse);
         }
 
         private void ChangeStatusOnGround()
@@ -65,10 +66,10 @@ namespace Scripts.Creatures.Hero
             if (IsJumping)
             {
                 if (!_isDamage && IsGrounded && _rb.linearVelocity.y < minimumValueForJump)
-                    _rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
+                    _rb.AddForceY(jumpSpeed, ForceMode2D.Impulse);
                 else if (_isDoubleJump && _rb.linearVelocity.y < minimumValueForJump)
                 {
-                    _rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
+                    _rb.AddForceY(jumpSpeed, ForceMode2D.Impulse);
                     _isDoubleJump = false;
                 }
             }
@@ -78,15 +79,15 @@ namespace Scripts.Creatures.Hero
             }
 
             ChangeStatusOnGround();
-            _animator.SetFloat(_jumpKey, _rb.linearVelocity.y);
+            animator.SetFloat(_jumpKey, _rb.linearVelocity.y);
         }
 
         private void Move()
         {
-            _rb.linearVelocityX = _moveDirection.x * _moveSpeed;
+            _rb.linearVelocityX = _moveDirection.x * moveSpeed;
             SetDirection();
-            _animator.SetBool(_groundCheckKey, IsGrounded);
-            _animator.SetBool(_moveKey, _moveDirection.x != 0);
+            animator.SetBool(_groundCheckKey, IsGrounded);
+            animator.SetBool(_moveKey, _moveDirection.x != 0);
         }
 
         private void SetDirection()

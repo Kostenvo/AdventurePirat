@@ -13,7 +13,7 @@ namespace Scripts.Creatures.Hero
     public class InputHero : MonoBehaviour
     {
         [Interface(typeof(IMovable))]
-        [SerializeField] private Object _movableObject;
+        // [SerializeField] private Object _movableObject;
         [SerializeField] private  MoveBase _move;
         [SerializeField] private CheckInteractableObject _interaction;
         private InputSystem_Actions _actions;
