@@ -1,19 +1,21 @@
 ﻿using System;
+using Scripts.GameObjects;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Scripts.GameObjects
+namespace Scriptes.Particles
 {
     public class ParticleSpawner : MonoBehaviour
     {
         [SerializeField] private ParciesForSpawn[] _parciesForSpawn;
 
-        public void ApplyParticle(string name)
+        public void SoawnParticle(ParticleType particleType)
         {
-            if (!string.IsNullOrEmpty(name) && _parciesForSpawn != null && _parciesForSpawn.Length > 0)
+            if (_parciesForSpawn != null && _parciesForSpawn.Length > 0)
             {
                 foreach (var particle in _parciesForSpawn)
                 {
-                    if (particle.ParticleName.Contains(name))
+                    if (particle.ParticleType == particleType)
                     {
                         particle.Spawner.Spawn();
                     }
@@ -23,13 +25,12 @@ namespace Scripts.GameObjects
             {
                 Debug.LogWarning("No particle named: " + name);
             }
-
         }
         
         [Serializable]
         public struct ParciesForSpawn
         {
-            public string ParticleName;
+            public ParticleType ParticleType;
             public SpawnGO Spawner;
         }
     }

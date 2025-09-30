@@ -142,7 +142,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onTriggerInteractedEvent:
     m_PersistentCalls:
+      m_Calls: []
+  _onTriggerEnterWithGOEvent:
+    m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5983739859639912789}
+        m_TargetAssemblyTypeName: Scriptes.Creatures.ChangeCoinComponent, Assembly-CSharp
+        m_MethodName: ChangeCoin
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 407728060196560088}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
@@ -159,21 +174,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Scripts.Animation.SpriteAnimationComponent, Assembly-CSharp
         m_MethodName: SetLoopAnimation
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onTriggerEnterWithGOEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5983739859639912789}
-        m_TargetAssemblyTypeName: Scriptes.Creatures.ChangeCoinComponent, Assembly-CSharp
-        m_MethodName: ChangeCoin
-        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

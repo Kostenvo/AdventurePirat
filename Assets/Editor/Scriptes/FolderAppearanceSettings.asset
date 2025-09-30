@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76b11143a7186340b4c52d731592c86, type: 3}
   m_Name: FolderAppearanceSettings
   m_EditorClassIdentifier: 
-  enableDefaultColors: 1
+  enableDefaultColors: 0
   defaultColorAlpha: 0.542
   useGradientDefaults: 1
   hueStart: 0.188
@@ -23,7 +23,7 @@ MonoBehaviour:
   depthValueStep: 0.486
   depthSaturationStep: 0.106
   autoContrastText: 1
-  alwaysDrawLabelOnTop: 1
+  alwaysDrawLabelOnTop: 0
   overrideLabelColor: {r: 1, g: 1, b: 1, a: 1}
   drawLabelShadow: 0
   labelFontStyle: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
     color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
     useCustomColor: 0
     icon: {fileID: 2800000, guid: ac602b99c2252e1448d44a5140ed2a4b, type: 3}
-    useCustomIcon: 1
+    useCustomIcon: 0
   - guid: 96eec23bd4568124f84a72a1b439cdf2
     color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
     useCustomColor: 0
@@ -54,4 +54,24 @@ MonoBehaviour:
     color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
     useCustomColor: 0
     icon: {fileID: 2800000, guid: 0cbaa6f350618fc4db22772ed2e83dea, type: 3}
+    useCustomIcon: 1
+  - guid: d936e76d2d5fa4e4e9e79791ba921ed0
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 0}
+    useCustomIcon: 0
+  - guid: 6501e108222e87f45bbedefe906526f6
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 2800000, guid: cd5b6396a0cf50146913feb01d5f1a2b, type: 3}
+    useCustomIcon: 1
+  - guid: f74e4b5d66c9303499a740d172d7d903
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 2800000, guid: a136387778a242240bc2bb34bb4671d0, type: 3}
+    useCustomIcon: 1
+  - guid: 8bf6fa53fc189bc49b7374838ff40117
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 2800000, guid: b336bcb4cf71d3d45ae18874f19a0eee, type: 3}
     useCustomIcon: 1

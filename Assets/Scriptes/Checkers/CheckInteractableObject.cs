@@ -9,9 +9,9 @@ namespace Scripts.Checkers
     {
         [SerializeField] private LayerMask _layerMaskForInteract;
         [SerializeField] private float _radius;
-        private Collider2D[] _colliders = new Collider2D[8];
+        private Collider2D[] _colliders;
         
-        public void Check()
+        public void Interact()
         {
             _colliders = Physics2D.OverlapCircleAll(transform.position, _radius,_layerMaskForInteract);
             foreach (var collide in _colliders)

@@ -12,10 +12,9 @@ namespace Scripts.Creatures.Hero
     [RequireComponent(typeof(MoveBase))]
     public class InputHero : MonoBehaviour
     {
-        [Interface(typeof(IMovable))]
-        // [SerializeField] private Object _movableObject;
         [SerializeField] private  MoveBase _move;
         [SerializeField] private CheckInteractableObject _interaction;
+        [SerializeField] private CheckAttackObject _attack;
         private InputSystem_Actions _actions;
 
         private void Awake()
@@ -37,6 +36,7 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.performed += OnMovePerformedHandler;
             _actions.Player.Move.canceled += OnMoveCanceledHandler;
             _actions.Player.Interact.performed += OnInteractPerformedHandler;
+            _actions.Player.Attack.started += OnAttackStartHandler;
         }
 
         private void OnDisable()
@@ -45,11 +45,17 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.performed -= OnMovePerformedHandler;
             _actions.Player.Move.canceled -= OnMoveCanceledHandler;
             _actions.Player.Interact.performed -= OnInteractPerformedHandler;
+            _actions.Player.Attack.started -= OnAttackStartHandler;
+        }
+
+        private void OnAttackStartHandler(InputAction.CallbackContext obj)
+        {
+            _attack.Attack();
         }
 
         private void OnInteractPerformedHandler(InputAction.CallbackContext obj)
         {
-            _interaction.Check();
+            _interaction.Interact();
         }
 
         private void OnMovePerformedHandler(InputAction.CallbackContext context)
