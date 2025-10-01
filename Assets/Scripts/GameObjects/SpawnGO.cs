@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Scripts.GameObjects
+namespace GameObjects
 {
-    public class SpawnGO : MonoBehaviour
+    public class SpawnGo : MonoBehaviour
     {
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private GameObject _prefab;

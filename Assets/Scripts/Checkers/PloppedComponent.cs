@@ -1,7 +1,7 @@
-﻿using Scriptes.Particles;
+﻿using Particles;
 using UnityEngine;
 
-namespace Scripts.Checkers
+namespace Checkers
 {
     public class PloppedComponent :MonoBehaviour
     {

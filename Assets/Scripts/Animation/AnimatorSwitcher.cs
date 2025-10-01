@@ -1,8 +1,6 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
-namespace Scripts.Animation
+namespace Animation
 {
     public class AnimatorSwitcher : MonoBehaviour
     {

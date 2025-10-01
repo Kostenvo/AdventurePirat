@@ -1,8 +1,8 @@
 ﻿
-using EditorTools;
+using Checkers;
+using Creatures;
 using PlayerInput;
 using Scripts.Checkers;
-using Scripts.Interact;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;

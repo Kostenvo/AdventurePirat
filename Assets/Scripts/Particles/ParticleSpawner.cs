@@ -1,9 +1,8 @@
 ﻿using System;
-using Scripts.GameObjects;
+using GameObjects;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Scriptes.Particles
+namespace Particles
 {
     public class ParticleSpawner : MonoBehaviour
     {
@@ -31,7 +30,7 @@ namespace Scriptes.Particles
         public struct ParciesForSpawn
         {
             public ParticleType ParticleType;
-            public SpawnGO Spawner;
+            public SpawnGo Spawner;
         }
     }
 }

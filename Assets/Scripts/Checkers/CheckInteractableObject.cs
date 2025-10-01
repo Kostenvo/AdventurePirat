@@ -1,9 +1,8 @@
-﻿using System;
-using Scripts.Interact;
+﻿using Interact;
 using UnityEditor;
 using UnityEngine;
 
-namespace Scripts.Checkers
+namespace Checkers
 {
     public class CheckInteractableObject : MonoBehaviour
     {

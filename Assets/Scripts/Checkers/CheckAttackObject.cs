@@ -1,8 +1,8 @@
 ﻿using System;
+using Checkers;
+using GameData;
 using Scripts.Creatures;
 using Scripts.Creatures.Hero;
-using Scripts.GameData;
-using Scripts.Interact;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;

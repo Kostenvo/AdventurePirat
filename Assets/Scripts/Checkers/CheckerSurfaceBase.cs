@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Scripts.Checkers
+namespace Checkers
 {
     public abstract class CheckerSurfaceBase : MonoBehaviour
     {

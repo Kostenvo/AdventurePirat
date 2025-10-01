@@ -1,4 +1,4 @@
-﻿namespace Scripts.Creatures
+﻿namespace Creatures
 {
     public interface IHealthChangeComponent
     {

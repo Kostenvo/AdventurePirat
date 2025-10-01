@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-namespace Scripts.Interact
+namespace Interact
 {
-    public class InteractionComponent :MonoBehaviour
+    public class InteractionComponent : MonoBehaviour
     {
-        [SerializeField] private UnityEvent onInteract;
+        [SerializeField] private UnityEvent _onInteract;
+
         public void Interact()
         {
-            onInteract?.Invoke();
+            _onInteract?.Invoke();
         }
     }
 }

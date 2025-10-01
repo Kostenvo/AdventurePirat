@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scripts.Checkers
+namespace Checkers
 {
-    public class CollisionInteractionWithGO : MonoBehaviour
+    public class CollisionInteractionWithGo : MonoBehaviour
     {
         [SerializeField] private GOEvent _onTriggerInteracted;
         [SerializeField] private string _tag;

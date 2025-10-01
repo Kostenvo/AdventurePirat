@@ -1,4 +1,4 @@
-﻿namespace Scriptes.Particles
+﻿namespace Particles
 {
     public enum ParticleType
     {

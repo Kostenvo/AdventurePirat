@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-namespace Scripts.Checkers
+namespace Checkers
 {
-    public class TriggerInteractionWithGO : MonoBehaviour
+    public class TriggerInteractionWithGo : MonoBehaviour
     {
-        [SerializeField] private GOEvent _onTriggerEnterWithGOEvent;
+        [FormerlySerializedAs("_onTriggerEnterWithGOEvent")] [SerializeField] private GOEvent _onTriggerEnterWithGoEvent;
         [SerializeField] private string _tag;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.gameObject.CompareTag(_tag)) return;
-            _onTriggerEnterWithGOEvent?.Invoke(other.gameObject);
+            _onTriggerEnterWithGoEvent?.Invoke(other.gameObject);
         }
     }
 }

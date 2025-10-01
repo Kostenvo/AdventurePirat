@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scriptes.Extensions
+namespace Extensions
 {
     public static class PiratExtensions
     {

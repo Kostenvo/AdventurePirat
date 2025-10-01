@@ -1,4 +1,7 @@
-﻿using Scriptes.Particles;
+﻿using Checkers;
+using Creatures;
+using Particles;
+using Scriptes.Particles;
 using Scripts.Checkers;
 using UnityEngine;
 

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Scripts.GameObjects
+namespace GameObjects
 {
-    public class DestroyGO : MonoBehaviour
+    public class DestroyGo : MonoBehaviour
     {
         [SerializeField] private GameObject _gameObject;
 

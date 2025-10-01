@@ -1,8 +1,8 @@
-﻿using Scripts.GameData;
+﻿using GameData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Scripts.Level
+namespace Level
 {
     public class ReloadLevelComponent :MonoBehaviour
     {

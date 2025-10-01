@@ -1,4 +1,5 @@
-﻿using Scripts.GameData;
+﻿using Creatures;
+using GameData;
 using UnityEngine;
 using UnityEngine.Events;
 

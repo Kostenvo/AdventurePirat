@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using Scripts.Creatures.Hero;
 using UnityEngine;
 
-namespace Scripts.Interact
+namespace Interact
 {
     public class TeleportComponent : MonoBehaviour
     {
@@ -34,7 +33,7 @@ namespace Scripts.Interact
             Vector3 startPosition = target.transform.position;
             while (elapsedTime < _changeAlphaTime)
             {
-                elapsedTime += Time.deltaTime;
+                elapsedTime += UnityEngine.Time.deltaTime;
                 var progress = elapsedTime / _changeAlphaTime;
                 var currentPosition = Vector3.Lerp(startPosition, _destinationTarget.position, progress);
                 target.transform.position = currentPosition;

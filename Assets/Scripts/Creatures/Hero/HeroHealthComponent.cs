@@ -1,5 +1,5 @@
 ﻿using System;
-using Scripts.GameData;
+using GameData;
 
 namespace Scripts.Creatures.Hero
 {

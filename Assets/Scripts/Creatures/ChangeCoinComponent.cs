@@ -1,15 +1,15 @@
 ﻿using Scripts.Creatures.Hero;
 using UnityEngine;
 
-namespace Scriptes.Creatures
+namespace Creatures
 {
     public class ChangeCoinComponent :MonoBehaviour
     {
         [SerializeField] private int _changeCoin;
 
-        public void ChangeCoin(GameObject GOWithWallet)
+        public void ChangeCoin(GameObject goWithWallet)
         {
-            GOWithWallet.GetComponent<IChangeCoinInWallet>().CoinChange(_changeCoin);
+            goWithWallet.GetComponent<IChangeCoinInWallet>().CoinChange(_changeCoin);
         }
     }
 }

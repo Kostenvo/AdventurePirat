@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using Scripts.Creatures;
+using UnityEngine;
 
-namespace Scripts.Creatures
+namespace Creatures
 {
     public class HealthChangeComponent : MonoBehaviour
     {

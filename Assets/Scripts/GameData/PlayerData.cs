@@ -1,7 +1,6 @@
 ﻿using System;
-using Unity.VisualScripting;
 
-namespace Scripts.GameData
+namespace GameData
 {
     [Serializable]
     public class PlayerData

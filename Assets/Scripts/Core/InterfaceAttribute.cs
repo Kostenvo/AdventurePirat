@@ -6,7 +6,7 @@ using UnityEngine;
 // для рантайм-скриптов и сборки. Соответствующий PropertyDrawer остаётся
 // в папке Editor и не попадает в билд.
 
-namespace EditorTools
+namespace Core
 {
     /// <summary>
     /// Атрибут для пометки сериализуемого поля UnityEngine.Object, чтобы

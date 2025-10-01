@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Scripts.GameData
+namespace GameData
 {
     public class GameSession : MonoBehaviour
     {

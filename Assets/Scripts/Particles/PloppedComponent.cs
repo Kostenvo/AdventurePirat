@@ -1,5 +1,5 @@
-﻿using Scriptes.Extensions;
-using Scripts.GameObjects;
+﻿using Extensions;
+using Particles;
 using UnityEngine;
 
 namespace Scriptes.Particles

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Scripts.Checkers;
 using UnityEditor;
 using UnityEngine;
 
-namespace Scripts.Checkers
+namespace Checkers
 {
     public class CheckerLayerByPhysics:CheckerSurfaceBase 
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Scripts.Animation
+namespace Animation
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class SpriteAnimationComponent : MonoBehaviour
@@ -35,8 +35,8 @@ namespace Scripts.Animation
                 Debug.LogError($"[{gameObject.name}] No animation clips available! Please assign animation clips in the Inspector.", this);
                 return;
             }
-            bool isApply = false;
-            foreach (AnimationClips clip in _animationClips)
+            var isApply = false;
+            foreach (var clip in _animationClips)
             {
                 if (clip.ClipName.Contains(clipName))
                 {
