@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3591283030585224738}
   - component: {fileID: 2210254648859065602}
   - component: {fileID: 1103392052866591823}
-  - component: {fileID: 4544605041682829219}
+  - component: {fileID: 3853833244493890808}
   - component: {fileID: 1503161846751337279}
   - component: {fileID: 8780599244893463986}
   - component: {fileID: 3186053734151554343}
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6864917, y: 0.74692726}
   m_EdgeRadius: 0
---- !u!114 &4544605041682829219
+--- !u!114 &3853833244493890808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8904870662282745118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0642cdae6d40739b47d866bdfe21d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 412d28f1893d4eb39dce5d279ab0dc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
@@ -212,7 +212,6 @@ MonoBehaviour:
           m_StringArgument: Destroy
           m_BoolArgument: 0
         m_CallState: 2
-  _currentHealth: 0
 --- !u!114 &1503161846751337279
 MonoBehaviour:
   m_ObjectHideFlags: 0
