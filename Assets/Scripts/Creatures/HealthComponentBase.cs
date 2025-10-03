@@ -26,7 +26,7 @@ namespace Scripts.Creatures
                 Damage(-amount);
         }
 
-        private void Damage(int amount)
+        protected virtual void Damage(int amount)
         {
             if (_currentHealth <= 0) return;
             _currentHealth -= amount;
@@ -41,7 +41,7 @@ namespace Scripts.Creatures
             }
         }
 
-        private void Heal(int amount)
+        protected virtual void Heal(int amount)
         {
             _currentHealth += amount;
             if (_currentHealth > _maxHealth)

@@ -22,15 +22,24 @@ namespace Particles
             }
             else
             {
-                Debug.LogWarning("No particle named: " + name);
+                Debug.Log("No particle named: " + particleType);
             }
         }
-        
+
         [Serializable]
         public struct ParciesForSpawn
         {
             public ParticleType ParticleType;
             public SpawnGo Spawner;
         }
+    }
+
+    public enum ParticleType
+    {
+        Jamp,
+        Plopped,
+        FootStep,
+        Aggro,
+        Disappeared
     }
 }

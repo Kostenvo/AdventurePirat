@@ -1,8 +1,8 @@
 ﻿
 using Checkers;
 using Creatures;
+using Creatures.Hero;
 using PlayerInput;
-using Scripts.Checkers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
@@ -14,7 +14,7 @@ namespace Scripts.Creatures.Hero
     {
         [SerializeField] private  MoveBase _move;
         [SerializeField] private CheckInteractableObject _interaction;
-        [SerializeField] private CheckAttackObject _attack;
+        [SerializeField] private HeroAttackObject _attack;
         private InputSystem_Actions _actions;
 
         private void Awake()

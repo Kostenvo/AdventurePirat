@@ -1,5 +1,4 @@
-﻿using Scripts.Checkers;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Checkers

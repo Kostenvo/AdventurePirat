@@ -1,7 +1,7 @@
-﻿using Scripts.Creatures.Hero;
+﻿using Creatures;
 using UnityEngine;
 
-namespace Creatures
+namespace Interact
 {
     public class ChangeCoinComponent :MonoBehaviour
     {

@@ -2,7 +2,6 @@
 using Creatures;
 using Particles;
 using Scriptes.Particles;
-using Scripts.Checkers;
 using UnityEngine;
 
 namespace Scripts.Creatures.Hero

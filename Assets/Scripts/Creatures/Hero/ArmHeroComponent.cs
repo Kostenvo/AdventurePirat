@@ -1,4 +1,5 @@
-﻿using Scripts.Checkers;
+﻿using Checkers;
+using Creatures.Hero;
 using UnityEngine;
 
 namespace Scripts.Creatures.Hero
@@ -7,7 +8,7 @@ namespace Scripts.Creatures.Hero
     {
         public void ArmHero(GameObject hero)
         {
-            hero.GetComponentInChildren<CheckAttackObject>()?.ArmHero();
+            hero.GetComponentInChildren<HeroAttackObject>()?.ArmHero();
         }
     }
 }
