@@ -9088,6 +9088,9 @@ MonoBehaviour:
   _onTriggerEnterWithGoEvent:
     m_PersistentCalls:
       m_Calls: []
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _tag: Player
 --- !u!114 &542295833
 MonoBehaviour:
@@ -15106,6 +15109,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1623363087}
     m_Modifications:
+    - target: {fileID: 3853833244493890808, guid: a83aa6789cb18fc459ca6f309cd76e6b, type: 3}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7944276583982824567, guid: a83aa6789cb18fc459ca6f309cd76e6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.54
@@ -15978,6 +15985,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _tag: Player
 --- !u!114 &2065230336
 MonoBehaviour:
@@ -16053,11 +16063,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6582b0a2db116b54a9bb7470c85e8250, type: 3}
---- !u!95 &2132534226 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4108548580237463246, guid: d510f0814eeb0a24a880e26d474cff97, type: 3}
-  m_PrefabInstance: {fileID: 1520585182922638516}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143116073
 GameObject:
   m_ObjectHideFlags: 0
@@ -16221,6 +16226,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 903803084}
     m_Modifications:
+    - target: {fileID: 788797133998379647, guid: d510f0814eeb0a24a880e26d474cff97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.435
+      objectReference: {fileID: 0}
+    - target: {fileID: 788797133998379647, guid: d510f0814eeb0a24a880e26d474cff97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.081
+      objectReference: {fileID: 0}
     - target: {fileID: 2358055760198012537, guid: d510f0814eeb0a24a880e26d474cff97, type: 3}
       propertyPath: m_Name
       value: Player
@@ -16265,10 +16278,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4113245417671130113, guid: d510f0814eeb0a24a880e26d474cff97, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 2132534226}
+    - target: {fileID: 8524899238062524053, guid: d510f0814eeb0a24a880e26d474cff97, type: 3}
+      propertyPath: _throwCooldown._cooldownTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524899238062524053, guid: d510f0814eeb0a24a880e26d474cff97, type: 3}
+      propertyPath: _attackCooldown._cooldownTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

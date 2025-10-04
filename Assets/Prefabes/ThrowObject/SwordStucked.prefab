@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6569000963821092437}
   - component: {fileID: 7610349274613948225}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: SwordStucked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 2019296403
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: a7451d842831d854bbf8fd1aa32502db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28060e773334863498c35023d125f904, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,44 +104,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048693af4e6b4440a63c077502a789cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loop: 1
+  _loop: 0
   _framePerSecond: 10
   _spriteRenderer: {fileID: 7255664596764997819}
   _animationClips:
-  - ClipName: Idle
+  - ClipName: start
     Sprites:
-    - {fileID: 21300000, guid: a7451d842831d854bbf8fd1aa32502db, type: 3}
-    - {fileID: 21300000, guid: 4dca2080377143d49bcbb8b56df85cd1, type: 3}
-    - {fileID: 21300000, guid: 029b5081182c8cd428975dcc3894a4bf, type: 3}
-    - {fileID: 21300000, guid: 6deb2883a35b42d4aa7d49a7fe24a5c1, type: 3}
-    - {fileID: 21300000, guid: 3f7408c72f477d94c82f62be59b1b5a1, type: 3}
-    - {fileID: 21300000, guid: 5e46d06623be7494280433f889606ae0, type: 3}
-    - {fileID: 21300000, guid: 9ee78265338cb174a889b4940b61cb1d, type: 3}
-    - {fileID: 21300000, guid: 72a7eb7710bde6743b92f64250be20d8, type: 3}
+    - {fileID: 21300000, guid: 28060e773334863498c35023d125f904, type: 3}
+    - {fileID: 21300000, guid: 27b42c5d1efa62e4cb5b0f762dfed747, type: 3}
+    - {fileID: 21300000, guid: 8cd9aeea7c2d2ac4db885d6104c44b72, type: 3}
+    - {fileID: 21300000, guid: 95b48322e6ff6f946b4b1c8713835076, type: 3}
     OnAnimationFinished:
       m_PersistentCalls:
         m_Calls: []
-  - ClipName: PickUp
-    Sprites:
-    - {fileID: 21300000, guid: 723d73d29ba5fff4f88d541ef20a88ef, type: 3}
-    - {fileID: 21300000, guid: b526cfb08c5c2c4478df34269ad52d44, type: 3}
-    - {fileID: 21300000, guid: ed92ef581c734bc49af8be55f6af20fa, type: 3}
-    - {fileID: 21300000, guid: 02ca1fa001f693f41ae1494a0c3b1a17, type: 3}
-    OnAnimationFinished:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 155650631642726514}
-          m_TargetAssemblyTypeName: Scripts.GameObjects.DestroyGO, Assembly-CSharp
-          m_MethodName: DestroyObject
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   _animationClipName: 
 --- !u!114 &155650631642726514
 MonoBehaviour:
@@ -171,33 +146,9 @@ MonoBehaviour:
   _onTriggerEnterWithGoEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7527835333091880736}
-        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
-        m_MethodName: ApplyClip
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PickUp
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6569000963821092437}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7527835333091880736}
-        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
-        m_MethodName: SetLoopAnimation
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -211,6 +162,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Scripts.Creatures.Hero.ArmHeroComponent, Assembly-CSharp
         m_MethodName: ArmHero
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 155650631642726514}
+        m_TargetAssemblyTypeName: GameObjects.DestroyGo, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -140,12 +140,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7caea51635c14400ac41cf3b32aa5036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onTriggerInteractedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _onTriggerEnterWithGOEvent:
+  _onTriggerEnterWithGoEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8731665137012725647}
+        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: ApplyClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: destroy
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8731665137012725647}
+        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: SetLoopAnimation
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 407728060196560088}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
@@ -158,20 +179,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8731665137012725647}
-        m_TargetAssemblyTypeName: Scripts.Animation.SpriteAnimationComponent, Assembly-CSharp
-        m_MethodName: SetLoopAnimation
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5983739859639912789}
-        m_TargetAssemblyTypeName: Scriptes.Creatures.ChangeCoinComponent, Assembly-CSharp
+        m_TargetAssemblyTypeName: Interact.ChangeCoinComponent, Assembly-CSharp
         m_MethodName: ChangeCoin
         m_Mode: 0
         m_Arguments:
@@ -182,6 +191,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _tag: Player
 --- !u!114 &8731665137012725647
 MonoBehaviour:
@@ -207,19 +219,7 @@ MonoBehaviour:
     - {fileID: 2722280177590742205, guid: 6585a2bd09b644a4581ea3a85e225a3f, type: 3}
     OnAnimationFinished:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 8731665137012725647}
-          m_TargetAssemblyTypeName: Scripts.Animation.SpriteAnimationComponent, Assembly-CSharp
-          m_MethodName: ApplyClip
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: destroy
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
   - ClipName: destroy
     Sprites:
     - {fileID: 21300000, guid: 6cab5c5363e69b0458216b2793db4d30, type: 3}

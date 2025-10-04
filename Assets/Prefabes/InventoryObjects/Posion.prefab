@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401649322087028746}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1761804, y: 3.1969728, z: -0.20959012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -105,9 +105,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7caea51635c14400ac41cf3b32aa5036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onTriggerEnterWithGOEvent:
+  _onTriggerEnterWithGoEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 6285551774156972101}
+        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: ApplyClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: pickUp
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6285551774156972101}
+        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: SetLoopAnimation
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4732374826507450293}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
@@ -120,20 +144,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6285551774156972101}
-        m_TargetAssemblyTypeName: Scripts.Animation.SpriteAnimationComponent, Assembly-CSharp
-        m_MethodName: SetLoopAnimation
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2065575160460327991}
-        m_TargetAssemblyTypeName: Scripts.Creatures.HealthChangeComponent, Assembly-CSharp
+        m_TargetAssemblyTypeName: Creatures.HealthChangeComponent, Assembly-CSharp
         m_MethodName: ChangeHealth
         m_Mode: 0
         m_Arguments:
@@ -144,6 +156,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _tag: Player
 --- !u!114 &6285551774156972101
 MonoBehaviour:
@@ -172,19 +187,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 12a02601471dde14b9f0df8c8916dcf6, type: 3}
     OnAnimationFinished:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6285551774156972101}
-          m_TargetAssemblyTypeName: Scripts.Animation.SpriteAnimationComponent, Assembly-CSharp
-          m_MethodName: ApplyClip
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: pickUp
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - ClipName: pickUp
     Sprites:
     - {fileID: 21300000, guid: 611cfd7416516c949ab67fbd4102845f, type: 3}

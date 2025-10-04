@@ -40,6 +40,7 @@ namespace Particles
         Plopped,
         FootStep,
         Aggro,
-        Disappeared
+        Disappeared,
+        Throw
     }
 }

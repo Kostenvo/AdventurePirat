@@ -41,6 +41,7 @@ namespace Animation
                 if (clip.ClipName.Contains(clipName))
                 {
                     _currentAnimationClip = clip;
+                    _frameIndex = 0;
                     isApply = true;
                     enabled = true;
                     break;

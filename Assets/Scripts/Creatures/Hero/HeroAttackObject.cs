@@ -1,15 +1,23 @@
-﻿using Checkers;
+﻿using System;
+using Checkers;
 using GameData;
+using GameObjects;
+using Particles;
+using TimeComponent;
 using UnityEngine;
 
 namespace Creatures.Hero
 {
     public class HeroAttackObject : CheckAttackObjectBase
     {
+        [SerializeField] private Cooldown _attackCooldown;
+        [SerializeField] private Cooldown _throwCooldown;
         [SerializeField] private Animator _animator;
         [SerializeField] private RuntimeAnimatorController _armed;
         [SerializeField] private RuntimeAnimatorController _unarmed;
+        [SerializeField] private ParticleSpawner _spawner;
         private readonly int _attackKey = Animator.StringToHash("Attack");
+        private readonly int _throwKey = Animator.StringToHash("Throw");
         private GameSession _gameSession;
         private bool _isArmed => _gameSession.PlayerData.IsArmed;
 
@@ -19,11 +27,22 @@ namespace Creatures.Hero
             ChangeState();
         }
 
+        public void Throw()
+        {
+            if (!_isArmed) return;
+            if (!_throwCooldown.IsReady()) return;
+            _spawner.SoawnParticle(ParticleType.Throw);
+            _animator.SetTrigger(_throwKey);
+            _throwCooldown.ResetCooldown();
+        }
+
         public override void Attack()
         {
             if (!_isArmed) return;
+            if(!_attackCooldown.IsReady()) return;
             _animator.SetTrigger(_attackKey);
             base.Attack();
+            _attackCooldown.ResetCooldown();
         }
 
         public void ArmHero()

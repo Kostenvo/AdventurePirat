@@ -37,6 +37,7 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.canceled += OnMoveCanceledHandler;
             _actions.Player.Interact.performed += OnInteractPerformedHandler;
             _actions.Player.Attack.started += OnAttackStartHandler;
+            _actions.Player.Throw.performed += OnThrowPerformesHandler;
         }
 
         private void OnDisable()
@@ -46,6 +47,13 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.canceled -= OnMoveCanceledHandler;
             _actions.Player.Interact.performed -= OnInteractPerformedHandler;
             _actions.Player.Attack.started -= OnAttackStartHandler;
+            _actions.Player.Throw.performed -= OnThrowPerformesHandler;
+
+        }
+
+        private void OnThrowPerformesHandler(InputAction.CallbackContext obj)
+        {
+            _attack.Throw();
         }
 
         private void OnAttackStartHandler(InputAction.CallbackContext obj)
