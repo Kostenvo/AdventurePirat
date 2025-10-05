@@ -6,17 +6,19 @@ namespace GameData
     {
         [SerializeField] private PlayerData _playerData;
         public PlayerData PlayerData => _playerData;
+        private PlayerData _saveData;
 
 
         private void Awake()
         {
             if (IsSessionExist())
             {
-                Destroy(this.gameObject);
+                DestroyImmediate(this.gameObject);
             }
             else
             {
                 DontDestroyOnLoad(this.gameObject);
+                Save();
             }
         }
         
@@ -31,6 +33,16 @@ namespace GameData
                 }
             }
             return false;
+        }
+
+        public void Save()
+        {
+          _saveData = _playerData.CloneData();
+        }
+
+        public void Load()
+        {
+            _playerData = _saveData.CloneData();
         }
     }
 }

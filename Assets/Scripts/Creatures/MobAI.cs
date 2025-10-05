@@ -16,7 +16,7 @@ namespace Creatures
         [SerializeField] private Patrol _patrol;
         [SerializeField] private CheckLayerByTrigger _heroInVision;
         [SerializeField] private CheckLayerByTrigger _heroCanAttack;
-        [SerializeField] private ParticleSpawner _spawnParticle;
+        [SerializeField] private SpawnListComponent _spawnParticle;
         private bool _isDead = false;
 
         private IEnumerator _coroutine;

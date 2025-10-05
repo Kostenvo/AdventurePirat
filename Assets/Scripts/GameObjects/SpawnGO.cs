@@ -11,6 +11,7 @@ namespace GameObjects
         {
             if (!_spawnPoint) _spawnPoint = transform;
             GameObject go = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity);
+            go.SetActive(true);
             go.transform.localScale = transform.lossyScale;
         }
     }

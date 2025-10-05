@@ -9,5 +9,9 @@ namespace GameData
         public int Coins;
         public bool IsArmed;
 
+        public PlayerData CloneData()
+        {
+            return (PlayerData)MemberwiseClone();
+        }
     }
 }

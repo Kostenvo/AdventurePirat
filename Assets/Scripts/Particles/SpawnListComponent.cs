@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Particles
 {
-    public class ParticleSpawner : MonoBehaviour
+    public class SpawnListComponent : MonoBehaviour
     {
         [SerializeField] private ParciesForSpawn[] _parciesForSpawn;
 
@@ -26,6 +26,14 @@ namespace Particles
             }
         }
 
+        public void SpawnAll()
+        {
+            foreach (var spawner in _parciesForSpawn)
+            {
+                spawner.Spawner.Spawn();
+            }
+        }
+
         [Serializable]
         public struct ParciesForSpawn
         {
@@ -41,6 +49,8 @@ namespace Particles
         FootStep,
         Aggro,
         Disappeared,
-        Throw
+        Throw,
+        Attack,
+        Non
     }
 }

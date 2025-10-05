@@ -15,7 +15,7 @@ namespace Creatures.Hero
         [SerializeField] private Animator _animator;
         [SerializeField] private RuntimeAnimatorController _armed;
         [SerializeField] private RuntimeAnimatorController _unarmed;
-        [SerializeField] private ParticleSpawner _spawner;
+        [SerializeField] private SpawnListComponent _spawner;
         private readonly int _attackKey = Animator.StringToHash("Attack");
         private readonly int _throwKey = Animator.StringToHash("Throw");
         private GameSession _gameSession;
@@ -41,6 +41,7 @@ namespace Creatures.Hero
             if (!_isArmed) return;
             if(!_attackCooldown.IsReady()) return;
             _animator.SetTrigger(_attackKey);
+            _spawner.SoawnParticle(ParticleType.Attack);
             base.Attack();
             _attackCooldown.ResetCooldown();
         }

@@ -3,6 +3,7 @@ using Creatures;
 using Particles;
 using Scriptes.Particles;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scripts.Creatures.Hero
 {
@@ -13,7 +14,7 @@ namespace Scripts.Creatures.Hero
         [SerializeField] private float _jumpDamageValue = 8f;
         [SerializeField] private CheckerSurfaceBase _groundChecker;
         [SerializeField] private Animator _animator;
-        [SerializeField] private ParticleSpawner _particleSpawner;
+        [FormerlySerializedAs("_particleSpawner")] [SerializeField] private SpawnListComponent _spawnListComponent;
 
         private const string jumpSpawnKey = "Jump";
         private readonly int moveKey = Animator.StringToHash("Move");
@@ -71,11 +72,11 @@ namespace Scripts.Creatures.Hero
                 if (!isDamage && IsGrounded && rb.linearVelocity.y < minimumValueForJump)
                 {
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
-                    _particleSpawner.SoawnParticle(ParticleType.Jamp);
+                    _spawnListComponent.SoawnParticle(ParticleType.Jamp);
                 }
                 else if (isDoubleJump && rb.linearVelocity.y < minimumValueForJump)
                 {
-                    _particleSpawner.SoawnParticle(ParticleType.Jamp);
+                    _spawnListComponent.SoawnParticle(ParticleType.Jamp);
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
                     isDoubleJump = false;
                 }

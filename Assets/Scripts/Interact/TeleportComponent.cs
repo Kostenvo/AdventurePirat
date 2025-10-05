@@ -31,7 +31,7 @@ namespace Interact
         {
             float elapsedTime = 0;
             Vector3 startPosition = target.transform.position;
-            while (elapsedTime < _changeAlphaTime)
+            while (elapsedTime < _teleportTime)
             {
                 elapsedTime += UnityEngine.Time.deltaTime;
                 var progress = elapsedTime / _changeAlphaTime;

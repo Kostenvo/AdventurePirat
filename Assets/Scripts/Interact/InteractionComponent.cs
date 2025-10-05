@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
+using Utils;
 
 namespace Interact
 {
@@ -12,5 +12,22 @@ namespace Interact
         {
             _onInteract?.Invoke();
         }
+#if UNITY_EDITOR
+        private GameObject[] _interactableObjects;
+
+        private void OnValidate()
+        {
+            _interactableObjects = _onInteract.ToGameObjects();
+        }
+
+        public void OnDrawGizmosSelected()
+        {
+            foreach (var interactableObject in _interactableObjects)
+            {
+                if(!interactableObject) return;
+                Debug.DrawLine(transform.position, interactableObject.transform.position, Color.green);
+            }
+        }
+#endif
     }
 }

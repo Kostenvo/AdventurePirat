@@ -9,7 +9,7 @@ namespace Level
         public void Reload()
         {
             var currentSession = FindAnyObjectByType<GameSession>();
-            Destroy(currentSession.gameObject);
+            currentSession.Load();
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }

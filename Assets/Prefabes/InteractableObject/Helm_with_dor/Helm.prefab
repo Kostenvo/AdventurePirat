@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8838159870398805892}
   - component: {fileID: 5112925043828275705}
   - component: {fileID: 3021902787788337597}
+  - component: {fileID: 2501456002054620583}
+  - component: {fileID: 881900606415747135}
   m_Layer: 7
   m_Name: Helm
   m_TagString: Untagged
@@ -139,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f387aa8c8d4b44f7a6f71984fca98a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onInteract:
+  _onInteract:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5394969181492612037}
@@ -154,16 +156,16 @@ MonoBehaviour:
           m_StringArgument: Interact
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8838159870398805892}
-        m_TargetAssemblyTypeName: Scriptes.Animation.AnimatorSwitcher, Assembly-CSharp
-        m_MethodName: Switch
-        m_Mode: 1
+      - m_Target: {fileID: 881900606415747135}
+        m_TargetAssemblyTypeName: TimeComponent.TimerComponent, Assembly-CSharp
+        m_MethodName: SetTimers
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ShowHelm
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!58 &3021902787788337597
@@ -202,3 +204,77 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &2501456002054620583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151188819962996100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac41a2376e6241cf9f671bf61799d852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _showTime: 2
+  _setTargetForShowCamera: {fileID: 0}
+--- !u!114 &881900606415747135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151188819962996100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4d4649b76546debcaec57d58b0d1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timers:
+  - name: ShowHelm
+    time: 0.5
+    _actionForEndTime:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2501456002054620583}
+          m_TargetAssemblyTypeName: Camera.ShowTargetComponent, Assembly-CSharp
+          m_MethodName: ShowTarget
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: ShowDoor
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 881900606415747135}
+          m_TargetAssemblyTypeName: TimeComponent.TimerComponent, Assembly-CSharp
+          m_MethodName: SetTimers
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: ShowDoor
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: ShowDoor
+    time: 1
+    _actionForEndTime:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8838159870398805892}
+          m_TargetAssemblyTypeName: Animation.AnimatorSwitcher, Assembly-CSharp
+          m_MethodName: Switch
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: ShowDoor
+            m_BoolArgument: 0
+          m_CallState: 2

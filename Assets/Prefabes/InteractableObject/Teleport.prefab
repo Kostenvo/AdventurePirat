@@ -84,6 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destinationTarget: {fileID: 0}
+  _changeAlphaTime: 1
+  _teleportTime: 0.2
 --- !u!114 &5391131217791343023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51a963b1005416586e00ff75ccc55b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onTriggerInteracted:
+  _onCollisionInteracted:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3758002018159055766}
-        m_TargetAssemblyTypeName: Scriptes.Interact.TeleportComponent, Assembly-CSharp
+        m_TargetAssemblyTypeName: Interact.TeleportComponent, Assembly-CSharp
         m_MethodName: Teleport
         m_Mode: 0
         m_Arguments:
@@ -111,6 +113,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _tag: Player
 --- !u!1 &8720197610048438227
 GameObject:
