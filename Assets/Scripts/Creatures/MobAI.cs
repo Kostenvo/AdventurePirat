@@ -44,7 +44,7 @@ namespace Creatures
             _creatureMove.SetDirection(HeroDirection(target));
             yield return null;
             _creatureMove.SetDirection(Vector2.zero);
-            _spawnParticle.SoawnParticle(ParticleType.Aggro);
+            _spawnParticle.SpawnParticle(ParticleType.Aggro);
             yield return new WaitForSeconds(_agroDelay);
             StopStartCoroutine(GoToHero(target));
         }
@@ -74,7 +74,7 @@ namespace Creatures
 
         private void Disappered()
         {
-            _spawnParticle.SoawnParticle(ParticleType.Disappeared);
+            _spawnParticle.SpawnParticle(ParticleType.Disappeared);
         }
 
         private void StopStartCoroutine(IEnumerator coroutine)

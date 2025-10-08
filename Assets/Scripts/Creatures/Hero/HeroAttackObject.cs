@@ -31,7 +31,7 @@ namespace Creatures.Hero
         {
             if (!_isArmed) return;
             if (!_throwCooldown.IsReady()) return;
-            _spawner.SoawnParticle(ParticleType.Throw);
+            _spawner.SpawnParticle(ParticleType.Throw);
             _animator.SetTrigger(_throwKey);
             _throwCooldown.ResetCooldown();
         }
@@ -41,7 +41,7 @@ namespace Creatures.Hero
             if (!_isArmed) return;
             if(!_attackCooldown.IsReady()) return;
             _animator.SetTrigger(_attackKey);
-            _spawner.SoawnParticle(ParticleType.Attack);
+            _spawner.SpawnParticle(ParticleType.Attack);
             base.Attack();
             _attackCooldown.ResetCooldown();
         }

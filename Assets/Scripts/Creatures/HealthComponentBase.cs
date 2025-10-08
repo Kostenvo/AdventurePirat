@@ -1,4 +1,5 @@
 ﻿using Creatures;
+using TimeComponent;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ namespace Scripts.Creatures
     public class HealthComponentBase : MonoBehaviour, IHealthChangeComponent
     {
         [SerializeField] private int _maxHealth = 100;
+        [SerializeField] private Cooldown _damageCooldown;
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onDeath;
@@ -29,6 +31,8 @@ namespace Scripts.Creatures
         protected virtual void Damage(int amount)
         {
             if (_currentHealth <= 0) return;
+            if (!_damageCooldown.IsReady()) return;
+            _damageCooldown.ResetCooldown();
             _currentHealth -= amount;
             if (_currentHealth <= 0)
             {

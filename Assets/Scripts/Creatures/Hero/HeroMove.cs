@@ -14,7 +14,7 @@ namespace Scripts.Creatures.Hero
         [SerializeField] private float _jumpDamageValue = 8f;
         [SerializeField] private CheckerSurfaceBase _groundChecker;
         [SerializeField] private Animator _animator;
-        [FormerlySerializedAs("_particleSpawner")] [SerializeField] private SpawnListComponent _spawnListComponent;
+        [SerializeField] private SpawnListComponent _spawnListComponent;
 
         private const string jumpSpawnKey = "Jump";
         private readonly int moveKey = Animator.StringToHash("Move");
@@ -64,6 +64,7 @@ namespace Scripts.Creatures.Hero
 
         private void DeactivateDamage() => isDamage = false;
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void Jump()
         {
             float minimumValueForJump = 0.1f;
@@ -72,11 +73,11 @@ namespace Scripts.Creatures.Hero
                 if (!isDamage && IsGrounded && rb.linearVelocity.y < minimumValueForJump)
                 {
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
-                    _spawnListComponent.SoawnParticle(ParticleType.Jamp);
+                    _spawnListComponent.SpawnParticle(ParticleType.Jamp);
                 }
                 else if (isDoubleJump && rb.linearVelocity.y < minimumValueForJump)
                 {
-                    _spawnListComponent.SoawnParticle(ParticleType.Jamp);
+                    _spawnListComponent.SpawnParticle(ParticleType.Jamp);
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
                     isDoubleJump = false;
                 }

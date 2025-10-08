@@ -14,7 +14,7 @@ namespace Checkers
             var contact = other.contacts[0];
             if (contact.relativeVelocity.y > _maxHeightForPlopped)
             {
-                _spawnListComponent.SoawnParticle(ParticleType.Plopped);
+                _spawnListComponent.SpawnParticle(ParticleType.Plopped);
             }
         }
     }

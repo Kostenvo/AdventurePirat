@@ -21,17 +21,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 67671b1cbe8d62549ac4d447e47e6ddd, type: 3}
+      value: {fileID: 21300000, guid: 5422f74e95ac12f4a993656575ca680f, type: 3}
     - time: 0.1
-      value: {fileID: 21300000, guid: 7707821ac4c24bf41a5cd748c740668a, type: 3}
+      value: {fileID: 21300000, guid: 58fbcaea04526564b81b4ec6fa8a2d08, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 69dcc6259ec02534e8a8f890018f8d44, type: 3}
+      value: {fileID: 21300000, guid: 7ba6ea30c6e06e24dbe01cafb192c41f, type: 3}
     - time: 0.3
-      value: {fileID: 21300000, guid: d8b9dc6fa3c14bb46b088696ff80c62c, type: 3}
+      value: {fileID: 21300000, guid: b670844e0fe7bd14dab8ee41ecc8f51b, type: 3}
     - time: 0.4
-      value: {fileID: 21300000, guid: 9ab553617b9fb5f46966eb75d1cdaed0, type: 3}
+      value: {fileID: 21300000, guid: fbb065b3e4e32be4087ad1ab2a75a31e, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: bf2f0f13cbffc6a418c89dace1be1e79, type: 3}
+      value: {fileID: 21300000, guid: ffaa78b56bf32c24a9de260a5db51b89, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,12 +54,12 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 67671b1cbe8d62549ac4d447e47e6ddd, type: 3}
-    - {fileID: 21300000, guid: 7707821ac4c24bf41a5cd748c740668a, type: 3}
-    - {fileID: 21300000, guid: 69dcc6259ec02534e8a8f890018f8d44, type: 3}
-    - {fileID: 21300000, guid: d8b9dc6fa3c14bb46b088696ff80c62c, type: 3}
-    - {fileID: 21300000, guid: 9ab553617b9fb5f46966eb75d1cdaed0, type: 3}
-    - {fileID: 21300000, guid: bf2f0f13cbffc6a418c89dace1be1e79, type: 3}
+    - {fileID: 21300000, guid: 5422f74e95ac12f4a993656575ca680f, type: 3}
+    - {fileID: 21300000, guid: 58fbcaea04526564b81b4ec6fa8a2d08, type: 3}
+    - {fileID: 21300000, guid: 7ba6ea30c6e06e24dbe01cafb192c41f, type: 3}
+    - {fileID: 21300000, guid: b670844e0fe7bd14dab8ee41ecc8f51b, type: 3}
+    - {fileID: 21300000, guid: fbb065b3e4e32be4087ad1ab2a75a31e, type: 3}
+    - {fileID: 21300000, guid: ffaa78b56bf32c24a9de260a5db51b89, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -86,14 +86,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.1
-    functionName: SoawnParticle
+    functionName: SpawnParticle
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
   - time: 0.4
-    functionName: SoawnParticle
+    functionName: SpawnParticle
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

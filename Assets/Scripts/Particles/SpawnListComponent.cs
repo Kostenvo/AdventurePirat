@@ -8,7 +8,13 @@ namespace Particles
     {
         [SerializeField] private ParciesForSpawn[] _parciesForSpawn;
 
-        public void SoawnParticle(ParticleType particleType)
+        public void SpawnParticleByName(string name)
+        {
+            bool isParse = Enum.TryParse(name, out ParticleType particleType);
+            if (isParse) SpawnParticle(particleType);
+            else Debug.Log($"Invalid particle type");
+        }
+        public void SpawnParticle(ParticleType particleType)
         {
             if (_parciesForSpawn != null && _parciesForSpawn.Length > 0)
             {
@@ -51,6 +57,7 @@ namespace Particles
         Disappeared,
         Throw,
         Attack,
+        Trash,
         Non
     }
 }
