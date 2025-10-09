@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3514899134173168269}
   - component: {fileID: 2264440287185829179}
   - component: {fileID: 7112254394842823358}
-  - component: {fileID: 7523822141568986918}
+  - component: {fileID: 8217327184425598440}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6315035558332656813}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.28, y: -5.366, z: -0.076502785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -164,9 +164,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7523822141568986918}
-        m_TargetAssemblyTypeName: Scriptes.Creatures.ChangeCoinComponent, Assembly-CSharp
-        m_MethodName: ChangeCoin
+      - m_Target: {fileID: 8217327184425598440}
+        m_TargetAssemblyTypeName: Interact.ChangeInInventory, Assembly-CSharp
+        m_MethodName: ChangeItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthChangeAmount: -1
---- !u!114 &7523822141568986918
+--- !u!114 &8217327184425598440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,7 +202,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6315035558332656813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e063f05c9744e58b98a0495ecadf9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 49deb26f5ad74230ba79dd971350a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeCoin: -5
+  _itemName: Coin
+  _count: -5

@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 namespace Scripts.Creatures.Hero
 {
-    public class HeroMove : MoveBase, IMovable
+    public class HeroMove : MoveBase
     {
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private float _jumpSpeed = 8f;

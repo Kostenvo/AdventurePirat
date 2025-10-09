@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4632482032742225670}
   - component: {fileID: 8540712149837596147}
   - component: {fileID: 1451997850670415679}
+  - component: {fileID: 7162554634777677750}
   m_Layer: 7
   m_Name: NextLevelDoor
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7306650183022638388}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.75421, y: 0.7735038, z: 0.22517394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -197,8 +198,53 @@ MonoBehaviour:
   _onInteract:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7162554634777677750}
+        m_TargetAssemblyTypeName: Interact.RequireComponent, Assembly-CSharp
+        m_MethodName: CheckRequiredItems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: open
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1451997850670415679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306650183022638388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b8f83139d34561bf76e75dd8290c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextLevelName: Level_2
+--- !u!114 &7162554634777677750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306650183022638388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e08ec4099a74bbdb037afa7f0cfcf5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _requiredItems:
+  - name: Coin
+    count: 5
+  - name: Key
+    count: 1
+  _enoughEvent:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 9038109045265808058}
-        m_TargetAssemblyTypeName: Scripts.Animation.SpriteAnimationComponent, Assembly-CSharp
+        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
         m_MethodName: ApplyClip
         m_Mode: 5
         m_Arguments:
@@ -221,16 +267,7 @@ MonoBehaviour:
           m_StringArgument: open
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &1451997850670415679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7306650183022638388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b8f83139d34561bf76e75dd8290c35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nextLevelName: Level_2
+  _notEnoughEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _removeRequiredItems: 1

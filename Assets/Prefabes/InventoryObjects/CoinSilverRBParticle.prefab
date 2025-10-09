@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3951949189898750996}
   - component: {fileID: 8731665137012725647}
   - component: {fileID: 7106217873777698641}
-  - component: {fileID: 5983739859639912789}
   - component: {fileID: 9127573018579330823}
+  - component: {fileID: 2573995302880100244}
   m_Layer: 0
   m_Name: CoinSilverRBParticle
   m_TagString: Untagged
@@ -180,9 +180,9 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5983739859639912789}
-        m_TargetAssemblyTypeName: Interact.ChangeCoinComponent, Assembly-CSharp
-        m_MethodName: ChangeCoin
+      - m_Target: {fileID: 2573995302880100244}
+        m_TargetAssemblyTypeName: Interact.ChangeInInventory, Assembly-CSharp
+        m_MethodName: ChangeItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -267,19 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 0}
---- !u!114 &5983739859639912789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117181399631652345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e063f05c9744e58b98a0495ecadf9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _changeCoin: 1
 --- !u!50 &9127573018579330823
 Rigidbody2D:
   serializedVersion: 5
@@ -307,3 +294,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2573995302880100244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117181399631652345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49deb26f5ad74230ba79dd971350a083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemName: Coin
+  _count: 1

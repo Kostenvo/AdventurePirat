@@ -9336,9 +9336,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerData:
+    _inventory:
+      _items:
+      - _name: Coin
+        _count: 10
     Health: 100
-    Coins: 20
-    IsArmed: 1
 --- !u!4 &719765348
 Transform:
   m_ObjectHideFlags: 0
@@ -16130,7 +16132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2358055760198012537, guid: 55ec21cc99464594e8db704eb0255368, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3410733804051077928, guid: 55ec21cc99464594e8db704eb0255368, type: 3}
       propertyPath: m_LocalPosition.x

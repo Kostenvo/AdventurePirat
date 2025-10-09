@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5633628887356910685}
   - component: {fileID: 5377983237797370625}
   m_Layer: 0
-  m_Name: SinusoidalCoinSilver
+  m_Name: SinusoidalKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 2019296403
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2322180950842035098, guid: 6585a2bd09b644a4581ea3a85e225a3f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: baca21e925f4a4f86a4c23d789b5f7e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,8 +127,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.008171141, y: 0.014231294}
-  m_Radius: 0.17312297
+  m_Offset: {x: 0.008171141, y: -0.016808987}
+  m_Radius: 0.21864891
 --- !u!114 &2791965560544991176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,10 +214,14 @@ MonoBehaviour:
   _animationClips:
   - ClipName: idle
     Sprites:
-    - {fileID: -2322180950842035098, guid: 6585a2bd09b644a4581ea3a85e225a3f, type: 3}
-    - {fileID: -4893972260818282012, guid: 6585a2bd09b644a4581ea3a85e225a3f, type: 3}
-    - {fileID: -6323751108524238166, guid: 6585a2bd09b644a4581ea3a85e225a3f, type: 3}
-    - {fileID: 2722280177590742205, guid: 6585a2bd09b644a4581ea3a85e225a3f, type: 3}
+    - {fileID: 21300000, guid: baca21e925f4a4f86a4c23d789b5f7e4, type: 3}
+    - {fileID: 21300000, guid: 736b25681899b420c9b619c0b32d8132, type: 3}
+    - {fileID: 21300000, guid: 323f4dfcd1e2a4114a3e230172c1dd7d, type: 3}
+    - {fileID: 21300000, guid: 46b64c341a9094b55ac7150400d65303, type: 3}
+    - {fileID: 21300000, guid: b2dcf8bc877b84d08939ff5e67edf61c, type: 3}
+    - {fileID: 21300000, guid: 20259db230ad4480687885687ff06913, type: 3}
+    - {fileID: 21300000, guid: 8bde8c3296c344f878b2e7792d4ef2a5, type: 3}
+    - {fileID: 21300000, guid: dd9df7dc1a4404dfe8ba8e1b48440a8f, type: 3}
     OnAnimationFinished:
       m_PersistentCalls:
         m_Calls: []
@@ -282,5 +286,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49deb26f5ad74230ba79dd971350a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: Coin
+  _itemName: Key
   _count: 1

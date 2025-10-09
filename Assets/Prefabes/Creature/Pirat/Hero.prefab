@@ -61,13 +61,13 @@ GameObject:
   - component: {fileID: 580971379886772813}
   - component: {fileID: 4113245417671130113}
   - component: {fileID: 4331928884179627566}
-  - component: {fileID: 5466241244311065136}
   - component: {fileID: 134745492763230428}
   - component: {fileID: 8209307538008347031}
   - component: {fileID: 2184807272373671385}
   - component: {fileID: 8407902795506722921}
   - component: {fileID: 4108548580237463246}
   - component: {fileID: 4822166252454341912}
+  - component: {fileID: 6268858700894369516}
   m_Layer: 3
   m_Name: Hero
   m_TagString: Player
@@ -183,6 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _damageCooldown:
+    _cooldownTime: 0
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -248,26 +250,6 @@ MonoBehaviour:
   _groundChecker: {fileID: 5949701568443187166}
   _animator: {fileID: 4108548580237463246}
   _spawnListComponent: {fileID: 8209307538008347031}
---- !u!114 &5466241244311065136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2358055760198012537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5df032929a4424894f7a34f7019d826, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addedCoinEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  removedCoinEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  coinParticle: {fileID: 1298244051147908543}
-  coin: 12
 --- !u!114 &134745492763230428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +388,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d779615dbda40959e261279f09cc876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6268858700894369516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358055760198012537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940468d21e92494c831f4fe2e64730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinParticle: {fileID: 1298244051147908543}
+  _heroAttackObject: {fileID: 8524899238062524053}
 --- !u!1 &2596199940236979389
 GameObject:
   m_ObjectHideFlags: 0

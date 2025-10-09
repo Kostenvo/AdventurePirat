@@ -1,17 +1,22 @@
 ﻿using System;
+using Data;
+using UnityEngine;
 
 namespace GameData
 {
     [Serializable]
     public class PlayerData
     {
+        [SerializeField] private InventoryData _inventory;
         public int Health;
-        public int Coins;
-        public bool IsArmed;
+
+        public InventoryData Inventory => _inventory;
+
 
         public PlayerData CloneData()
         {
-            return (PlayerData)MemberwiseClone();
+            var json = JsonUtility.ToJson(this);
+            return JsonUtility.FromJson<PlayerData>(json);
         }
     }
 }

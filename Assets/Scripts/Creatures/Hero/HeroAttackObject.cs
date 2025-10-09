@@ -19,7 +19,7 @@ namespace Creatures.Hero
         private readonly int _attackKey = Animator.StringToHash("Attack");
         private readonly int _throwKey = Animator.StringToHash("Throw");
         private GameSession _gameSession;
-        private bool _isArmed => _gameSession.PlayerData.IsArmed;
+        private int _swordCount => _gameSession.PlayerData.Inventory.CountItem("Sword");
 
         private void Start()
         {
@@ -29,7 +29,7 @@ namespace Creatures.Hero
 
         public void Throw()
         {
-            if (!_isArmed) return;
+            if (_swordCount <= 0) return;
             if (!_throwCooldown.IsReady()) return;
             _spawner.SpawnParticle(ParticleType.Throw);
             _animator.SetTrigger(_throwKey);
@@ -38,8 +38,8 @@ namespace Creatures.Hero
 
         public override void Attack()
         {
-            if (!_isArmed) return;
-            if(!_attackCooldown.IsReady()) return;
+            if (_swordCount <= 0) return;
+            if (!_attackCooldown.IsReady()) return;
             _animator.SetTrigger(_attackKey);
             _spawner.SpawnParticle(ParticleType.Attack);
             base.Attack();
@@ -48,11 +48,10 @@ namespace Creatures.Hero
 
         public void ArmHero()
         {
-            if (_isArmed) return;
-            _gameSession.PlayerData.IsArmed = true;
+            if (_swordCount <= 0) return;
             _animator.runtimeAnimatorController = _armed;
         }
 
-        private void ChangeState() => _animator.runtimeAnimatorController = _isArmed? _armed: _unarmed;
+        public void ChangeState() => _animator.runtimeAnimatorController = _swordCount > 0 ? _armed : _unarmed;
     }
 }

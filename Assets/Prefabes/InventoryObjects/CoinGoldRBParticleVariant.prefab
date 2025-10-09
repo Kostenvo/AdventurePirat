@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoinGoldRBParticleVariant
       objectReference: {fileID: 0}
+    - target: {fileID: 2573995302880100244, guid: 64aeb95209546834f833ce17959076f2, type: 3}
+      propertyPath: _count
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3283090377244936845, guid: 64aeb95209546834f833ce17959076f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
