@@ -37,7 +37,9 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.canceled += OnMoveCanceledHandler;
             _actions.Player.Interact.performed += OnInteractPerformedHandler;
             _actions.Player.Attack.started += OnAttackStartHandler;
-            _actions.Player.Throw.performed += OnThrowPerformesHandler;
+            // _actions.Player.Throw.performed += OnThrowPerformesHandler;
+            _actions.Player.Throw.started += OnTrowStartecHandler;
+            _actions.Player.Throw.canceled += OnThrowCanceledHandler;
         }
 
         private void OnDisable()
@@ -47,24 +49,20 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.canceled -= OnMoveCanceledHandler;
             _actions.Player.Interact.performed -= OnInteractPerformedHandler;
             _actions.Player.Attack.started -= OnAttackStartHandler;
-            _actions.Player.Throw.performed -= OnThrowPerformesHandler;
-
+            // _actions.Player.Throw.performed -= OnThrowPerformesHandler;
+            _actions.Player.Throw.started -= OnTrowStartecHandler;
+            _actions.Player.Throw.canceled -= OnThrowCanceledHandler;
         }
 
-        private void OnThrowPerformesHandler(InputAction.CallbackContext obj)
-        {
-            _attack.Throw();
-        }
+        private void OnTrowStartecHandler(InputAction.CallbackContext obj) => _attack.StartButtonThrow();
 
-        private void OnAttackStartHandler(InputAction.CallbackContext obj)
-        {
-            _attack.Attack();
-        }
+        private void OnThrowCanceledHandler(InputAction.CallbackContext obj) => _attack.EndButtonThrow();
 
-        private void OnInteractPerformedHandler(InputAction.CallbackContext obj)
-        {
-            _interaction.Interact();
-        }
+        //private void OnThrowPerformesHandler(InputAction.CallbackContext obj) => _attack.Throw();
+
+        private void OnAttackStartHandler(InputAction.CallbackContext obj) => _attack.Attack();
+
+        private void OnInteractPerformedHandler(InputAction.CallbackContext obj) => _interaction.Interact();
 
         private void OnMovePerformedHandler(InputAction.CallbackContext context)
         {

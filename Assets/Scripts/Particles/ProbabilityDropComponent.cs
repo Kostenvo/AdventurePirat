@@ -17,6 +17,7 @@ namespace Particles
         {
             CalculateProbability();
             _spawner.Spawn(_spawned.ToArray());
+            _spawned.Clear();
         }
 
         private void Start()
@@ -47,6 +48,11 @@ namespace Particles
         {
             [Range(1,100)] public int probability;
             public GameObject prefab;
+        }
+
+        public void SetCount(int maxCoinsForRemove)
+        {
+           _dropCount = maxCoinsForRemove;
         }
     }
 }

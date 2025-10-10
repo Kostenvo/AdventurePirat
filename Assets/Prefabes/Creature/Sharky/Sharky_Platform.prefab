@@ -66,9 +66,9 @@ GameObject:
   - component: {fileID: 2184807272373671385}
   - component: {fileID: 8407902795506722921}
   - component: {fileID: 4108548580237463246}
-  - component: {fileID: 2225528670956131302}
+  - component: {fileID: 4628305609301538113}
   m_Layer: 8
-  m_Name: Sharky
+  m_Name: Sharky_Platform
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,6 +88,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5953008891239819688}
+  - {fileID: 571291564678682017}
+  - {fileID: 8367638149458560208}
   - {fileID: 932487001079842995}
   - {fileID: 2708897718193363071}
   - {fileID: 9043025075205827787}
@@ -166,6 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _damageCooldown:
+    _cooldownTime: 0
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -254,7 +258,7 @@ MonoBehaviour:
   _disappearedDelay: 0.5
   _creatureMove: {fileID: 4331928884179627566}
   _attack: {fileID: 7212868558495006654}
-  _patrol: {fileID: 2225528670956131302}
+  _patrol: {fileID: 4628305609301538113}
   _heroInVision: {fileID: 7896795674859450137}
   _heroCanAttack: {fileID: 1467537576023859420}
   _spawnParticle: {fileID: 8209307538008347031}
@@ -402,7 +406,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2225528670956131302
+--- !u!114 &4628305609301538113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,14 +415,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2358055760198012537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c86cdf48937411095c041d98e09c3a1, type: 3}
+  m_Script: {fileID: 11500000, guid: e423b86f39ae44629c61ec799a2aad35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _points:
-  - {fileID: 0}
-  - {fileID: 0}
-  _creature: {fileID: 4331928884179627566}
-  _currentPoint: 0
+  _creatureMove: {fileID: 4331928884179627566}
+  _checkPit: {fileID: 7042345762020427043}
+  _checkEnemy: {fileID: 4137471579340839171}
+  _direction: 1
 --- !u!1 &2596199940236979389
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +688,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 7764860523299883457}
   _prefab: {fileID: 3012840826529112640, guid: 84f3a56ca5e07f540b78f813be040914, type: 3}
+--- !u!1 &4119455743505330620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571291564678682017}
+  - component: {fileID: 6299144073259850601}
+  - component: {fileID: 7042345762020427043}
+  m_Layer: 0
+  m_Name: GroundCheckPitCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &571291564678682017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119455743505330620}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.496, y: -0.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3410733804051077928}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6299144073259850601
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119455743505330620}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.18
+--- !u!114 &7042345762020427043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119455743505330620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd2d4ec561a49a481299e8e378dd215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _collider2D: {fileID: 6299144073259850601}
+  _isTouched: 0
 --- !u!1 &4221921922471885635
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,6 +1010,92 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   _collider2D: {fileID: 8541693645664073800}
+  _isTouched: 0
+--- !u!1 &8478994499886616655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8367638149458560208}
+  - component: {fileID: 2161109679569801173}
+  - component: {fileID: 4137471579340839171}
+  m_Layer: 0
+  m_Name: GroundCheckEnemyCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8367638149458560208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478994499886616655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.539, y: -0.008, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3410733804051077928}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2161109679569801173
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478994499886616655}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 320
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.055847406, y: 0}
+  m_Radius: 0.1241526
+--- !u!114 &4137471579340839171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478994499886616655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd2d4ec561a49a481299e8e378dd215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _collider2D: {fileID: 2161109679569801173}
   _isTouched: 0
 --- !u!1 &8499025400664963877
 GameObject:
