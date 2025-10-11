@@ -1,5 +1,168 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &92766781902231442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7972530455553890116}
+  - component: {fileID: 5284591065254702252}
+  - component: {fileID: 7290846594205441615}
+  - component: {fileID: 7637151990799588344}
+  m_Layer: 0
+  m_Name: SFXAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7972530455553890116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92766781902231442}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3410733804051077928}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5284591065254702252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92766781902231442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b843e60d1f8c47bb8640c637ed57082b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioForPlaying:
+  - audioName: Jump
+    audioClip: {fileID: 8300000, guid: d0c92ad07f4ef7e4b90387415abf4e21, type: 3}
+  - audioName: Range
+    audioClip: {fileID: 8300000, guid: ba0698ed4357c0c4aa8538770463b1f2, type: 3}
+  - audioName: Melee
+    audioClip: {fileID: 8300000, guid: da5166b3f2a0af042aeb875d99681127, type: 3}
+  - audioName: Die
+    audioClip: {fileID: 8300000, guid: a152641d35e98fd4fa321ca67d295635, type: 3}
+  - audioName: Hurt
+    audioClip: {fileID: 8300000, guid: 65a691d2c95f5414bbe6a0a8db22fc19, type: 3}
+  _audioSource: {fileID: 7290846594205441615}
+--- !u!82 &7290846594205441615
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92766781902231442}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!81 &7637151990799588344
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92766781902231442}
+  m_Enabled: 1
 --- !u!1 &2091415488445746782
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +262,7 @@ Transform:
   - {fileID: 6365748456390354770}
   - {fileID: 3229241639424119825}
   - {fileID: 8970608619055627425}
+  - {fileID: 7972530455553890116}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &489336635149547253
@@ -216,9 +380,33 @@ MonoBehaviour:
           m_StringArgument: Hit
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5284591065254702252}
+        m_TargetAssemblyTypeName: Sound.AudioListComponent, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hurt
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDeath:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 5284591065254702252}
+        m_TargetAssemblyTypeName: Sound.AudioListComponent, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Die
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4822166252454341912}
         m_TargetAssemblyTypeName: Scripts.Level.ReloadLevelComponent, Assembly-CSharp
         m_MethodName: Reload
@@ -250,6 +438,7 @@ MonoBehaviour:
   _jumpDamageValue: 8
   _groundChecker: {fileID: 5949701568443187166}
   _animator: {fileID: 4108548580237463246}
+  _audioList: {fileID: 5284591065254702252}
   _spawnListComponent: {fileID: 8209307538008347031}
 --- !u!114 &134745492763230428
 MonoBehaviour:
@@ -5542,6 +5731,7 @@ MonoBehaviour:
   _armed: {fileID: 9100000, guid: b41021dad4843a947b20b74df81be1ba, type: 2}
   _unarmed: {fileID: 9100000, guid: c6b3359d5b4bad14399f6a6a39f73fd0, type: 2}
   _spawner: {fileID: 8209307538008347031}
+  _audioList: {fileID: 5284591065254702252}
 --- !u!1 &7577748571214744833
 GameObject:
   m_ObjectHideFlags: 0

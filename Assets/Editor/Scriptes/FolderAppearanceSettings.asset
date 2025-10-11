@@ -75,3 +75,8 @@ MonoBehaviour:
     useCustomColor: 0
     icon: {fileID: 2800000, guid: b336bcb4cf71d3d45ae18874f19a0eee, type: 3}
     useCustomIcon: 1
+  - guid: 8416a3d914f30694e83a148a60f4d5ff
+    color: {r: 0.2, g: 0.2, b: 0.2, a: 0.25}
+    useCustomColor: 0
+    icon: {fileID: 2800000, guid: 0d8305a4ad32eae4bae1393982d58b04, type: 3}
+    useCustomIcon: 1

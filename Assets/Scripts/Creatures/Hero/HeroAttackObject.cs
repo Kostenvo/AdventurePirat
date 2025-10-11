@@ -2,6 +2,7 @@
 using System.Collections;
 using GameData;
 using Particles;
+using Sound;
 using TimeComponent;
 using UnityEngine;
 
@@ -23,8 +24,11 @@ namespace Creatures.Hero
         [SerializeField] private RuntimeAnimatorController _armed;
         [SerializeField] private RuntimeAnimatorController _unarmed;
         [SerializeField] private SpawnListComponent _spawner;
+        [SerializeField] private AudioListComponent _audioList;
         private readonly int _attackKey = Animator.StringToHash("Attack");
         private readonly int _throwKey = Animator.StringToHash("Throw");
+        private readonly string _throwAudioKey = "Range";
+        private readonly string _attackAudioKey = "Melee";
         
         private GameSession _gameSession;
         private int _swordCount => _gameSession.PlayerData.Inventory.CountItem("Sword");
@@ -64,6 +68,7 @@ namespace Creatures.Hero
         public void Throw()
         {
             _spawner.SpawnParticle(ParticleType.Throw);
+            _audioList.Play(_throwAudioKey);
             _gameSession.PlayerData.Inventory.RemoveItem("Sword", 1);
             _animator.SetTrigger(_throwKey);
             ChangeState();
@@ -75,6 +80,7 @@ namespace Creatures.Hero
             if (_swordCount <= 0) return;
             if (!_attackCooldown.IsReady()) return;
             _animator.SetTrigger(_attackKey);
+            _audioList.Play(_attackAudioKey);
             _spawner.SpawnParticle(ParticleType.Attack);
             base.Attack();
             _attackCooldown.ResetCooldown();
