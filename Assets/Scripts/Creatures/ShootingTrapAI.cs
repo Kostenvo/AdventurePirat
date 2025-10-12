@@ -1,52 +1,36 @@
 ﻿using System;
 using Checkers;
+using GameObjects;
 using Particles;
 using TimeComponent;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Creatures
 {
     public class ShootingTrapAI : MonoBehaviour
     {
-        [Header("MeleeAttack")]
-        [SerializeField] private CheckLayerByTrigger _checkMeleeAttack;
-        [SerializeField] private Cooldown _meleeCooldown;
-        [SerializeField] private CheckAttackObjectBase _attack;
-
-        [Header("RangeAttack")]
-        [SerializeField] private CheckLayerByTrigger _checkRangeAttack;
-        [SerializeField] private Cooldown _rangeCooldown;
-        
-        [SerializeField] private SpawnListComponent _spawnList;
-        
-        [SerializeField] private Animator _animator;
-
-        private static readonly int MeleeKey = Animator.StringToHash("Melee");
-        private static readonly int RangeKey = Animator.StringToHash("Range");
-        
+        [SerializeField] private CheckLayerByTrigger _heroCheck;
+        [SerializeField] private Cooldown _cooldown;
+        [SerializeField] private UnityEvent _onAttack;
+        [SerializeField] private ParticleGOForSpawn _particleGO;
         private GameObject _heroTarget;
+
+        public bool IsTouchedHero => _heroCheck._isTouched;
 
         private void Update()
         {
-            if (_checkMeleeAttack._isTouched)
+            if (IsTouchedHero && _cooldown.IsReady())
             {
-                if (_meleeCooldown.IsReady())
-                {
-                    LookAtHero();
-                    _meleeCooldown.ResetCooldown();
-                    _animator.SetTrigger(MeleeKey);
-                    return;
-                }
-            }else if (_checkRangeAttack._isTouched)
-            {
-                if (_rangeCooldown.IsReady())
-                {
-                    LookAtHero();
-                    _rangeCooldown.ResetCooldown();
-                    _animator.SetTrigger(RangeKey);
-                    return;
-                }
+                _cooldown.ResetCooldown();
+                Attack();
             }
+        }
+
+        public void Attack()
+        {
+            LookAtHero();
+            _onAttack?.Invoke(); 
         }
 
         public void SetTarget(GameObject target)
@@ -59,14 +43,16 @@ namespace Creatures
         {
             if (_heroTarget)
             {
-               var position = _heroTarget.transform.position.x - transform.position.x > 0 ? 1 : -1;
-               transform.localScale = new Vector3(position, 1, 1);
+                var position = _heroTarget.transform.position.x - transform.position.x > 0 ? 1 : -1;
+                var currentScale = transform.localScale;
+                transform.localScale = new Vector3(position, currentScale.y, currentScale.z);
             }
         }
-        
 
-        private void DoRange() => _spawnList.SpawnParticle(ParticleType.Throw);
-
-        private void DoMelee() => _attack.Attack();
+        [ContextMenu("Spawn")]
+        public void Death()
+        {
+            _particleGO.Spawn();
+        }
     }
 }

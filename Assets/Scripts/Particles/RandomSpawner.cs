@@ -84,7 +84,7 @@ namespace Particles
             var countObjects = spawnObjects.Length;
             while (countObjects > 0)
             {
-                for (int j = 0; j < _itemPerBurst && countObjects > 0; j++)
+                for (int j = 0; countObjects > 0; j++)
                 {
                     Spawn(spawnObjects[countObjects - 1]);
                     countObjects--;

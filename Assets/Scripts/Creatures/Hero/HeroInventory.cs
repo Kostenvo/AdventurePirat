@@ -1,11 +1,8 @@
-using System;
 using Creatures.Hero;
 using GameData;
 using Interact;
 using Particles;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class HeroInventory : MonoBehaviour, IChangeItem
 {

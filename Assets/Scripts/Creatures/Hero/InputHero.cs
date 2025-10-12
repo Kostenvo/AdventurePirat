@@ -1,5 +1,4 @@
-﻿
-using Checkers;
+﻿using Checkers;
 using Creatures;
 using Creatures.Hero;
 using PlayerInput;
@@ -12,9 +11,10 @@ namespace Scripts.Creatures.Hero
     [RequireComponent(typeof(MoveBase))]
     public class InputHero : MonoBehaviour
     {
-        [SerializeField] private  MoveBase _move;
+        [SerializeField] private MoveBase _move;
         [SerializeField] private CheckInteractableObject _interaction;
         [SerializeField] private HeroAttackObject _attack;
+        [SerializeField] private HeroHealthComponent _health;
         private InputSystem_Actions _actions;
 
         private void Awake()
@@ -25,8 +25,10 @@ namespace Scripts.Creatures.Hero
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            if (_move == null)  
-                _move = GetComponent<MoveBase>();
+            _move ??= GetComponent<MoveBase>();
+            _interaction ??= GetComponentInChildren<CheckInteractableObject>();
+            _attack ??= GetComponentInChildren<HeroAttackObject>();
+            _health ??= GetComponentInChildren<HeroHealthComponent>();
         }
 #endif
 
@@ -37,9 +39,9 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.canceled += OnMoveCanceledHandler;
             _actions.Player.Interact.performed += OnInteractPerformedHandler;
             _actions.Player.Attack.started += OnAttackStartHandler;
-            // _actions.Player.Throw.performed += OnThrowPerformesHandler;
             _actions.Player.Throw.started += OnTrowStartecHandler;
             _actions.Player.Throw.canceled += OnThrowCanceledHandler;
+            _actions.Player.Heal.performed += OnHealPerformedHandler;
         }
 
         private void OnDisable()
@@ -49,16 +51,17 @@ namespace Scripts.Creatures.Hero
             _actions.Player.Move.canceled -= OnMoveCanceledHandler;
             _actions.Player.Interact.performed -= OnInteractPerformedHandler;
             _actions.Player.Attack.started -= OnAttackStartHandler;
-            // _actions.Player.Throw.performed -= OnThrowPerformesHandler;
             _actions.Player.Throw.started -= OnTrowStartecHandler;
             _actions.Player.Throw.canceled -= OnThrowCanceledHandler;
+            _actions.Player.Heal.performed -= OnHealPerformedHandler;
         }
+
+        private void OnHealPerformedHandler(InputAction.CallbackContext obj) => _health.HeroHeal();
 
         private void OnTrowStartecHandler(InputAction.CallbackContext obj) => _attack.StartButtonThrow();
 
         private void OnThrowCanceledHandler(InputAction.CallbackContext obj) => _attack.EndButtonThrow();
 
-        //private void OnThrowPerformesHandler(InputAction.CallbackContext obj) => _attack.Throw();
 
         private void OnAttackStartHandler(InputAction.CallbackContext obj) => _attack.Attack();
 

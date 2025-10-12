@@ -7,6 +7,9 @@ namespace Creatures.Definitions
     public class DefsFacade : ScriptableObject
     {
         [SerializeField] private InventoryDefs _inventory;
+        [SerializeField] private PlayerDefs _player;
+
+        public PlayerDefs Player => _player;
 
         public InventoryDefs Inventory => _inventory;
 

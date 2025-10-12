@@ -110,10 +110,11 @@ namespace Scripts.Creatures.Hero
 
         private void SetDirection()
         {
+            var currentScale = transform.localScale;
             if (moveDirection.x > 0)
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(1, currentScale.y, currentScale.z);
             else if (moveDirection.x < 0)
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-1, currentScale.y, currentScale.z);
         }
     }
 }

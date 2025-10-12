@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7471720153127649524}
   - component: {fileID: 8491142338942582735}
   - component: {fileID: 4732374826507450293}
-  - component: {fileID: 2065575160460327991}
+  - component: {fileID: 5950189045656313940}
   m_Layer: 0
   m_Name: Posion
   m_TagString: Untagged
@@ -144,9 +144,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2065575160460327991}
-        m_TargetAssemblyTypeName: Creatures.HealthChangeComponent, Assembly-CSharp
-        m_MethodName: ChangeHealth
+      - m_Target: {fileID: 5950189045656313940}
+        m_TargetAssemblyTypeName: Interact.ChangeInInventory, Assembly-CSharp
+        m_MethodName: ChangeItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -271,7 +271,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.0063682795, y: -0.070052445}
   m_Radius: 0.166278
---- !u!114 &2065575160460327991
+--- !u!114 &5950189045656313940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +280,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 401649322087028746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ddaddd605d4fe9bd5a45c9f471b160, type: 3}
+  m_Script: {fileID: 11500000, guid: 49deb26f5ad74230ba79dd971350a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthChangeAmount: 10
+  _itemName: Poison
+  _count: 1

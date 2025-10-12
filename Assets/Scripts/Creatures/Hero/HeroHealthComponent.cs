@@ -10,6 +10,7 @@ namespace Scripts.Creatures.Hero
         [SerializeField] private Animator _animator;
         private GameSession _gameSession;
         private static readonly int Health = Animator.StringToHash("Health");
+        private static string _poisonKey = "Poison";
 
         protected override int _currentHealth
         {
@@ -33,6 +34,13 @@ namespace Scripts.Creatures.Hero
         {
             base.Heal(amount);
             _animator.SetInteger(Health, _currentHealth);
+        }
+
+        public void HeroHeal()
+        {
+            if (_gameSession.PlayerData.Inventory.CountItem(_poisonKey) < 1) return;
+            _gameSession.PlayerData.Inventory.RemoveItem(_poisonKey, 1);
+            Heal(10);
         }
     }
 }

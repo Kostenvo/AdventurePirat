@@ -14,29 +14,51 @@ namespace Data
 
         public void AddItem(string itemName, int amount)
         {
-            var curentItem = GetItem(itemName);
-            var item = DefsFacade.Instance.Inventory.GetItem(itemName);
-            if(item.IsEmpty) return;
-            if (curentItem == null)
+            if (amount <= 0) return;
+            var currentItem = GetItem(itemName);
+            var itemDef = DefsFacade.Instance.Inventory.GetItem(itemName);
+            if (itemDef.IsEmpty) return;
+            if (itemDef.IsStackable)
             {
-                _items.Add(new InventoryItemData(itemName, amount));
+                if (currentItem != null) currentItem.count += amount;
+                else if (_items.Count < DefsFacade.Instance.Player._inventoryMaxCount)
+                    _items.Add(new InventoryItemData(itemName, amount));
             }
             else
             {
-                curentItem.count += amount;
+                for (int i = 0; i < amount; i++)
+                {
+                    if (_items.Count < DefsFacade.Instance.Player._inventoryMaxCount)
+                        _items.Add(new InventoryItemData(itemName, 1));
+                }
             }
         }
 
         public void RemoveItem(string itemName, int amount)
         {
-            var curentItem = GetItem(itemName);
-            if (curentItem == null) return;
-            var item = DefsFacade.Instance.Inventory.GetItem(itemName);
-            if(item.IsEmpty) return;
-            curentItem.count -= amount;
-            if (curentItem.count <= 0)
+            if (amount <= 0) return;
+
+            var currentItem = GetItem(itemName);
+            if (currentItem == null) return;
+            var itemDef = DefsFacade.Instance.Inventory.GetItem(itemName);
+            if (itemDef.IsEmpty) return;
+            if (itemDef.IsStackable)
             {
-                _items.Remove(curentItem);
+                currentItem.count -= amount;
+                if (currentItem.count <= 0)
+                {
+                    _items.Remove(currentItem);
+                }
+            }
+            else
+            {
+                _items.Remove(currentItem);
+
+                for (int i = 0; i < amount - 1; i++)
+                {
+                    currentItem = GetItem(itemName);
+                    if (currentItem != null) _items.Remove(currentItem);
+                }
             }
         }
 

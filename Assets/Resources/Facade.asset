@@ -15,5 +15,12 @@ MonoBehaviour:
   _inventory:
     _inventoryItems:
     - _name: Coin
+      IsStackable: 1
     - _name: Sword
+      IsStackable: 1
     - _name: Key
+      IsStackable: 0
+    - _name: Poison
+      IsStackable: 0
+  _player:
+    _inventoryMaxCount: 7
