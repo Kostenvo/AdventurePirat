@@ -118,6 +118,15 @@ namespace PlayerInput
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OnDrop"",
+                    ""type"": ""Button"",
+                    ""id"": ""11e6905f-b4de-4827-9bca-59ccf3b08b47"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -516,6 +525,39 @@ namespace PlayerInput
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""0d8183dc-fbe6-461b-bbd9-8ea95ef98056"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnDrop"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""id"": ""25e69ee2-5150-4c32-8ac2-95b52eb27e33"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Binding"",
+                    ""id"": ""348124a9-a002-4f34-9b96-1cdc89bf7899"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -1111,6 +1153,7 @@ namespace PlayerInput
             m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+            m_Player_OnDrop = m_Player.FindAction("OnDrop", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1200,6 +1243,7 @@ namespace PlayerInput
         private readonly InputAction m_Player_Next;
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_Heal;
+        private readonly InputAction m_Player_OnDrop;
         public struct PlayerActions
         {
             private @InputSystem_Actions m_Wrapper;
@@ -1214,6 +1258,7 @@ namespace PlayerInput
             public InputAction @Next => m_Wrapper.m_Player_Next;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputAction @Heal => m_Wrapper.m_Player_Heal;
+            public InputAction @OnDrop => m_Wrapper.m_Player_OnDrop;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1253,6 +1298,9 @@ namespace PlayerInput
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @OnDrop.started += instance.OnOnDrop;
+                @OnDrop.performed += instance.OnOnDrop;
+                @OnDrop.canceled += instance.OnOnDrop;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1287,6 +1335,9 @@ namespace PlayerInput
                 @Heal.started -= instance.OnHeal;
                 @Heal.performed -= instance.OnHeal;
                 @Heal.canceled -= instance.OnHeal;
+                @OnDrop.started -= instance.OnOnDrop;
+                @OnDrop.performed -= instance.OnOnDrop;
+                @OnDrop.canceled -= instance.OnOnDrop;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1479,6 +1530,7 @@ namespace PlayerInput
             void OnNext(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnHeal(InputAction.CallbackContext context);
+            void OnOnDrop(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
