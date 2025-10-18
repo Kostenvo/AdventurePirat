@@ -1,4 +1,5 @@
 ﻿using System;
+using Subscribe;
 using UnityEngine;
 
 namespace Data
@@ -12,6 +13,12 @@ namespace Data
         public delegate void OnValueChanged(TProperty newValue, TProperty oldValue);
 
         public event OnValueChanged ValueChanged;
+
+        public ActionDisposable Subscribe(OnValueChanged onValueChanged)
+        {
+            ValueChanged += onValueChanged;
+            return new ActionDisposable(() => ValueChanged -= onValueChanged);
+        }
 
 
         public TProperty Value

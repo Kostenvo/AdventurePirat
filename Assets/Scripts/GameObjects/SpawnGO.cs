@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameObjects.Extensions;
+using UnityEngine;
 
 namespace GameObjects
 {
@@ -10,7 +11,7 @@ namespace GameObjects
         public void Spawn()
         {
             if (!_spawnPoint) _spawnPoint = transform;
-            GameObject go = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity);
+            GameObject go = SpawnExtensions.SpawnInParticleContainer(_prefab, _spawnPoint);
             go.SetActive(true);
             go.transform.localScale = transform.lossyScale; 
         }

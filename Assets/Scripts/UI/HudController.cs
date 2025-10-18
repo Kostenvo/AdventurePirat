@@ -1,6 +1,7 @@
 ﻿using System;
 using Definitions;
 using GameData;
+using Subscribe;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,11 @@ namespace UI
     {
         [SerializeField] private Image _fillImage;
         private GameSession _gameSession;
+        private ComposideDisposible trash = new ComposideDisposible();
         private void Start()
         {
             _gameSession = FindObjectOfType<GameSession>();
-            _gameSession.PlayerData.Health.ValueChanged += ChangeValue;
+            trash.Retain(_gameSession.PlayerData.Health.Subscribe(ChangeValue));
             ChangeValue(_gameSession.PlayerData.Health.Value, 0);
         }
 
@@ -26,7 +28,7 @@ namespace UI
 
         private void OnDestroy()
         {
-            _gameSession.PlayerData.Health.ValueChanged -= ChangeValue;
+            trash.Dispose();
         }
     }
 }

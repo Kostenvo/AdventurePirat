@@ -1,5 +1,7 @@
 ﻿using System;
 using Data;
+using Subscribe;
+using Subscribe.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -13,13 +15,14 @@ namespace Sound
         [SerializeField] private TextMeshProUGUI _volumeText;
 
         private StoredFloatPersistentProperty _volume;
+        private ComposideDisposible trash = new ComposideDisposible();
 
         public void SetVolume(StoredFloatPersistentProperty volume)
         {
             _volume = volume;
-            volume.ValueChanged += ChangeVolume;
-            ChangeVolume(volume.Value ,0);
-            _volumeSlider.onValueChanged.AddListener(SliderChanged);
+            trash.Retain( volume.Subscribe(ChangeVolume));
+            ChangeVolume(volume.Value, 0);
+            trash.Retain(_volumeSlider.onValueChanged.SubsctibeDisposable(SliderChanged));
         }
 
         private void SliderChanged(float volume)
@@ -29,14 +32,14 @@ namespace Sound
 
         private void ChangeVolume(float newvalue, float oldvalue)
         {
-            _volumeText.text = (Mathf.Round (newvalue * 100)).ToString ();
+            _volumeText.text = (Mathf.Round(newvalue * 100)).ToString();
             _volumeSlider.normalizedValue = newvalue;
         }
 
 
         private void OnDestroy()
         {
-            _volume.ValueChanged -= ChangeVolume;
+            trash.Dispose();
         }
     }
 }

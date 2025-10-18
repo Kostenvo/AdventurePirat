@@ -1,4 +1,5 @@
 using System.Collections;
+using GameObjects.Extensions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -101,7 +102,7 @@ namespace Particles
         private void Spawn(GameObject spawnObject)
         {
             //var instance = SpawnUtilites.Spawn(spawnObject, transform.position);
-            var instance = Instantiate(spawnObject, transform.position, Quaternion.identity);
+            var instance = SpawnExtensions.SpawnInObjectContainer(spawnObject , transform);
             // var instance = spawnObject.SpawnObjectINConteiner(transform.position, _container);
             var rigidBody = instance.GetComponent<Rigidbody2D>();
 

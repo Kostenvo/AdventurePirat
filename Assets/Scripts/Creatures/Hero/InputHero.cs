@@ -2,6 +2,8 @@
 using Creatures;
 using Creatures.Hero;
 using PlayerInput;
+using Subscribe;
+using Subscribe.Extensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
@@ -16,6 +18,8 @@ namespace Scripts.Creatures.Hero
         [SerializeField] private HeroAttackObject _attack;
         [SerializeField] private HeroHealthComponent _health;
         private InputSystem_Actions _actions;
+        
+        private ComposideDisposible trash = new ComposideDisposible();
 
         private void Awake()
         {
@@ -35,25 +39,19 @@ namespace Scripts.Creatures.Hero
         private void OnEnable()
         {
             _actions.Enable();
-            _actions.Player.Move.performed += OnMovePerformedHandler;
-            _actions.Player.Move.canceled += OnMoveCanceledHandler;
-            _actions.Player.Interact.performed += OnInteractPerformedHandler;
-            _actions.Player.Attack.started += OnAttackStartHandler;
-            _actions.Player.Throw.started += OnTrowStartecHandler;
-            _actions.Player.Throw.canceled += OnThrowCanceledHandler;
-            _actions.Player.Heal.performed += OnHealPerformedHandler;
+            trash.SubscribeInputPreformed(_actions.Player.Move, OnMovePerformedHandler);
+            trash.SubscribeInputCanceled(_actions.Player.Move, OnMoveCanceledHandler);
+            trash.SubscribeInputPreformed(_actions.Player.Interact, OnInteractPerformedHandler);
+            trash.SubscribeInputStarted(_actions.Player.Attack, OnAttackStartHandler);
+            trash.SubscribeInputStarted(_actions.Player.Throw, OnTrowStartecHandler);
+            trash.SubscribeInputCanceled(_actions.Player.Throw, OnThrowCanceledHandler);
+            trash.SubscribeInputPreformed(_actions.Player.Heal, OnHealPerformedHandler);
         }
 
         private void OnDisable()
         {
             _actions.Disable();
-            _actions.Player.Move.performed -= OnMovePerformedHandler;
-            _actions.Player.Move.canceled -= OnMoveCanceledHandler;
-            _actions.Player.Interact.performed -= OnInteractPerformedHandler;
-            _actions.Player.Attack.started -= OnAttackStartHandler;
-            _actions.Player.Throw.started -= OnTrowStartecHandler;
-            _actions.Player.Throw.canceled -= OnThrowCanceledHandler;
-            _actions.Player.Heal.performed -= OnHealPerformedHandler;
+            trash.Dispose();
         }
 
         private void OnHealPerformedHandler(InputAction.CallbackContext obj) => _health.HeroHeal();
