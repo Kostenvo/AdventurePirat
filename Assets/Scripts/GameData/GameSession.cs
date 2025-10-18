@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameData
 {
@@ -11,6 +12,7 @@ namespace GameData
 
         private void Awake()
         {
+            
             if (IsSessionExist())
             {
                 DestroyImmediate(this.gameObject);
@@ -20,24 +22,31 @@ namespace GameData
                 DontDestroyOnLoad(this.gameObject);
                 Save();
             }
+            InitUI();
         }
-        
+
+        private void InitUI()
+        {
+            SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
+        }
+
         private bool IsSessionExist()
         {
             var sessions = FindObjectsByType<GameSession>(FindObjectsSortMode.None);
-            foreach (var session in sessions)          
+            foreach (var session in sessions)
             {
-                if (session !=this)
+                if (session != this)
                 {
                     return true;
                 }
             }
+
             return false;
         }
 
         public void Save()
         {
-          _saveData = _playerData.CloneData();
+            _saveData = _playerData.CloneData();
         }
 
         public void Load()

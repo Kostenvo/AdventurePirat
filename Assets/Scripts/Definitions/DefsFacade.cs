@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using Creatures.Definitions;
+using UnityEngine;
 
-namespace Creatures.Definitions
+namespace Definitions
 {
     [CreateAssetMenu(menuName = "Definitions/Facade", fileName = "Facade")]
     public class DefsFacade : ScriptableObject

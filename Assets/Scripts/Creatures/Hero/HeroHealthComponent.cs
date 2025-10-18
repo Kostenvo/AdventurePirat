@@ -1,4 +1,5 @@
 ﻿using System;
+using Definitions;
 using GameData;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,17 +12,18 @@ namespace Scripts.Creatures.Hero
         private GameSession _gameSession;
         private static readonly int Health = Animator.StringToHash("Health");
         private static string _poisonKey = "Poison";
+        public override int MaxHealth => DefsFacade.Instance.Player.MaxHealth;
 
         protected override int _currentHealth
         {
-            get => currentHealth = _gameSession.PlayerData.Health;
-            set => currentHealth = _gameSession.PlayerData.Health = value;
+            get =>  _gameSession.PlayerData.Health.Value;
+            set =>  _gameSession.PlayerData.Health.Value = value;
         }
 
         private void Start()
         {
             _gameSession = FindAnyObjectByType<GameSession>();
-            _currentHealth = _gameSession.PlayerData.Health;
+            _currentHealth = _gameSession.PlayerData.Health.Value;
         }
 
         protected override void Damage(int amount)

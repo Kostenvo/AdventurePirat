@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Creatures.Definitions;
+using Definitions;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -21,14 +22,14 @@ namespace Data
             if (itemDef.IsStackable)
             {
                 if (currentItem != null) currentItem.count += amount;
-                else if (_items.Count < DefsFacade.Instance.Player._inventoryMaxCount)
+                else if (_items.Count < DefsFacade.Instance.Player.InventoryMaxCount)
                     _items.Add(new InventoryItemData(itemName, amount));
             }
             else
             {
                 for (int i = 0; i < amount; i++)
                 {
-                    if (_items.Count < DefsFacade.Instance.Player._inventoryMaxCount)
+                    if (_items.Count < DefsFacade.Instance.Player.InventoryMaxCount)
                         _items.Add(new InventoryItemData(itemName, 1));
                 }
             }

@@ -8,6 +8,8 @@ namespace Scripts.Creatures
     public class HealthComponentBase : MonoBehaviour, IHealthChangeComponent
     {
         [SerializeField] private int _maxHealth = 100;
+        public virtual int MaxHealth => _maxHealth;
+
         [SerializeField] private Cooldown _damageCooldown;
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent _onDamage;
@@ -48,9 +50,9 @@ namespace Scripts.Creatures
         protected virtual void Heal(int amount)
         {
             _currentHealth += amount;
-            if (_currentHealth > _maxHealth)
+            if (_currentHealth > MaxHealth)
             {
-                _currentHealth = _maxHealth;
+                _currentHealth = MaxHealth;
             }
 
             _onHeal?.Invoke();

@@ -23,4 +23,5 @@ MonoBehaviour:
     - _name: Poison
       IsStackable: 0
   _player:
-    _inventoryMaxCount: 7
+    InventoryMaxCount: 7
+    MaxHealth: 20

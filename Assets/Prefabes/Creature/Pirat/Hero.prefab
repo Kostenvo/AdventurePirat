@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7972530455553890116}
   - component: {fileID: 5284591065254702252}
-  - component: {fileID: 7290846594205441615}
   - component: {fileID: 7637151990799588344}
   m_Layer: 0
   m_Name: SFXAudioSource
@@ -57,104 +56,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: a152641d35e98fd4fa321ca67d295635, type: 3}
   - audioName: Hurt
     audioClip: {fileID: 8300000, guid: 65a691d2c95f5414bbe6a0a8db22fc19, type: 3}
-  _audioSource: {fileID: 7290846594205441615}
---- !u!82 &7290846594205441615
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92766781902231442}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _audioSource: {fileID: 0}
 --- !u!81 &7637151990799588344
 AudioListener:
   m_ObjectHideFlags: 0
@@ -335,6 +237,7 @@ MonoBehaviour:
   _move: {fileID: 4331928884179627566}
   _interaction: {fileID: 376596869561807651}
   _attack: {fileID: 8524899238062524053}
+  _health: {fileID: 4113245417671130113}
 --- !u!114 &4113245417671130113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,7 +322,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  currentHealth: 10
+  currentHealth: 30
   _animator: {fileID: 4108548580237463246}
 --- !u!114 &4331928884179627566
 MonoBehaviour:
