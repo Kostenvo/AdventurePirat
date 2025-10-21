@@ -19,6 +19,12 @@ namespace Data
             ValueChanged += onValueChanged;
             return new ActionDisposable(() => ValueChanged -= onValueChanged);
         }
+        public ActionDisposable SubscribeAndInvoke(OnValueChanged onValueChanged)
+        {
+            ValueChanged += onValueChanged;
+            onValueChanged.Invoke(_value, _storedValue);
+            return new ActionDisposable(() => ValueChanged -= onValueChanged);
+        }
 
 
         public TProperty Value

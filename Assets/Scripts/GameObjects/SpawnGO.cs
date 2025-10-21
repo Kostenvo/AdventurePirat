@@ -1,4 +1,5 @@
-﻿using GameObjects.Extensions;
+﻿using Definitions;
+using GameObjects.Extensions;
 using UnityEngine;
 
 namespace GameObjects
@@ -14,6 +15,12 @@ namespace GameObjects
             GameObject go = SpawnExtensions.SpawnInParticleContainer(_prefab, _spawnPoint);
             go.SetActive(true);
             go.transform.localScale = transform.lossyScale; 
+        }
+
+
+        public void SetPrefabe(GameObject throwableTrowItem)
+        {
+            _prefab = throwableTrowItem;
         }
     }
 }

@@ -176,7 +176,7 @@ namespace PlayerInput
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Heal"",
+                    ""name"": ""NextItem"",
                     ""type"": ""Button"",
                     ""id"": ""2cf57c41-27c4-4ce2-8dd9-980ad6749697"",
                     ""expectedControlType"": """",
@@ -587,7 +587,7 @@ namespace PlayerInput
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Heal"",
+                    ""action"": ""NextItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1217,7 +1217,7 @@ namespace PlayerInput
             m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
             m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-            m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+            m_Player_NextItem = m_Player.FindAction("NextItem", throwIfNotFound: true);
             m_Player_OnDrop = m_Player.FindAction("OnDrop", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1321,7 +1321,7 @@ namespace PlayerInput
         private readonly InputAction m_Player_Previous;
         private readonly InputAction m_Player_Next;
         private readonly InputAction m_Player_Sprint;
-        private readonly InputAction m_Player_Heal;
+        private readonly InputAction m_Player_NextItem;
         private readonly InputAction m_Player_OnDrop;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
@@ -1371,9 +1371,9 @@ namespace PlayerInput
             /// </summary>
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             /// <summary>
-            /// Provides access to the underlying input action "Player/Heal".
+            /// Provides access to the underlying input action "Player/NextItem".
             /// </summary>
-            public InputAction @Heal => m_Wrapper.m_Player_Heal;
+            public InputAction @NextItem => m_Wrapper.m_Player_NextItem;
             /// <summary>
             /// Provides access to the underlying input action "Player/OnDrop".
             /// </summary>
@@ -1431,9 +1431,9 @@ namespace PlayerInput
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
-                @Heal.started += instance.OnHeal;
-                @Heal.performed += instance.OnHeal;
-                @Heal.canceled += instance.OnHeal;
+                @NextItem.started += instance.OnNextItem;
+                @NextItem.performed += instance.OnNextItem;
+                @NextItem.canceled += instance.OnNextItem;
                 @OnDrop.started += instance.OnOnDrop;
                 @OnDrop.performed += instance.OnOnDrop;
                 @OnDrop.canceled += instance.OnOnDrop;
@@ -1475,9 +1475,9 @@ namespace PlayerInput
                 @Sprint.started -= instance.OnSprint;
                 @Sprint.performed -= instance.OnSprint;
                 @Sprint.canceled -= instance.OnSprint;
-                @Heal.started -= instance.OnHeal;
-                @Heal.performed -= instance.OnHeal;
-                @Heal.canceled -= instance.OnHeal;
+                @NextItem.started -= instance.OnNextItem;
+                @NextItem.performed -= instance.OnNextItem;
+                @NextItem.canceled -= instance.OnNextItem;
                 @OnDrop.started -= instance.OnOnDrop;
                 @OnDrop.performed -= instance.OnOnDrop;
                 @OnDrop.canceled -= instance.OnOnDrop;
@@ -1845,12 +1845,12 @@ namespace PlayerInput
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnSprint(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "Heal" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "NextItem" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnHeal(InputAction.CallbackContext context);
+            void OnNextItem(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "OnDrop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>

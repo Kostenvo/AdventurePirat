@@ -15,13 +15,26 @@ MonoBehaviour:
   _inventory:
     _inventoryItems:
     - _name: Coin
-      IsStackable: 1
+      Image: {fileID: 21300000, guid: 81ad7dd66fddaf04e933fca8d6c35d91, type: 3}
+      ItemTypes: 0000000002000000
     - _name: Sword
-      IsStackable: 1
+      Image: {fileID: 21300000, guid: a7451d842831d854bbf8fd1aa32502db, type: 3}
+      ItemTypes: 000000000200000001000000
     - _name: Key
-      IsStackable: 0
+      Image: {fileID: 21300000, guid: baca21e925f4a4f86a4c23d789b5f7e4, type: 3}
+      ItemTypes: 
     - _name: Poison
-      IsStackable: 0
+      Image: {fileID: 21300000, guid: 4df50cd156dfd3943af43ed1f46cca7f, type: 3}
+      ItemTypes: 02000000
+    - _name: HeroPearl
+      Image: {fileID: 21300000, guid: e0721016422055b44848431cad472492, type: 3}
+      ItemTypes: 000000000100000002000000
+  _throwableItem:
+    _inventoryItems:
+    - Name: Sword
+      TrowItem: {fileID: 6718057611834601995, guid: 641df941db3f3844995c4ec19ab98a18, type: 3}
+    - Name: HeroPearl
+      TrowItem: {fileID: 6718057611834601995, guid: 546ea0e009aa1ae49985377918289416, type: 3}
   _player:
     InventoryMaxCount: 7
     MaxHealth: 20

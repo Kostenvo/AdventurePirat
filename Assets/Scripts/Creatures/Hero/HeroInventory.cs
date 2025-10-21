@@ -58,4 +58,9 @@ public class HeroInventory : MonoBehaviour, IChangeItem
         _probabilityDropComponent.SetCount(maxCoinsForRemove);
         _probabilityDropComponent.Spawn();
     }
+
+    public void NextInInventory()
+    {
+        _gameSession.QuickInventory.NetItem();
+    }
 }

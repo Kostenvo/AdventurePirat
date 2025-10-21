@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -87,7 +88,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Heal",
+                    "name": "NextItem",
                     "type": "Button",
                     "id": "2cf57c41-27c4-4ce2-8dd9-980ad6749697",
                     "expectedControlType": "",
@@ -498,7 +499,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Heal",
+                    "action": "NextItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

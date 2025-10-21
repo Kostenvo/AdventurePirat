@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using Subscribe;
+using UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace GameData
@@ -7,7 +10,12 @@ namespace GameData
     {
         [SerializeField] private PlayerData _playerData;
         public PlayerData PlayerData => _playerData;
+        public QuickInventoryModel QuickInventory => _quickInventory;
+        
+        private ComposideDisposible _trash = new ComposideDisposible();
+
         private PlayerData _saveData;
+        private QuickInventoryModel _quickInventory;
 
 
         private void Awake()
@@ -20,6 +28,7 @@ namespace GameData
             else
             {
                 DontDestroyOnLoad(this.gameObject);
+                
                 Save();
             }
             InitUI();
@@ -27,6 +36,8 @@ namespace GameData
 
         private void InitUI()
         {
+            _quickInventory = new QuickInventoryModel(_playerData);
+            _trash.Retain(new ActionDisposable(_quickInventory.Dispose));
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
         }
 
@@ -52,6 +63,14 @@ namespace GameData
         public void Load()
         {
             _playerData = _saveData.CloneData();
+            OnDestroy();
+            _quickInventory = new QuickInventoryModel(_playerData);
+            _trash.Retain(new ActionDisposable(_quickInventory.Dispose));
+        }
+
+        private void OnDestroy()
+        {
+            _trash.Dispose();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Scripts.Creatures.Hero
         [SerializeField] private CheckInteractableObject _interaction;
         [SerializeField] private HeroAttackObject _attack;
         [SerializeField] private HeroHealthComponent _health;
+        [SerializeField] private HeroInventory _inventory;
         private InputSystem_Actions _actions;
         
         private ComposideDisposible trash = new ComposideDisposible();
@@ -45,7 +46,7 @@ namespace Scripts.Creatures.Hero
             trash.SubscribeInputStarted(_actions.Player.Attack, OnAttackStartHandler);
             trash.SubscribeInputStarted(_actions.Player.Throw, OnTrowStartecHandler);
             trash.SubscribeInputCanceled(_actions.Player.Throw, OnThrowCanceledHandler);
-            trash.SubscribeInputPreformed(_actions.Player.Heal, OnHealPerformedHandler);
+            trash.SubscribeInputPreformed(_actions.Player.NextItem, OnNextItemPerformedHandler);
         }
 
         private void OnDisable()
@@ -54,7 +55,7 @@ namespace Scripts.Creatures.Hero
             trash.Dispose();
         }
 
-        private void OnHealPerformedHandler(InputAction.CallbackContext obj) => _health.HeroHeal();
+        private void OnNextItemPerformedHandler(InputAction.CallbackContext obj) => _inventory.NextInInventory();
 
         private void OnTrowStartecHandler(InputAction.CallbackContext obj) => _attack.StartButtonThrow();
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5284591065254702252}
   - component: {fileID: 7637151990799588344}
   m_Layer: 0
-  m_Name: SFXAudioSource
+  m_Name: SFXAudioList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,6 +187,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -208,6 +210,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
@@ -238,6 +241,7 @@ MonoBehaviour:
   _interaction: {fileID: 376596869561807651}
   _attack: {fileID: 8524899238062524053}
   _health: {fileID: 4113245417671130113}
+  _inventory: {fileID: 6268858700894369516}
 --- !u!114 &4113245417671130113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5423,6 +5427,8 @@ ParticleSystemRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5444,6 +5450,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2019296403
   m_SortingLayer: 1
   m_SortingOrder: 0
@@ -5634,6 +5641,7 @@ MonoBehaviour:
   _armed: {fileID: 9100000, guid: b41021dad4843a947b20b74df81be1ba, type: 2}
   _unarmed: {fileID: 9100000, guid: c6b3359d5b4bad14399f6a6a39f73fd0, type: 2}
   _spawner: {fileID: 8209307538008347031}
+  _throwSpawner: {fileID: 1248644218719925682}
   _audioList: {fileID: 5284591065254702252}
 --- !u!1 &7577748571214744833
 GameObject:
@@ -5694,10 +5702,10 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 448
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 448
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
@@ -5718,7 +5726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 448
   _collider2D: {fileID: 8541693645664073800}
   _isTouched: 0
 --- !u!1 &8728094805025630178

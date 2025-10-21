@@ -1,4 +1,5 @@
-﻿using Creatures.Definitions;
+﻿using System;
+using Creatures.Definitions;
 using UnityEngine;
 
 namespace Definitions
@@ -7,6 +8,10 @@ namespace Definitions
     public class DefsFacade : ScriptableObject
     {
         [SerializeField] private InventoryDefs _inventory;
+        [SerializeField] private ThrowableItamsDef _throwableItem;
+
+        public ThrowableItamsDef ThrowableItem => _throwableItem;
+
         [SerializeField] private PlayerDefs _player;
 
         public PlayerDefs Player => _player;

@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Creatures.Definitions
 {
@@ -22,8 +23,17 @@ namespace Creatures.Definitions
     public struct InventoryItemDef
     {
         [SerializeField] private string _name;
-        [FormerlySerializedAs("_isStackable")] public bool IsStackable;
+        public Sprite Image;
+        public InventoryItemType[] ItemTypes;
         public string Name => _name;
         public bool IsEmpty => string.IsNullOrEmpty(Name);
+        public bool HasType(InventoryItemType type) => ItemTypes.Contains(type); 
+    }
+
+    public enum InventoryItemType
+    {
+        Stackable,
+        Throwable,
+        Usable,
     }
 }
