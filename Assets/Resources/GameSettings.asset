@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSettings:
     _musicVolume:
-      _value: 0.24997565
+      _value: 0.01
       _storageName: Music
     _sfxVolume:
       _value: 0.29

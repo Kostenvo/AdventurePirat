@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8540712149837596147}
   - component: {fileID: 1451997850670415679}
   - component: {fileID: 7162554634777677750}
+  - component: {fileID: 6440123296670393557}
   m_Layer: 7
   m_Name: NextLevelDoor
   m_TagString: Untagged
@@ -57,6 +58,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -78,6 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -271,3 +275,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _removeRequiredItems: 1
+--- !u!114 &6440123296670393557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306650183022638388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d599bd2f3b264950afccdc06a273c80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.Dialoge.ShowDialogComponent
+  _dialogData:
+    _text:
+    - i am door
+    - do you have the key
+    - give me the key and come in
+  _dialogBoxController: {fileID: 0}

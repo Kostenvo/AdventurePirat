@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Definitions;
+using Creatures.Definitions;
 using UnityEditor;
 using UnityEngine;
 
-namespace Creatures.Definitions.Editor
+namespace Definitions.Editor
 {
     [CustomPropertyDrawer(typeof(InventoryIdAttribute))]
     public class InventoryItemAttributeDrawer : PropertyDrawer

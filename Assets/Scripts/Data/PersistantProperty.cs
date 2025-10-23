@@ -1,5 +1,4 @@
-﻿using System;
-using Subscribe;
+﻿using Subscribe;
 using UnityEngine;
 
 namespace Data

@@ -12353,9 +12353,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.048837207
+    y: 0.049479168
     width: 1
-    height: 0.9
+    height: 0.9008789
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -19665,6 +19665,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2845872786753485060, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
   m_PrefabInstance: {fileID: 983894242458532019}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1769705605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6440123296670393557, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+  m_PrefabInstance: {fileID: 983894242458532019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d599bd2f3b264950afccdc06a273c80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI.Dialoge.ShowDialogComponent
 --- !u!1 &1806943939
 GameObject:
   m_ObjectHideFlags: 0
@@ -20131,6 +20142,70 @@ PrefabInstance:
     - target: {fileID: 2845872786753485060, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6440123296670393557, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _dialogDef
+      value: 
+      objectReference: {fileID: 11400000, guid: e9ac7ee125d5a7941ad3ffaead8cb094, type: 2}
+    - target: {fileID: 6440123296670393557, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _dialogType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1769705605}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1769705605}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowDialogDef
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ShowDialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI.Dialog.ShowDialogComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UI.Dialog.ShowDialogComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: e9ac7ee125d5a7941ad3ffaead8cb094, type: 2}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UI.Dialog.DialogDef, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162554634777677750, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
+      propertyPath: _notEnoughEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7306650183022638388, guid: fdc5fe672c30f044089d72948dc6a8f0, type: 3}
       propertyPath: m_Name
