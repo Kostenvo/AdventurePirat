@@ -17,6 +17,7 @@ namespace Creatures
         [SerializeField] private CheckLayerByTrigger _heroInVision;
         [SerializeField] private CheckLayerByTrigger _heroCanAttack;
         [SerializeField] private SpawnListComponent _spawnParticle;
+        [SerializeField] private float _stopDistance;
         private bool _isDead = false;
 
         private IEnumerator _coroutine;
@@ -61,8 +62,11 @@ namespace Creatures
                 }
                 else
                 {
-                    _creatureMove.SetDirection(HeroDirection(target));
+                    var distanceToHero = Mathf.Abs(target.transform.position.x - transform.position.x);
+                    if (distanceToHero < _stopDistance) _creatureMove.SetDirection(Vector2.zero);
+                    else _creatureMove.SetDirection(HeroDirection(target));
                 }
+
                 yield return null;
             }
 
@@ -93,8 +97,7 @@ namespace Creatures
         private Vector2 HeroDirection(GameObject target)
         {
             var directionX = (target.transform.position - transform.position).normalized.x;
-            // return new Vector2(Mathf.Sign(directionX), 0f);
-            return new Vector2(directionX, 0f);
+            return new Vector2(directionX, 0f).normalized;
         }
     }
 }

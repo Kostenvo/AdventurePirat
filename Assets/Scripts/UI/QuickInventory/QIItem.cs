@@ -10,7 +10,7 @@ using UnityEngine.UI;
 namespace UI
 {
     [Serializable]
-    public class QIItem : MonoBehaviour
+    public class QIItem : MonoBehaviour, IItemRenderer<InventoryItemData>
     {
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _count;
@@ -18,23 +18,23 @@ namespace UI
 
         private int _id;
         private IntPersistantProperty _currentSelection;
-        
+
         private ComposideDisposible _trash = new ComposideDisposible();
 
         private void Start()
         {
-           var session = FindAnyObjectByType<GameSession>();
-           _trash.Retain(session.QuickInventory.CurrentSelect.SubscribeAndInvoke(ChangeSelector));
+            var session = FindAnyObjectByType<GameSession>();
+            _trash.Retain(session.QuickInventory.CurrentSelect.SubscribeAndInvoke(ChangeSelector));
         }
 
-        public void SetItem( InventoryItemData item, int id )
+        public void SetItem(InventoryItemData item, int id)
         {
             _id = id;
             var def = DefsFacade.Instance.Inventory.GetItem(item.name);
             _icon.sprite = def.Image;
             _count.text = item.count.ToString();
         }
-        
+
 
         private void ChangeSelector(int newvalue, int _)
         {

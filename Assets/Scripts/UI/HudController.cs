@@ -12,6 +12,7 @@ namespace UI
         [SerializeField] private Image _fillImage;
         private GameSession _gameSession;
         private ComposideDisposible trash = new ComposideDisposible();
+        private Canvas _canvas;
         private void Start()
         {
             _gameSession = FindObjectOfType<GameSession>();
@@ -24,6 +25,10 @@ namespace UI
             var maxHealth = DefsFacade.Instance.Player.MaxHealth;
             var normalizedHealth = (float)newvalue / maxHealth;
             _fillImage.fillAmount = normalizedHealth;
+        }
+        public void OptionMenuButton()
+        {
+            LoadMenu.Load("UI/GameMenu");
         }
 
         private void OnDestroy()

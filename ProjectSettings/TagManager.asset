@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - SFXSource
   - DialogBox
+  - Canvas
   layers:
   - Default
   - TransparentFX

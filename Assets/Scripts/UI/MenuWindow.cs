@@ -8,7 +8,7 @@ namespace UI
 {
     public class MenuWindow : AnimatedWindow
     {
-        private Canvas _canvas;
+       
         private Action _onClose;
 
         public void StartGameButton()
@@ -19,9 +19,7 @@ namespace UI
 
         public void OptionMenuButton()
         {
-            var option = Resources.Load("UI/OptionMeny");
-            _canvas ??= FindAnyObjectByType<Canvas>();
-            Instantiate(option, _canvas.transform);
+            LoadMenu.Load("UI/OptionMenu");
         }
 
         public void ExitGameButton()

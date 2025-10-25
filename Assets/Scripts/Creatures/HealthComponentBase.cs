@@ -14,6 +14,13 @@ namespace Scripts.Creatures
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] public UnityEvent _onDeath;
+
+        public UnityEvent OnHeal => _onHeal;
+
+        public UnityEvent OnDamage => _onDamage;
+
+        public UnityEvent OnDeath => _onDeath;
+
         public int currentHealth;
 
         protected virtual int _currentHealth
