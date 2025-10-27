@@ -22,6 +22,11 @@ namespace UI
             LoadMenu.Load("UI/OptionMenu");
         }
 
+        public void LocaleMenuButton()
+        {
+            LoadMenu.Load("UI/LocaleMenu");
+        }
+
         public void ExitGameButton()
         {
             _onClose += () =>

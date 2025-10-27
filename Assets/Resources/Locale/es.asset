@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00caac70e4d4ab7b5086b1e3203e93b, type: 3}
+  m_Name: es
+  m_EditorClassIdentifier: Assembly-CSharp::UI.Localization.LocaleDef
+  _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vTVIW63o6AIn1FXoJYs4kIs2GZKVOzdV4eCupKSHJY6jiaDQTjH-TlK-eKcCeBCzpQChtF4pF5LWZQz/pub?gid=1047503156&single=true&output=tsv
+  _localeDefs:
+  - key: meny_title
+    value: "men\xFC\r"
+  - key: button_start
+    value: "comeienzo\r"
+  - key: button_option
+    value: "opciones\r"
+  - key: button_exit
+    value: "salida\r"
+  - key: selected_language
+    value: "Idioma seleccionado: {0}\r"
+  - key: button_back
+    value: "back\r"
+  - key: button_locales
+    value: languages

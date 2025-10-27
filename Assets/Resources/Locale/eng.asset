@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00caac70e4d4ab7b5086b1e3203e93b, type: 3}
+  m_Name: eng
+  m_EditorClassIdentifier: Assembly-CSharp::UI.Localization.LocaleDef
+  _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vTTIOQHOPD5F8CK7hmy9ojLaXT5G3Jty9tZxR0zFlvsVCezOC6iDkhBCpZHuSBx-6N14yiG4JT-R0L0/pub?gid=0&single=true&output=tsv
+  _localeDefs:
+  - key: meny_title
+    value: "menu\r"
+  - key: button_start
+    value: "start\r"
+  - key: button_option
+    value: "options\r"
+  - key: button_exit
+    value: "exit\r"
+  - key: button_restart
+    value: "restart\r"
+  - key: game_menu_title
+    value: "game menu\r"
+  - key: selected_language
+    value: "selected language is {0}\r"
+  - key: button_back
+    value: "back\r"
+  - key: button_locales
+    value: "languages\r"
+  - key: button_buy
+    value: "buy\r"
+  - key: button_use
+    value: "use\r"
+  - key: jamp_text
+    value: "The peark double Jamp Usage : Push to Active  And you are awesome!\r"
+  - key: superThrow_text
+    value: "The peark Super Throw Usage : Push to Active  And you are awesome!\r"
+  - key: shield_text
+    value: "The peark Shield\r Usage : Push to Active\r \r And you are awesome!\r"
+  - key: Health
+    value: "Health\r"
+  - key: Speed
+    value: "Speed\r"
+  - key: Range Damege
+    value: "Range Damege\r"
+  - key: button_upgrade
+    value: "Upgrade\r"
+  - key: crabby-teacher-sentence-0
+    value: "I can teach you!\r"
+  - key: crabby-teacher-sentence-1
+    value: "Good!\r"
+  - key: crabby-teacher-sentence-2
+    value: Let's go!
