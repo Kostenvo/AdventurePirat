@@ -22,7 +22,7 @@ namespace Animation
         {
             if (!string.IsNullOrEmpty(_animationClipName))
                 ApplyClip(_animationClipName);
-            if (_animationClips != null && _animationClips.Length > 0) 
+            else if (_animationClips != null && _animationClips.Length > 0) 
                 _currentAnimationClip = _animationClips[0];
             _spriteRenderer = _spriteRenderer ? _spriteRenderer : GetComponent<SpriteRenderer>();
             RestartAnim();
@@ -40,6 +40,7 @@ namespace Animation
             {
                 if (clip.ClipName.Contains(clipName))
                 {
+                    _animationClipName = clipName;
                     _currentAnimationClip = clip;
                     _frameIndex = 0;
                     isApply = true;

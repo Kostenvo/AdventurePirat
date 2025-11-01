@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Interact
 {
-    public class RequireComponent : MonoBehaviour
+    public class RequireItemComponent : MonoBehaviour
     {
         [SerializeField] private InventoryItemData[] _requiredItems;
         [SerializeField] private UnityEvent _enoughEvent;

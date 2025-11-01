@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _damageCooldown:
-    _cooldownTime: 0
+    _cooldownTime: 0.1
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -461,7 +461,7 @@ Animator:
   m_GameObject: {fileID: 2358055760198012537}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b41021dad4843a947b20b74df81be1ba, type: 2}
+  m_Controller: {fileID: 9100000, guid: c6b3359d5b4bad14399f6a6a39f73fd0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
