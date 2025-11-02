@@ -1,6 +1,8 @@
 ﻿using Checkers;
 using Creatures;
 using Creatures.Hero;
+using Definitions;
+using GameData;
 using PlayerInput;
 using Subscribe;
 using Subscribe.Extensions;
@@ -13,7 +15,7 @@ namespace Scripts.Creatures.Hero
     [RequireComponent(typeof(MoveBase))]
     public class InputHero : MonoBehaviour
     {
-        [SerializeField] private MoveBase _move;
+        [SerializeField] private HeroMove _move;
         [SerializeField] private CheckInteractableObject _interaction;
         [SerializeField] private HeroAttackObject _attack;
         [SerializeField] private HeroHealthComponent _health;
@@ -21,7 +23,12 @@ namespace Scripts.Creatures.Hero
         private InputSystem_Actions _actions;
         
         private ComposideDisposible trash = new ComposideDisposible();
+        private GameSession _gameSession;
 
+        private void Start()
+        {
+            _gameSession = FindAnyObjectByType<GameSession>();
+        }
         private void Awake()
         {
             _actions = new InputSystem_Actions();
@@ -30,7 +37,7 @@ namespace Scripts.Creatures.Hero
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            _move ??= GetComponent<MoveBase>();
+            _move ??= GetComponent<HeroMove>();
             _interaction ??= GetComponentInChildren<CheckInteractableObject>();
             _attack ??= GetComponentInChildren<HeroAttackObject>();
             _health ??= GetComponentInChildren<HeroHealthComponent>();
@@ -55,11 +62,18 @@ namespace Scripts.Creatures.Hero
             trash.Dispose();
         }
 
-        private void OnNextItemPerformedHandler(InputAction.CallbackContext obj) => _inventory.NextInInventory();
-
         private void OnTrowStartecHandler(InputAction.CallbackContext obj) => _attack.StartButtonThrow();
 
-        private void OnThrowCanceledHandler(InputAction.CallbackContext obj) => _attack.EndButtonThrow();
+        private void OnThrowCanceledHandler(InputAction.CallbackContext obj)
+        {
+            var def = _gameSession.QuickInventory.GetCurrentItemDef();
+            if (def.HasType(InventoryItemType.Throwable)) _attack.EndButtonThrow();
+            else if (def.HasType(InventoryItemType.Healable)) _health.HeroHeal();
+            else if (def.HasType(InventoryItemType.Speadable)) _move.SpeedUpPosion();
+
+        }
+
+        private void OnNextItemPerformedHandler(InputAction.CallbackContext obj) => _inventory.NextInInventory();
 
 
         private void OnAttackStartHandler(InputAction.CallbackContext obj) => _attack.Attack();

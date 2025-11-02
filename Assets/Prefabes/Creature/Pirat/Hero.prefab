@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 489336635149547253}
   - component: {fileID: 580971379886772813}
   - component: {fileID: 4113245417671130113}
-  - component: {fileID: 4331928884179627566}
+  - component: {fileID: -6006954085205903767}
   - component: {fileID: 134745492763230428}
   - component: {fileID: 8209307538008347031}
   - component: {fileID: 2184807272373671385}
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43656afc1034176a645eea7c9858076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: 4331928884179627566}
+  _move: {fileID: -6006954085205903767}
   _interaction: {fileID: 376596869561807651}
   _attack: {fileID: 8524899238062524053}
   _health: {fileID: 4113245417671130113}
@@ -263,8 +263,8 @@ MonoBehaviour:
   _onDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4331928884179627566}
-        m_TargetAssemblyTypeName: Scriptes.Creatures.Hero.HeroMove, Assembly-CSharp
+      - m_Target: {fileID: -6006954085205903767}
+        m_TargetAssemblyTypeName: Creatures.Hero.HeroMove, Assembly-CSharp
         m_MethodName: SetDamage
         m_Mode: 1
         m_Arguments:
@@ -328,7 +328,7 @@ MonoBehaviour:
         m_CallState: 2
   currentHealth: 30
   _animator: {fileID: 4108548580237463246}
---- !u!114 &4331928884179627566
+--- !u!114 &-6006954085205903767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,9 +337,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2358055760198012537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1122f7890f964fc08703de7b40a06215, type: 3}
+  m_Script: {fileID: 11500000, guid: 49d90dbdfdfc4afcaca282892b534ffc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::Creatures.Hero.HeroMove
   _moveSpeed: 5
   _jumpSpeed: 8
   _jumpDamageValue: 8
@@ -347,6 +347,8 @@ MonoBehaviour:
   _animator: {fileID: 4108548580237463246}
   _audioList: {fileID: 5284591065254702252}
   _spawnListComponent: {fileID: 8209307538008347031}
+  cooldown:
+    _cooldownTime: 0
 --- !u!114 &134745492763230428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5755,7 +5757,7 @@ Transform:
   m_GameObject: {fileID: 8728094805025630178}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.11, y: 0.023, z: 0}
+  m_LocalPosition: {x: 0.336, y: -0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

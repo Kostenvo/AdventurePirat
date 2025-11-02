@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4732374826507450293}
   - component: {fileID: 5950189045656313940}
   m_Layer: 0
-  m_Name: Posion
+  m_Name: LargePosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,6 +58,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,10 +81,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4df50cd156dfd3943af43ed1f46cca7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db56c064681897d4eb5c2fcb2764ecbf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,13 +181,13 @@ MonoBehaviour:
   _animationClips:
   - ClipName: idle
     Sprites:
-    - {fileID: 21300000, guid: 4df50cd156dfd3943af43ed1f46cca7f, type: 3}
-    - {fileID: 21300000, guid: a1c130387264b1e43b6ddcb9388cef27, type: 3}
-    - {fileID: 21300000, guid: 19df8b0e3121a7747a1b297872bfba8f, type: 3}
-    - {fileID: 21300000, guid: 5d5992cef96e30e459c838831812842d, type: 3}
-    - {fileID: 21300000, guid: 71ea9b572ce8a844cbc17fb92892b1c7, type: 3}
-    - {fileID: 21300000, guid: 48af974a279807c4db08e2cfb95828ac, type: 3}
-    - {fileID: 21300000, guid: 12a02601471dde14b9f0df8c8916dcf6, type: 3}
+    - {fileID: 21300000, guid: db56c064681897d4eb5c2fcb2764ecbf, type: 3}
+    - {fileID: 21300000, guid: 007e33b4a01205046b1ec999c062d796, type: 3}
+    - {fileID: 21300000, guid: f53c13b1cc5292443932f7856c9f43b1, type: 3}
+    - {fileID: 21300000, guid: 2d8d4a2efe63b8043864c594ebaaecb6, type: 3}
+    - {fileID: 21300000, guid: a3fb36af92604a94aba359e7bb7da5bc, type: 3}
+    - {fileID: 21300000, guid: 360ebbdbd91e82f4a8b5974eb5fee522, type: 3}
+    - {fileID: 21300000, guid: a3165a0f99a407249bdd1540ef65dc21, type: 3}
     OnAnimationFinished:
       m_PersistentCalls:
         m_Calls: []
@@ -283,5 +286,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49deb26f5ad74230ba79dd971350a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: Poison
+  _itemName: LargePosion
   _count: 1

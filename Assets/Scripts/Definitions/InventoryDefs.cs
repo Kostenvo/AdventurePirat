@@ -1,26 +1,17 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
-namespace Creatures.Definitions
+namespace Definitions
 {
     [Serializable]
-    public struct InventoryDefs
+    public class InventoryDefs : DefRepository<InventoryItemDef>
     {
-        [SerializeField] InventoryItemDef[] _inventoryItems;
-
-        public InventoryItemDef GetItem(string itemName) => _inventoryItems.FirstOrDefault(x => x.Name.Contains(itemName));
         
-        
-#if UNITY_EDITOR
-        public InventoryItemDef[] Items => _inventoryItems;
-#endif
     }
 
     [Serializable]
-    public struct InventoryItemDef
+    public struct InventoryItemDef : IHaveId
     {
         [SerializeField] private string _name;
         public Sprite Image;
@@ -35,5 +26,7 @@ namespace Creatures.Definitions
         Stackable,
         Throwable,
         Usable,
+        Healable,
+        Speadable,
     }
 }

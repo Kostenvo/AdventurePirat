@@ -2,8 +2,8 @@
 
 namespace Creatures
 {
-    public abstract class MoveBase: MonoBehaviour
+    public abstract class MoveBase : MonoBehaviour
     {
-    public abstract void SetDirection(Vector2 dir);
+        public abstract void SetDirection(Vector2 dir);
     }
 }

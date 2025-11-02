@@ -19,6 +19,7 @@ namespace UI
         private InventoryItemData[] _quickInventory;
 
         public InventoryItemData GetCurrentItem() => _quickInventory[CurrentSelect.Value];
+        public InventoryItemDef GetCurrentItemDef() => DefsFacade.Instance.Inventory.GetItem(GetCurrentItem().name);
 
         public QuickInventoryModel(PlayerData data)
         {

@@ -5,7 +5,6 @@ using Creatures.Definitions;
 using Definitions;
 using Subscribe;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Data
 {

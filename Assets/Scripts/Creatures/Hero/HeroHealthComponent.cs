@@ -1,17 +1,16 @@
-﻿using System;
-using Definitions;
+﻿using Definitions;
 using GameData;
+using Scripts.Creatures;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Scripts.Creatures.Hero
+namespace Creatures.Hero
 {
     public class HeroHealthComponent : HealthComponentBase
     {
         [SerializeField] private Animator _animator;
         private GameSession _gameSession;
         private static readonly int Health = Animator.StringToHash("Health");
-        private static string _poisonKey = "Poison";
+        private InventoryItemDef _poisonKey => _gameSession.QuickInventory.GetCurrentItemDef();
         public override int MaxHealth => DefsFacade.Instance.Player.MaxHealth;
 
         protected override int _currentHealth
@@ -40,9 +39,11 @@ namespace Scripts.Creatures.Hero
 
         public void HeroHeal()
         {
-            if (_gameSession.PlayerData.Inventory.CountItem(_poisonKey) < 1) return;
-            _gameSession.PlayerData.Inventory.RemoveItem(_poisonKey, 1);
-            Heal(10);
+            if (_gameSession.PlayerData.Inventory.CountItem(_poisonKey.Name) < 1) return;
+            _gameSession.PlayerData.Inventory.RemoveItem(_poisonKey.Name, 1);
+            var healAmount = (int)DefsFacade.Instance.Potion.GetItem(_poisonKey.Name).EffectValue;
+            Heal(healAmount);
         }
+        
     }
 }

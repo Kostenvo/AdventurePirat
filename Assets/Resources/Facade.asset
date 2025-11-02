@@ -13,28 +13,48 @@ MonoBehaviour:
   m_Name: Facade
   m_EditorClassIdentifier: 
   _inventory:
-    _inventoryItems:
+    _collections:
     - _name: Coin
-      Image: {fileID: 21300000, guid: 81ad7dd66fddaf04e933fca8d6c35d91, type: 3}
+      Image: {fileID: 21300000, guid: db7c30434d4e82443b7aa1bbacafef8a, type: 3}
       ItemTypes: 0000000002000000
     - _name: Sword
       Image: {fileID: 21300000, guid: a7451d842831d854bbf8fd1aa32502db, type: 3}
       ItemTypes: 000000000200000001000000
+    - _name: HeroPearl
+      Image: {fileID: 21300000, guid: e0721016422055b44848431cad472492, type: 3}
+      ItemTypes: 000000000200000001000000
     - _name: Key
       Image: {fileID: 21300000, guid: baca21e925f4a4f86a4c23d789b5f7e4, type: 3}
       ItemTypes: 
-    - _name: Poison
+    - _name: LargePosion
+      Image: {fileID: 21300000, guid: db56c064681897d4eb5c2fcb2764ecbf, type: 3}
+      ItemTypes: 000000000200000003000000
+    - _name: SmalPosion
       Image: {fileID: 21300000, guid: 4df50cd156dfd3943af43ed1f46cca7f, type: 3}
-      ItemTypes: 02000000
-    - _name: HeroPearl
-      Image: {fileID: 21300000, guid: e0721016422055b44848431cad472492, type: 3}
-      ItemTypes: 000000000100000002000000
+      ItemTypes: 000000000200000003000000
+    - _name: SpeedUpPosion
+      Image: {fileID: 21300000, guid: 9e3aebd5b8f2c5f468b6c68269675e50, type: 3}
+      ItemTypes: 000000000200000004000000
   _throwableItem:
-    _inventoryItems:
-    - Name: Sword
+    _collections:
+    - name: Sword
       TrowItem: {fileID: 6718057611834601995, guid: 641df941db3f3844995c4ec19ab98a18, type: 3}
-    - Name: HeroPearl
+    - name: HeroPearl
       TrowItem: {fileID: 6718057611834601995, guid: 546ea0e009aa1ae49985377918289416, type: 3}
+  _potion:
+    _collections:
+    - _name: LargePosion
+      _potionType: 0
+      _effectValue: 10
+      _cooldownValue: 0
+    - _name: SmalPosion
+      _potionType: 0
+      _effectValue: 5
+      _cooldownValue: 0
+    - _name: SpeedUpPosion
+      _potionType: 1
+      _effectValue: 2
+      _cooldownValue: 5
   _player:
     InventoryMaxCount: 7
-    MaxHealth: 20
+    MaxHealth: 100
