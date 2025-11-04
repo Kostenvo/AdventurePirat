@@ -40,6 +40,11 @@ namespace Data
             }
             set
             {
+                if (!_loaded)
+                {
+                    _storedValue = _value = value;
+                    _loaded = true;
+                }
                 if (_storedValue.Equals(value)) return;
                 var oldValue = _storedValue;
                 _value = _storedValue = value;

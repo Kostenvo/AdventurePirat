@@ -26,14 +26,9 @@ namespace UI
             var normalizedHealth = (float)newvalue / maxHealth;
             _fillImage.fillAmount = normalizedHealth;
         }
-        public void OptionMenuButton()
-        {
-            LoadMenu.Load("UI/GameMenu");
-        }
+        public void OptionMenuButton() => LoadMenu.Load("UI/GameMenu");
+        public void PerksMenuButton() => LoadMenu.Load("UI/PerkManagerWindow");
 
-        private void OnDestroy()
-        {
-            trash.Dispose();
-        }
+        private void OnDestroy() => trash.Dispose();
     }
 }

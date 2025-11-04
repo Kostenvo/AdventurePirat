@@ -16,20 +16,15 @@ namespace Interact
         public void CheckRequiredItems()
         {
             if (_gameSession == null) _gameSession = FindAnyObjectByType<GameSession>();
-            var isEnought = true;
-            foreach (var item in _requiredItems)
-            {
-                if (_gameSession.PlayerData.Inventory.CountItem(item.name) < item.count)
-                {
-                    isEnought = false;
-                }
-            }
-            if (isEnought)
+            if (_gameSession.PlayerData.Inventory.IsEnoughItem(_requiredItems))
             {
                 RemuveInInventory();
                 _enoughEvent?.Invoke();
             }
-            else _notEnoughEvent?.Invoke();
+            else
+            { 
+                _notEnoughEvent?.Invoke();
+            }
         }
 
         private void RemuveInInventory()

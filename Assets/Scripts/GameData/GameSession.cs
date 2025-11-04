@@ -4,6 +4,7 @@ using System.Linq;
 using Interact.CheckPoint;
 using Subscribe;
 using UI;
+using UI.QuickInventory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,11 +15,15 @@ namespace GameData
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private string _defaultCheckPoint;
         public PlayerData PlayerData => _playerData;
+        public PerkModel PerksModel => _perksModel;
         public QuickInventoryModel QuickInventory => _quickInventory;
 
         private ComposideDisposible _trash = new ComposideDisposible();
 
         private PlayerData _saveData;
+        private PerkModel _perksModel;
+
+
         private QuickInventoryModel _quickInventory;
 
         private List<string> _checkPoints = new List<string>();
@@ -42,8 +47,7 @@ namespace GameData
 
         private void InitUI()
         {
-            _quickInventory = new QuickInventoryModel(_playerData);
-            _trash.Retain(new ActionDisposable(_quickInventory.Dispose));
+            Subscribe();
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
             SpawnHero();
         }
@@ -80,7 +84,6 @@ namespace GameData
                     return session;
                 }
             }
-
             return null;
         }
 
@@ -93,8 +96,14 @@ namespace GameData
         {
             _playerData = _saveData.CloneData();
             OnDestroy();
+            Subscribe();
+        }
+
+        private void Subscribe()
+        {
             _quickInventory = new QuickInventoryModel(_playerData);
             _trash.Retain(new ActionDisposable(_quickInventory.Dispose));
+            _perksModel = new PerkModel(_playerData);
         }
 
         public void AddCheckPoint(string checkPoint)

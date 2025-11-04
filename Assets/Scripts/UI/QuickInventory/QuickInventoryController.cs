@@ -29,28 +29,8 @@ namespace UI
         {
             var inventory = _session.QuickInventory.QuickInventory;
             _itemController.Rebuild(inventory);
-
-            // for (int i = _items.Count; i < inventory.Length; i++)
-            // {
-            //     var item = Instantiate(_itemPrefab, _containerItems);
-            //     _items.Add(item);
-            // }
-            //
-            // for (int i = 0; i < inventory.Length; i++)
-            // {
-            //     _items[i].SetItem(inventory[i], i);
-            //     _items[i].gameObject.SetActive(true);
-            // }
-            //
-            // for (int i = inventory.Length; i < _items.Count; i++)
-            // {
-            //     _items[i].gameObject.SetActive(false);
-            // }
         }
 
-        private void OnDestroy()
-        {
-            _trash.Dispose();
-        }
+        private void OnDestroy() => _trash.Dispose();
     }
 }

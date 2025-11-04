@@ -8,25 +8,25 @@ namespace Creatures
     public class CreatureMove : MoveBase
     {
         [SerializeField] private float _moveSpeed = 5f;
-        [SerializeField] private float _jumpSpeed = 8f;
+        [SerializeField] protected float _jumpSpeed = 8f;
         [SerializeField] private float _jumpDamageValue = 8f;
         [SerializeField] private CheckerSurfaceBase _groundChecker;
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Animator _animator;
         [SerializeField] private AudioListComponent _audioList;
         [SerializeField] private SpawnListComponent _spawnListComponent;
 
         private const string jumpSpawnKey = "Jump";
         private readonly int moveKey = Animator.StringToHash("Move");
-        private readonly int jumpKey = Animator.StringToHash("VerticalVelocity");
+        protected readonly int jumpKey = Animator.StringToHash("VerticalVelocity");
         private readonly int groundCheckKey = Animator.StringToHash("OnGround");
         private readonly string _jampSoundKey = "Jump";
-        private Rigidbody2D rb;
         private Vector2 moveDirection;
-        private bool isDamage = false;
-        private bool isDoubleJump = true;
-        private bool IsJumping => moveDirection.y > 0;
+       
+        protected Rigidbody2D rb;
+        protected bool isDamage = false;
+        protected bool IsJumping => moveDirection.y > 0;
 
-        private bool IsGrounded => _groundChecker.CheckSurface();
+        protected bool IsGrounded => _groundChecker.CheckSurface();
         private void Awake() => rb = GetComponent<Rigidbody2D>();
 
         private void FixedUpdate()
@@ -51,25 +51,13 @@ namespace Creatures
             rb.AddForceY(_jumpDamageValue, ForceMode2D.Impulse);
         }
 
-        private void ChangeStatusOnGround()
-        {
-            if (IsGrounded)
-            {
-                DeactivateDamage();
-                ActivateDoubleJump();
-            }
-        }
+        protected virtual void ChangeStatusOnGround() => DeactivateDamage();
 
-        private void ActivateDoubleJump() => isDoubleJump = true;
 
         private void DeactivateDamage() => isDamage = false;
+        
 
-
-
-        protected virtual float CurrentSpeed()
-        {
-          return  _moveSpeed;
-        }
+        protected virtual float CurrentSpeed() => _moveSpeed;
 
         private void Move()
         {
@@ -80,33 +68,12 @@ namespace Creatures
         }
 
 
-        private void Jump()
+        protected virtual void Jump()
         {
-            float minimumValueForJump = 0.1f;
-            if (IsJumping)
-            {
-                if (!isDamage && IsGrounded && rb.linearVelocity.y < minimumValueForJump)
-                {
-                    rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
-                    PlayFx();
-                }
-                else if (isDoubleJump && rb.linearVelocity.y < minimumValueForJump)
-                {
-                    PlayFx();
-                    rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
-                    isDoubleJump = false;
-                }
-            }
-            else if (!isDamage && rb.linearVelocity.y > minimumValueForJump)
-            {
-                rb.linearVelocityY = rb.linearVelocityY / 2;
-            }
-
-            ChangeStatusOnGround();
-            _animator.SetFloat(jumpKey, rb.linearVelocity.y);
+           
         }
 
-        private void PlayFx()
+        protected void PlayFx()
         {
             _audioList.Play(_jampSoundKey);
             _spawnListComponent.SpawnParticle(ParticleType.Jamp);

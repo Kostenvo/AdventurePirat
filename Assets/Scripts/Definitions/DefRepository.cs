@@ -9,9 +9,9 @@ namespace Definitions
         
         public TDefType GetItem(string itemName) =>
             _collections.FirstOrDefault(x => x.Name.Contains(itemName));
-#if UNITY_EDITOR
+
         public TDefType[] Items => _collections;
-#endif
+
     }
 
 

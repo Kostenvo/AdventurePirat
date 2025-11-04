@@ -35,6 +35,9 @@ MonoBehaviour:
     - _name: SpeedUpPosion
       Image: {fileID: 21300000, guid: 9e3aebd5b8f2c5f468b6c68269675e50, type: 3}
       ItemTypes: 000000000200000004000000
+    - _name: GreenDiamand
+      Image: {fileID: 21300000, guid: d08a869cf30fba247b11553dfd91c88d, type: 3}
+      ItemTypes: 0000000002000000
   _throwableItem:
     _collections:
     - name: Sword
@@ -44,17 +47,28 @@ MonoBehaviour:
   _potion:
     _collections:
     - _name: LargePosion
-      _potionType: 0
       _effectValue: 10
       _cooldownValue: 0
     - _name: SmalPosion
-      _potionType: 0
       _effectValue: 5
       _cooldownValue: 0
     - _name: SpeedUpPosion
-      _potionType: 1
       _effectValue: 2
       _cooldownValue: 5
+  _perks:
+    _collections:
+    - _name: SuppreJamp
+      _description: This is supper jamp perk
+      _iconImage: {fileID: 21300000, guid: 1641ba70fc353b049a558b21a30a84ae, type: 3}
+      _price:
+        name: GreenDiamand
+        count: 10
+    - _name: SuppreThrow
+      _description: This is supper throw perk
+      _iconImage: {fileID: 21300000, guid: 8884376817273464eaea71670e3a7cc5, type: 3}
+      _price:
+        name: GreenDiamand
+        count: 20
   _player:
     InventoryMaxCount: 7
     MaxHealth: 100

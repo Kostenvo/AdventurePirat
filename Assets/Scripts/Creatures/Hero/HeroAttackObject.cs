@@ -66,7 +66,7 @@ namespace Creatures.Hero
         {
             if (!CanThrow()) return;
             if (!_throwCooldown.IsReady()) return;
-            if (_SuperThrowingCooldown.IsReady())
+            if (_gameSession.PerksModel.IsActivePerk("SuppreThrow") && _SuperThrowingCooldown.IsReady())
             {
                 StartCoroutine(SuperTrowingCoroutine());
             }

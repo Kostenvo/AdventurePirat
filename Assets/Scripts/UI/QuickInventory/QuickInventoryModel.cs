@@ -1,12 +1,11 @@
 ﻿using System;
-using Creatures.Definitions;
 using Data;
 using Definitions;
 using GameData;
 using Subscribe;
 using UnityEngine;
 
-namespace UI
+namespace UI.QuickInventory
 {
     public class QuickInventoryModel : IDisposable
     {

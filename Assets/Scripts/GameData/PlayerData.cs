@@ -8,6 +8,10 @@ namespace GameData
     public class PlayerData
     {
         [SerializeField] private InventoryData _inventory;
+        [SerializeField] private PerkData _perks;
+
+        public PerkData Perks => _perks;
+
         public IntPersistantProperty Health;
 
         public InventoryData Inventory => _inventory;

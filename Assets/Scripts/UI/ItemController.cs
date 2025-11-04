@@ -7,7 +7,7 @@ namespace UI
     {
         private TItem _itemPrefab;
         private Transform _containerItems;
-        private List<TItem> _items;
+        protected IList<TItem> _items;
 
 
         public ItemController(TItem itemPrefab, Transform containerItems)
@@ -17,7 +17,7 @@ namespace UI
             _items = new List<TItem>();
         }
 
-        public void Rebuild(IList<TDataType> items)
+        public virtual void Rebuild(IList<TDataType> items)
         {
             for (int i = _items.Count; i < items.Count; i++)
             {
