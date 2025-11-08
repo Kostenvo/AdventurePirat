@@ -8,9 +8,9 @@ namespace GameData
 {
     public class PerkModel
     {
-        private StringPersistantProperty _selectionPerk;
+        private StringStoredPersistantProperty _selectionPerk;
 
-        public StringPersistantProperty SelectionPerk => _selectionPerk;
+        public StringStoredPersistantProperty SelectionPerk => _selectionPerk;
 
         private PlayerData _playerData;
 
@@ -25,7 +25,7 @@ namespace GameData
         public PerkModel(PlayerData playerData)
         {
             _playerData = playerData;
-            _selectionPerk = new StringPersistantProperty();
+            _selectionPerk = new StringStoredPersistantProperty();
         }
 
 

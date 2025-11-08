@@ -17,7 +17,7 @@ namespace UI
         [SerializeField] private Image _selector;
 
         private int _id;
-        private IntPersistantProperty _currentSelection;
+        private IntStoredPersistantProperty _currentSelection;
 
         private ComposideDisposible _trash = new ComposideDisposible();
 

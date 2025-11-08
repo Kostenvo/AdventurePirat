@@ -1,6 +1,7 @@
 ﻿using System;
 using Definitions;
 using GameData;
+using Subscribe;
 using TimeComponent;
 using UnityEngine;
 
@@ -12,12 +13,20 @@ namespace Creatures.Hero
         private GameSession _gameSession;
         private PotionDef _currentPotionDef;
         private bool isDoubleJump = true;
+        private ComposideDisposible _trash = new ComposideDisposible();
 
         private void ActivateDoubleJump() => isDoubleJump = true;
 
         private void Start()
         {
             _gameSession = FindAnyObjectByType<GameSession>();
+            _trash.Retain( _gameSession.StatsModel.Subscribe(UpdateSpeed));
+        }
+
+        private void UpdateSpeed()
+        {
+            if (_gameSession.StatsModel.SelectedStats.Value == StatsType.Speed)
+                _moveSpeed = _gameSession.StatsModel.GetLevel(StatsType.Speed).Value;
         }
 
         protected override void ChangeStatusOnGround()
@@ -29,7 +38,7 @@ namespace Creatures.Hero
             }
         }
 
-        protected override float CurrentSpeed() => base.CurrentSpeed() + IncrementalSpeed();
+        protected override float CurrentSpeed() => _moveSpeed + IncrementalSpeed();
 
         private float IncrementalSpeed()
         {
@@ -85,6 +94,11 @@ namespace Creatures.Hero
             var pDef = DefsFacade.Instance.Potion.GetItem(def.Name);
             _currentPotionDef = pDef;
             _cooldown = new Cooldown(_currentPotionDef.CooldownValue);
+        }
+
+        private void OnDestroy()
+        {
+            _trash.Dispose();
         }
     }
 }

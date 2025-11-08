@@ -12,8 +12,12 @@ namespace Definitions
         [SerializeField] private ThrowableItemsDef _throwableItem;
         [SerializeField] private PotionsDef _potion;
         [SerializeField] private PerksDef _perks;
+        [SerializeField] private StatsRepository _statsRepository;
+
+
         [SerializeField] private PlayerDefs _player;
 
+        public StatsRepository StatsRepository => _statsRepository;
         public PerksDef Perks => _perks;
 
         public ThrowableItemsDef ThrowableItem => _throwableItem;

@@ -7,7 +7,7 @@ namespace Creatures
 {
     public class CreatureMove : MoveBase
     {
-        [SerializeField] private float _moveSpeed = 5f;
+        [SerializeField] protected float _moveSpeed = 5f;
         [SerializeField] protected float _jumpSpeed = 8f;
         [SerializeField] private float _jumpDamageValue = 8f;
         [SerializeField] private CheckerSurfaceBase _groundChecker;
@@ -51,12 +51,15 @@ namespace Creatures
             rb.AddForceY(_jumpDamageValue, ForceMode2D.Impulse);
         }
 
+        protected virtual void Jump()
+        {
+            
+        }
+
         protected virtual void ChangeStatusOnGround() => DeactivateDamage();
-
-
+        
         private void DeactivateDamage() => isDamage = false;
         
-
         protected virtual float CurrentSpeed() => _moveSpeed;
 
         private void Move()
@@ -66,13 +69,6 @@ namespace Creatures
             _animator.SetBool(groundCheckKey, IsGrounded);
             _animator.SetBool(moveKey, moveDirection.x != 0);
         }
-
-
-        protected virtual void Jump()
-        {
-           
-        }
-
         protected void PlayFx()
         {
             _audioList.Play(_jampSoundKey);

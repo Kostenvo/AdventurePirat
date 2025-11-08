@@ -1,6 +1,4 @@
 ﻿using Checkers;
-using Creatures;
-using Creatures.Hero;
 using Definitions;
 using GameData;
 using PlayerInput;
@@ -8,9 +6,8 @@ using Subscribe;
 using Subscribe.Extensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Object = UnityEngine.Object;
 
-namespace Scripts.Creatures.Hero
+namespace Creatures.Hero
 {
     [RequireComponent(typeof(MoveBase))]
     public class InputHero : MonoBehaviour

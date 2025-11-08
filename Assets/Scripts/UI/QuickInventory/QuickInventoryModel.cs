@@ -9,7 +9,7 @@ namespace UI.QuickInventory
 {
     public class QuickInventoryModel : IDisposable
     {
-        public IntPersistantProperty CurrentSelect { get; private set; }
+        public IntStoredPersistantProperty CurrentSelect { get; private set; }
         public InventoryItemData[] QuickInventory => _quickInventory;
         private Action<string, int> _changeQuickInventory;
 
@@ -23,7 +23,7 @@ namespace UI.QuickInventory
         public QuickInventoryModel(PlayerData data)
         {
             _data = data;
-            CurrentSelect = new IntPersistantProperty();
+            CurrentSelect = new IntStoredPersistantProperty();
             _trash.Retain(_data.Inventory.Subscribe(ChangeQuickItem)); 
             ChangeQuickItem("Sword", 0);
         }

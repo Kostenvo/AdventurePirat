@@ -17,17 +17,28 @@ namespace UI
         {
             _gameSession = FindObjectOfType<GameSession>();
             trash.Retain(_gameSession.PlayerData.Health.Subscribe(ChangeValue));
+            trash.Retain(_gameSession.StatsModel.Subscribe(UpdateStats));
             ChangeValue(_gameSession.PlayerData.Health.Value, 0);
+            
+        }
+
+        private void UpdateStats()
+        {
+            if (_gameSession.StatsModel.SelectedStats.Value == StatsType.Health)
+            {
+                ChangeValue(_gameSession.PlayerData.Health.Value, 0);
+            }
         }
 
         private void ChangeValue(int newvalue, int oldvalue)
         {
-            var maxHealth = DefsFacade.Instance.Player.MaxHealth;
+            var maxHealth = _gameSession.StatsModel.GetLevel(StatsType.Health).Value;
             var normalizedHealth = (float)newvalue / maxHealth;
             _fillImage.fillAmount = normalizedHealth;
         }
         public void OptionMenuButton() => LoadMenu.Load("UI/GameMenu");
         public void PerksMenuButton() => LoadMenu.Load("UI/PerkManagerWindow");
+        public void StatsMenuButton() => LoadMenu.Load("UI/StatsManagerWindow");
 
         private void OnDestroy() => trash.Dispose();
     }

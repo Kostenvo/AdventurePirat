@@ -11,13 +11,14 @@ namespace Creatures
         [SerializeField] private int _damage;
         [SerializeField] private float _radius;
         private Collider2D[] _colliders;
+        protected virtual int Damage => _damage; 
 
         public virtual void Attack()
         {
             _colliders = Physics2D.OverlapCircleAll(transform.position, _radius, _layerMaskForAttack);
             foreach (var collide in _colliders)
             {
-                collide.GetComponent<HealthComponentBase>()?.ChangeHealth(-_damage);
+                collide.GetComponent<HealthComponentBase>()?.ChangeHealth(-Damage);
             }
         }
 

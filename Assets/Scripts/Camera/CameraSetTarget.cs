@@ -1,5 +1,5 @@
 ﻿using System;
-using Scripts.Creatures.Hero;
+using Creatures.Hero;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;

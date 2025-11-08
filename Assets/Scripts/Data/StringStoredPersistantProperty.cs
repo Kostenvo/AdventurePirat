@@ -1,6 +1,6 @@
 ﻿namespace Data
 {
-    public class StringPersistantProperty : PersistantProperty<string>
+    public class StringStoredPersistantProperty : StoredPersistantProperty<string>
     {
         protected override void SetValue(string value)
         {

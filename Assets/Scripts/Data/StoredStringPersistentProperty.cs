@@ -2,7 +2,7 @@
 
 namespace Data
 {
-    public class StoredStringPersistentProperty : PersistantProperty<string>
+    public class StoredStringPersistentProperty : StoredPersistantProperty<string>
     {
         [SerializeField] private string storedKey;
         protected override void SetValue(string value)

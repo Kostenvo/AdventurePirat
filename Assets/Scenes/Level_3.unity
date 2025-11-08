@@ -16277,9 +16277,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.05013193
+    y: 0.05074627
     width: 1
-    height: 0.9008905
+    height: 0.90000004
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -22849,18 +22849,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06e933322524db5a44dc0e5cfbd759b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultCheckPoint: level3_checkpoint1
   _playerData:
     _inventory:
       _items:
       - name: Coin
         count: 10
-      - name: Poison
+      - name: Coin
         count: 1
       - name: HeroPearl
         count: 20
+    _perks:
+      _activePerk: 
+      UnlockedPerks: []
     Health:
       _value: 15
-  _defaultCheckPoint: level3_checkpoint1
 --- !u!4 &1401050744
 Transform:
   m_ObjectHideFlags: 0

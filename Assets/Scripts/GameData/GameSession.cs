@@ -12,8 +12,11 @@ namespace GameData
 {
     public class GameSession : MonoBehaviour
     {
-        [SerializeField] private PlayerData _playerData;
         [SerializeField] private string _defaultCheckPoint;
+        [SerializeField] private PlayerData _playerData;
+        private StatsModel _statsModel;
+
+        public StatsModel StatsModel => _statsModel;
         public PlayerData PlayerData => _playerData;
         public PerkModel PerksModel => _perksModel;
         public QuickInventoryModel QuickInventory => _quickInventory;
@@ -62,6 +65,7 @@ namespace GameData
                     return chPo;
                 }
             }
+
             return null;
         }
 
@@ -84,6 +88,7 @@ namespace GameData
                     return session;
                 }
             }
+
             return null;
         }
 
@@ -104,6 +109,7 @@ namespace GameData
             _quickInventory = new QuickInventoryModel(_playerData);
             _trash.Retain(new ActionDisposable(_quickInventory.Dispose));
             _perksModel = new PerkModel(_playerData);
+            _statsModel = new StatsModel(_playerData);
         }
 
         public void AddCheckPoint(string checkPoint)

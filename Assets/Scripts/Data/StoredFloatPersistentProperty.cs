@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace Data
 {
     [Serializable]
-    public class StoredFloatPersistentProperty : PersistantProperty<float>
+    public class StoredFloatPersistentProperty : StoredPersistantProperty<float>
     {
         [SerializeField] private string _storageName;
 

@@ -125,7 +125,11 @@ namespace Data
             var count = 0;
             foreach (var item in _items)
             {
-                if (item.name.Contains(itemName)) count += item.count;
+                if (item.name.Contains(itemName))
+                {
+                    count += item.count;
+                    return count;
+                }
             }
 
             return count;

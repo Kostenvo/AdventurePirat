@@ -3,61 +3,44 @@ using UnityEngine;
 
 namespace Data
 {
-    public abstract class PersistantProperty<TProperty>
+    public class PersistantProperty<TProperty>
     {
         [SerializeField] protected TProperty _value;
-        private TProperty _storedValue;
-        private bool _loaded;
+        
+        public  delegate void OnValueChanged(TProperty newValue, TProperty oldValue);
 
-        public delegate void OnValueChanged(TProperty newValue, TProperty oldValue);
-
-        public event OnValueChanged ValueChanged;
-
+        public event OnValueChanged ValueChanged;  
+        
         public ActionDisposable Subscribe(OnValueChanged onValueChanged)
         {
             ValueChanged += onValueChanged;
             return new ActionDisposable(() => ValueChanged -= onValueChanged);
         }
-        public ActionDisposable SubscribeAndInvoke(OnValueChanged onValueChanged)
+        public virtual ActionDisposable SubscribeAndInvoke(OnValueChanged onValueChanged)
         {
             ValueChanged += onValueChanged;
-            onValueChanged.Invoke(_value, _storedValue);
+            onValueChanged.Invoke(_value, _value);
             return new ActionDisposable(() => ValueChanged -= onValueChanged);
         }
-
-
-        public TProperty Value
+        
+        
+        public virtual TProperty Value
         {
             get
             {
-                if (!_loaded)
-                {
-                    _storedValue = _value = GetValue();
-                    _loaded = true;
-                }
-
-                return _storedValue;
+                return _value;
             }
             set
             {
-                if (!_loaded)
-                {
-                    _storedValue = _value = value;
-                    _loaded = true;
-                }
-                if (_storedValue.Equals(value)) return;
-                var oldValue = _storedValue;
-                _value = _storedValue = value;
-                SetValue(_value);
+                var oldValue = _value;
+                _value  = value;
                 ValueChanged?.Invoke(_value, oldValue);
             }
         }
-        public void Validate()
-        {
-            Value = _value;
-        }
 
-        protected abstract void SetValue(TProperty value);
-        protected abstract TProperty GetValue();
+        protected virtual void InvokeChange(TProperty newValue, TProperty oldValue)
+        {
+            ValueChanged?.Invoke(_value, oldValue);
+        }
     }
 }

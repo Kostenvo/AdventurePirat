@@ -46,7 +46,7 @@ MonoBehaviour:
     value: "Health\r"
   - key: Speed
     value: "Speed\r"
-  - key: Range Damege
+  - key: RangeDamege
     value: "Range Damege\r"
   - key: button_upgrade
     value: "Upgrade\r"

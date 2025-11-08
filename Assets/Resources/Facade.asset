@@ -69,6 +69,104 @@ MonoBehaviour:
       _price:
         name: GreenDiamand
         count: 20
+  _statsRepository:
+    _collections:
+    - _name: Health
+      _statType: 0
+      _icon: {fileID: 21300000, guid: 198b80f2ee409924da018e85f2ff5f43, type: 3}
+      _levels:
+      - _value: 10
+        _price:
+          name: Coin
+          count: 100
+      - _value: 20
+        _price:
+          name: Coin
+          count: 200
+      - _value: 50
+        _price:
+          name: Coin
+          count: 500
+      - _value: 100
+        _price:
+          name: Coin
+          count: 1000
+      - _value: 200
+        _price:
+          name: Coin
+          count: 2000
+    - _name: Damage
+      _statType: 1
+      _icon: {fileID: 21300000, guid: 1f51cae13b8373b4b9b123991853a552, type: 3}
+      _levels:
+      - _value: 2
+        _price:
+          name: Coin
+          count: 200
+      - _value: 3
+        _price:
+          name: Coin
+          count: 400
+      - _value: 4
+        _price:
+          name: Coin
+          count: 800
+      - _value: 5
+        _price:
+          name: Coin
+          count: 2500
+      - _value: 6
+        _price:
+          name: Coin
+          count: 5000
+    - _name: RangeDamage
+      _statType: 2
+      _icon: {fileID: 21300000, guid: d273bdf06c5a268408c6129f554db3d1, type: 3}
+      _levels:
+      - _value: 2
+        _price:
+          name: Coin
+          count: 500
+      - _value: 3
+        _price:
+          name: Coin
+          count: 800
+      - _value: 4
+        _price:
+          name: Coin
+          count: 1600
+      - _value: 5
+        _price:
+          name: Coin
+          count: 3200
+      - _value: 6
+        _price:
+          name: Coin
+          count: 6500
+    - _name: Speed
+      _statType: 3
+      _icon: {fileID: 21300000, guid: 3478be75c73c0b74784964e33d4c680c, type: 3}
+      _levels:
+      - _value: 5
+        _price:
+          name: Coin
+          count: 100
+      - _value: 6
+        _price:
+          name: Coin
+          count: 500
+      - _value: 7
+        _price:
+          name: Coin
+          count: 1000
+      - _value: 8
+        _price:
+          name: Coin
+          count: 2000
+      - _value: 9
+        _price:
+          name: Coin
+          count: 4000
   _player:
     InventoryMaxCount: 7
     MaxHealth: 100

@@ -9,10 +9,13 @@ namespace GameData
     {
         [SerializeField] private InventoryData _inventory;
         [SerializeField] private PerkData _perks;
+        [SerializeField] private StatsData _stats;
+
+        public StatsData Stats => _stats;
 
         public PerkData Perks => _perks;
 
-        public IntPersistantProperty Health;
+        public IntStoredPersistantProperty Health;
 
         public InventoryData Inventory => _inventory;
 

@@ -11,7 +11,7 @@ namespace Creatures.Hero
         private GameSession _gameSession;
         private static readonly int Health = Animator.StringToHash("Health");
         private InventoryItemDef _poisonKey => _gameSession.QuickInventory.GetCurrentItemDef();
-        public override int MaxHealth => DefsFacade.Instance.Player.MaxHealth;
+        public override int MaxHealth => (int)_gameSession.StatsModel.GetLevel(StatsType.Health).Value;
 
         protected override int _currentHealth
         {
@@ -40,8 +40,8 @@ namespace Creatures.Hero
         public void HeroHeal()
         {
             if (_gameSession.PlayerData.Inventory.CountItem(_poisonKey.Name) < 1) return;
-            _gameSession.PlayerData.Inventory.RemoveItem(_poisonKey.Name, 1);
             var healAmount = (int)DefsFacade.Instance.Potion.GetItem(_poisonKey.Name).EffectValue;
+            _gameSession.PlayerData.Inventory.RemoveItem(_poisonKey.Name, 1);
             Heal(healAmount);
         }
         

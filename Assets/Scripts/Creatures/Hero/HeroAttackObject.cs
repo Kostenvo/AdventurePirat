@@ -15,10 +15,11 @@ namespace Creatures.Hero
 {
     public class HeroAttackObject : CheckAttackObjectBase
     {
-        [Header("SuperThrow")]
-        [SerializeField] private int _superThrowCount;
+        [Header("SuperThrow")] [SerializeField]
+        private int _superThrowCount;
+
         [SerializeField] private float _superThrowDelay;
-        
+
         [Header("Cooldowns")] [SerializeField] private Cooldown _attackCooldown;
         [SerializeField] private Cooldown _throwCooldown;
         [SerializeField] private Cooldown _SuperThrowingCooldown;
@@ -29,13 +30,16 @@ namespace Creatures.Hero
         [SerializeField] private RuntimeAnimatorController _armed;
         [SerializeField] private RuntimeAnimatorController _unarmed;
         [SerializeField] private SpawnListComponent _spawner;
-        [FormerlySerializedAs("_trowSpawner")] [SerializeField] private SpawnGo _throwSpawner;
+
+        [FormerlySerializedAs("_trowSpawner")] [SerializeField]
+        private SpawnGo _throwSpawner;
+
         [SerializeField] private AudioListComponent _audioList;
         private readonly int _attackKey = Animator.StringToHash("Attack");
         private readonly int _throwKey = Animator.StringToHash("Throw");
         private readonly string _throwAudioKey = "Range";
         private readonly string _attackAudioKey = "Melee";
-        
+
         private GameSession _gameSession;
         private int _swordCount => _gameSession.PlayerData.Inventory.CountItem("Sword");
 
@@ -49,7 +53,8 @@ namespace Creatures.Hero
         {
             _SuperThrowingCooldown.ResetCooldown();
         }
-        private InventoryItemData QiItem  => _gameSession.QuickInventory.GetCurrentItem();
+
+        private InventoryItemData QiItem => _gameSession.QuickInventory.GetCurrentItem();
         private InventoryItemDef DefItem => DefsFacade.Instance.Inventory.GetItem(QiItem.name);
 
         public bool CanThrow()
@@ -59,7 +64,8 @@ namespace Creatures.Hero
                 if (QiItem.name.Contains("Sword") && QiItem.count <= 1) return false;
                 if (QiItem.name.Contains("HeroPearl") && QiItem.count <= 0) return false;
                 return true;
-            }else return false;
+            }
+            else return false;
         }
 
         public void EndButtonThrow()
@@ -80,7 +86,7 @@ namespace Creatures.Hero
         {
             for (int i = 0; i < _superThrowCount; i++)
             {
-                if (CanThrow()) 
+                if (CanThrow())
                 {
                     Throw();
                     yield return new WaitForSeconds(_superThrowDelay);
@@ -99,6 +105,8 @@ namespace Creatures.Hero
             ChangeState();
             _throwCooldown.ResetCooldown();
         }
+
+        protected override int Damage => (int)_gameSession.StatsModel.GetLevel(StatsType.Damage).Value;
 
         public override void Attack()
         {

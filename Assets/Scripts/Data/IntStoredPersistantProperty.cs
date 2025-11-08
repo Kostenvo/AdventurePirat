@@ -1,7 +1,7 @@
 ﻿namespace Data
 {
     [System.Serializable]
-    public class IntPersistantProperty : PersistantProperty<int>
+    public class IntStoredPersistantProperty : StoredPersistantProperty<int>
     {
         protected override void SetValue(int value)
         {

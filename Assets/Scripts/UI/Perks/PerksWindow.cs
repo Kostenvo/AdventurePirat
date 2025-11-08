@@ -19,7 +19,7 @@ namespace UI.Perks
         [SerializeField] private UnityEngine.UI.Button _useButton;
         [SerializeField] private UnityEngine.UI.Button _buyButton;
 
-        private StringPersistantProperty _selectedPerk =>_session.PerksModel.SelectionPerk;
+        private StringStoredPersistantProperty _selectedPerk =>_session.PerksModel.SelectionPerk;
         private PredefinedItemController<PerkItem, PerkDef> _perks;
         private GameSession _session;
         private ComposideDisposible _trash = new ComposideDisposible();
