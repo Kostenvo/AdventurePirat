@@ -8,6 +8,8 @@ TagManager:
   - SFXSource
   - DialogBox
   - Canvas
+  - PersonalizedDialogBox
+  - OptionalDialogBox
   layers:
   - Default
   - TransparentFX

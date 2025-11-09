@@ -10,7 +10,7 @@ namespace UI.Dialog.Editor
 
         private void OnEnable()
         {
-            _showDialog = serializedObject.FindProperty("_dialogType");
+            _showDialog = serializedObject.FindProperty("_sentenceType");
         }
 
         public override void OnInspectorGUI()
@@ -19,15 +19,15 @@ namespace UI.Dialog.Editor
            // base.OnInspectorGUI();
             var enumNames = _showDialog.enumNames;
             var currentEnumString = enumNames[_showDialog.enumValueIndex];
-            var isGettingEnum = Enum.TryParse<DialogType>(currentEnumString, out DialogType currentEnum);
+            var isGettingEnum = Enum.TryParse<SentenceType>(currentEnumString, out SentenceType currentEnum);
             if (isGettingEnum)
             {
                 switch (currentEnum)
                 {
-                    case  DialogType.Dialog :
+                    case  SentenceType.Dialog :
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("_dialogData"));
                         break;
-                    case DialogType.Def :
+                    case SentenceType.Def :
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("_dialogDef"));
                         break;
                 }

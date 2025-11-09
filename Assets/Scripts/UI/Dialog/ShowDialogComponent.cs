@@ -1,12 +1,14 @@
 ﻿using System;
-using UI.Dialoge;
+using Sound.Extensions;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Object = UnityEngine.Object;
 
 namespace UI.Dialog
 {
     public class ShowDialogComponent : MonoBehaviour
     {
-        [SerializeField] private DialogType _dialogType;
+        [SerializeField] private SentenceType _sentenceType;
         [SerializeField] private DialogData _dialogData;
         [SerializeField] private DialogDef _dialogDef;
         private DialogBoxController _dialogBoxController;
@@ -15,11 +17,11 @@ namespace UI.Dialog
         {
             get
             {
-                switch (_dialogType)
+                switch (_sentenceType)
                 {
-                    case DialogType.Dialog:
+                    case SentenceType.Dialog:
                         return _dialogData;
-                    case DialogType.Def:
+                    case SentenceType.Def:
                         return _dialogDef._dialogData;
                     default: throw new NullReferenceException();
                 }
@@ -29,19 +31,32 @@ namespace UI.Dialog
 
         public void ShowDialog()
         {
-            if (_dialogBoxController == null) _dialogBoxController = FindAnyObjectByType<DialogBoxController>();
+            GameObject boxController;
+            switch (_dialogData.DialogType)
+            {
+                case DialogType.Personalized:
+                    boxController = GameObject.FindGameObjectWithTag("PersonalizedDialogBox");
+                    break;
+                case DialogType.Single:
+                    boxController = GameObject.FindGameObjectWithTag("DialogBox");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            _dialogBoxController = boxController.GetComponent<DialogBoxController>();
             _dialogBoxController.SetDialog(CurrentDialogData);
         }
 
         public void ShowDialogDef(DialogDef dialogDef)
         {
             _dialogDef = dialogDef;
-            _dialogType = DialogType.Def;
+            _sentenceType = SentenceType.Def;
             ShowDialog();
         }
     }
 
-    public enum DialogType
+    public enum SentenceType
     {
         Def,
         Dialog,

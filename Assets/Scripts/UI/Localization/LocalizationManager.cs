@@ -34,7 +34,7 @@ namespace UI.Localization
             _localeDictionary.Clear();
             foreach (var locale in localeDef.LocaleDefs)
             {
-                _localeDictionary.Add(locale.key, locale.value);
+                _localeDictionary.Add(locale._key, locale._value);
             }
         }
 

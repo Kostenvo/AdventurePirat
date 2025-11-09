@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
 using Sound.Extensions;
-using TMPro;
-using UI.Dialoge;
 using UnityEngine;
 
 namespace UI.Dialog
@@ -11,7 +9,7 @@ namespace UI.Dialog
     {
         private static readonly int ShowKey = Animator.StringToHash("Show");
         [SerializeField] private GameObject _dialogBox;
-        [SerializeField] private TextMeshProUGUI _dialogText;
+        [SerializeField] protected DialogContainer _dialog;
         [SerializeField] private Animator _animator;
         [SerializeField] private float _typingTime;
 
@@ -22,31 +20,29 @@ namespace UI.Dialog
         [SerializeField] private AudioClip _audioClose;
         private AudioSource _audioSource;
         
-        private DialogData _dialogData;
-        private int _dialogIndex;
+        protected DialogData _dialogData;
+        protected int _dialogIndex;
 
         private Coroutine _dialogCoroutine;
-
-        private void Start()
-        {
-           if(_audioSource == null) _audioSource = SoundExtensions.GetSfxAudioSourceSource();
-            _dialogText.text = String.Empty;
-        }
+        protected virtual DialogContainer CurrentDialog => _dialog;
 
         public void SetDialog(DialogData dialogData)
         {
+            _dialogIndex = 0;
             if(_audioSource == null) _audioSource = SoundExtensions.GetSfxAudioSourceSource();
             _dialogData = dialogData;
-            _dialogText.text = string.Empty;
-            _dialogBox.SetActive(true);
+            CurrentDialog.Text.text = string.Empty;
+            ShowDialogBox();
             _animator.SetBool(ShowKey, true);
         }
 
-   
+        protected virtual void ShowDialogBox()
+        {
+            _dialogBox.SetActive(true);
+        }
 
         private void OnShowAnimation()
         {
-            _dialogIndex = 0;
             _audioSource.PlayOneShot(_audioOpen);
             Typing();
         }
@@ -56,7 +52,7 @@ namespace UI.Dialog
         {
             if(_dialogCoroutine == null) return;
             StopCoroutine(_dialogCoroutine);
-            _dialogText.text = _dialogData.Text[_dialogIndex];
+            CurrentDialog.Text.text = _dialogData.Sentence[_dialogIndex].Text;
             _dialogCoroutine = null;
         }
 
@@ -66,7 +62,7 @@ namespace UI.Dialog
             else
             {
                 _dialogIndex++;
-                if (_dialogIndex < _dialogData.Text.Length)
+                if (_dialogIndex < _dialogData.Sentence.Length)
                 {
                     Typing();
                 }
@@ -80,26 +76,28 @@ namespace UI.Dialog
 
         private void Typing()
         {
-            _dialogText.text = string.Empty;
+            CurrentDialog.Text.text = string.Empty;
+            CurrentDialog.TrySetIcon(_dialogData.Sentence[_dialogIndex].Icon);
+            ShowDialogBox();
            _dialogCoroutine = StartCoroutine(StartTyping());
         }
 
         private IEnumerator StartTyping()
         {
-            var currentSentence = _dialogData.Text[_dialogIndex];
+            var currentSentence = _dialogData.Sentence[_dialogIndex].Text;
             foreach (var typingText in currentSentence)
             {
-                _dialogText.text += typingText;
+                CurrentDialog.Text.text += typingText;
                 _audioSource.PlayOneShot(_audioTyping);
                 yield return new WaitForSeconds(_typingTime);
             }
             _dialogCoroutine = null;
         }
 
-        private void OnClose()
+        protected virtual void OnClose()
         {
             _dialogBox.SetActive(false);
-            _dialogText.text = string.Empty;
+            // CurrentDialog.Text.text = string.Empty;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -31,9 +33,24 @@ namespace UI.Localization
             if (operation.isDone)
             {
                 var getLocale = _request.downloadHandler.text;
-                var parseOnRaw = getLocale.Split("\n");
-                ParseLocale(parseOnRaw);
+                ParseText(getLocale);
             }
+        }
+#if UNITY_EDITOR
+
+        [ContextMenu("GetLocaleFormFile")]
+        public void UpdateLocaleFormFile()
+        {
+            var getLocalePath = EditorUtility.OpenFilePanel("Get Locale", Application.dataPath, "tsv");
+            var getLocale = File.ReadAllText(getLocalePath);
+            ParseText(getLocale);
+        }
+#endif
+        private void ParseText(string getLocale)
+        {
+            _localeDefs.Clear();
+            var parseOnRaw = getLocale.Split("\n");
+            ParseLocale(parseOnRaw);
         }
 
         private void ParseLocale(string[] locales)
@@ -43,7 +60,7 @@ namespace UI.Localization
                 foreach (var locale in locales)
                 {
                     var parseLocale = locale.Split("\t");
-                    _localeDefs.Add(new Locale() { key = parseLocale[0], value = parseLocale[1] });
+                    _localeDefs.Add(new Locale() { _key = parseLocale[0], _value = parseLocale[1] });
                 }
             }
             catch (Exception e)
@@ -57,7 +74,7 @@ namespace UI.Localization
     [Serializable]
     public struct Locale
     {
-        public string key;
-        public string value;
+        public string _key;
+        public string _value;
     }
 }

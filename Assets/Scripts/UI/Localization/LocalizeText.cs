@@ -6,26 +6,23 @@ using UnityEngine;
 namespace UI.Localization
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class LocalizeText : MonoBehaviour
+    public class LocalizeText : BaseLocalize
     {
         [SerializeField] private string _key;
         [SerializeField] private TextMeshProUGUI _text;
-        ComposideDisposible _trash = new ComposideDisposible();
+        
 
-        private void Start()
+        protected override void Start()
         {
             _text  = _text?? GetComponent<TextMeshProUGUI>();
-           _trash.Retain( LocalizationManager.Instance.CurrentLocale.SubscribeAndInvoke(ChangeLocale));
+            base.Start();
         }
 
-        private void ChangeLocale(string newvalue, string oldvalue)
+        protected override void ChangeLocale()
         {
             _text.text = LocalizationManager.Instance.GetLocalizeText(_key);
         }
 
-        private void OnDestroy()
-        {
-            _trash.Dispose();
-        }
+        
     }
 }

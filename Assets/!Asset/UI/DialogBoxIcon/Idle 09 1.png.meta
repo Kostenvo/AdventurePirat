@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb3959d9224d44d4abd5ad8043f5432d
+guid: c509c9ddbb327934e927f356d45af599
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,13 +43,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
-  spriteBorder: {x: 13, y: 14, z: 13, w: 17}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -149,23 +149,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fall 01_0
+      name: Idle 09 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 52
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        y: 4
+        width: 29
+        height: 26
+      alignment: 9
+      pivot: {x: 0.55487204, y: 0.10217753}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bff020c132cb07cb0800000000000000
-      internalID: -4868184338207731717
+      spriteID: 8a63215f2c579c04aa6c0ffd7eebc2ea
+      internalID: -1562616145
       vertices: []
       indices: 
       edges: []
@@ -175,7 +175,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -185,6 +185,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Fall 01_0: -4868184338207731717
+      Idle 09 1_0: -1562616145
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

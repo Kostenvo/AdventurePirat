@@ -30,6 +30,7 @@ namespace GameData
         private QuickInventoryModel _quickInventory;
 
         private List<string> _checkPoints = new List<string>();
+       
 
         private void Awake()
         {
@@ -47,6 +48,16 @@ namespace GameData
                 DontDestroyOnLoad(this.gameObject);
             }
         }
+
+        public void StoreGo(string id)
+        {
+            if (!_playerData._storedGo.Contains(id))
+            {
+                _playerData._storedGo.Add(id);
+            }
+        }
+
+        public bool IsStoredGo(string id) => _playerData._storedGo.Contains(id);
 
         private void InitUI()
         {

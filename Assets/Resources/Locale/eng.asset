@@ -27,7 +27,7 @@ MonoBehaviour:
   - key: game_menu_title
     value: "game menu\r"
   - key: selected_language
-    value: "selected language is {0}\r"
+    value: "select language\r"
   - key: button_back
     value: "back\r"
   - key: button_locales
@@ -46,8 +46,10 @@ MonoBehaviour:
     value: "Health\r"
   - key: Speed
     value: "Speed\r"
-  - key: RangeDamege
-    value: "Range Damege\r"
+  - key: Damage
+    value: "Damage\r"
+  - key: RangeDamage
+    value: "Range Damage\r"
   - key: button_upgrade
     value: "Upgrade\r"
   - key: crabby-teacher-sentence-0
