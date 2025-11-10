@@ -1,7 +1,7 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Camera
+namespace CameraSet
 {
     public class SetTargetForShowCamera : MonoBehaviour
     {

@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.Localization.LocaleDef
   _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vTVIW63o6AIn1FXoJYs4kIs2GZKVOzdV4eCupKSHJY6jiaDQTjH-TlK-eKcCeBCzpQChtF4pF5LWZQz/pub?gid=1047503156&single=true&output=tsv
   _localeDefs:
-  - key: meny_title
-    value: "men\xFC\r"
-  - key: button_start
-    value: "comeienzo\r"
-  - key: button_option
-    value: "opciones\r"
-  - key: button_exit
-    value: "salida\r"
-  - key: selected_language
-    value: "Idioma seleccionado: {0}\r"
-  - key: button_back
-    value: "back\r"
-  - key: button_locales
-    value: languages
+  - _key: meny_title
+    _value: "men\xFC\r"
+  - _key: button_start
+    _value: "comeienzo\r"
+  - _key: button_option
+    _value: "opciones\r"
+  - _key: button_exit
+    _value: "salida\r"
+  - _key: selected_language
+    _value: "Idioma seleccionado: {0}\r"
+  - _key: button_back
+    _value: "back\r"
+  - _key: button_locales
+    _value: languages

@@ -1,10 +1,8 @@
-﻿using System;
-using Creatures.Hero;
+﻿using Creatures.Hero;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Camera
+namespace CameraSet
 {
     [RequireComponent(typeof(CinemachineCamera))]
     public class CameraSetTarget : MonoBehaviour

@@ -1,4 +1,5 @@
-﻿using Subscribe;
+﻿using System.Collections.Generic;
+using Subscribe;
 using UnityEngine;
 
 namespace Data
@@ -10,12 +11,7 @@ namespace Data
         private bool _loaded;
         
         
-        public override ActionDisposable SubscribeAndInvoke(OnValueChanged onValueChanged)
-        {
-            ValueChanged += onValueChanged;
-            onValueChanged.Invoke(_value, _storedValue);
-            return new ActionDisposable(() => ValueChanged -= onValueChanged);
-        }
+        
 
         public override TProperty Value
         {
@@ -36,7 +32,7 @@ namespace Data
                     _storedValue = _value = value;
                     _loaded = true;
                 }
-                if (_storedValue.Equals(value)) return;
+                if (EqualityComparer<TProperty>.Default.Equals(_storedValue, value)) return;
                 var oldValue = _storedValue;
                 _value = _storedValue = value;
                 SetValue(_value);

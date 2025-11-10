@@ -1,6 +1,4 @@
-﻿using System;
-using Subscribe;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace UI.Localization

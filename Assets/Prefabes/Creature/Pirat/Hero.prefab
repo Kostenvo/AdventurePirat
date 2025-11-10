@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 4108548580237463246}
   - component: {fileID: 4822166252454341912}
   - component: {fileID: 6268858700894369516}
+  - component: {fileID: 5986214674960646399}
   m_Layer: 3
   m_Name: Hero
   m_TagString: Player
@@ -153,6 +154,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4998043068735762638}
   - {fileID: 5953008891239819688}
   - {fileID: 932487001079842995}
   - {fileID: 178505612723528673}
@@ -347,7 +349,7 @@ MonoBehaviour:
   _animator: {fileID: 4108548580237463246}
   _audioList: {fileID: 5284591065254702252}
   _spawnListComponent: {fileID: 8209307538008347031}
-  cooldown:
+  _cooldown:
     _cooldownTime: 0
 --- !u!114 &134745492763230428
 MonoBehaviour:
@@ -502,6 +504,59 @@ MonoBehaviour:
   _coinParticle: {fileID: 1298244051147908543}
   _probabilityDropComponent: {fileID: 100843000905520616}
   _heroAttackObject: {fileID: 8524899238062524053}
+--- !u!114 &5986214674960646399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358055760198012537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.ShadowCaster2D
+  m_ShadowGroup: 0
+  m_Priority: 10
+  m_ComponentVersion: 5
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_AlphaCutoff: 0.064
+  m_ApplyToSortingLayers: 9fee73fc93413f8f456749600000000093045c78
+  m_ShapePath:
+  - {x: -1, y: -0.625, z: 0}
+  - {x: -1, y: 0.625, z: 0}
+  - {x: 0.16656226, y: 0.47113454, z: 0}
+  - {x: 0.22639877, y: -0.31299508, z: 0}
+  m_ShapePathHash: 772504341
+  m_InstanceId: 0
+  m_ShadowShape2DComponent: {fileID: 2184807272373671385}
+  m_ShadowShape2DProvider:
+    rid: 502548518300024971
+  m_ShadowCastingSource: 2
+  m_ShadowMesh:
+    m_Mesh: {fileID: 0}
+    m_LocalBounds:
+      m_Center: {x: 0.001121521, y: 0.028381348, z: 0}
+      m_Extent: {x: 0.23885345, y: 0.37034607, z: 0}
+    m_EdgeProcessing: 1
+    m_TrimEdge: 0.03
+    m_FlipX: 0
+    m_FlipY: 0
+    m_InitialTrim: 0
+  m_CastingOption: 1
+  m_PreviousTrimEdge: 0.03
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowShape2DSource: {fileID: 2184807272373671385}
+  references:
+    version: 2
+    RefIds:
+    - rid: 502548518300024971
+      type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
+      data: 
 --- !u!1 &2596199940236979389
 GameObject:
   m_ObjectHideFlags: 0
@@ -5823,6 +5878,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 7561442786300892686}
   _prefab: {fileID: 3012840826529112640, guid: d1812da6c2cf63943817219b6ee1efdc, type: 3}
+--- !u!1001 &8310379877667124200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3410733804051077928}
+    m_Modifications:
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.417
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5062889518224286130, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577715466160591505, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_Name
+      value: CandleHero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629655794683757770, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_ShadowsEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672961269565688005, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+--- !u!4 &4998043068735762638 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+  m_PrefabInstance: {fileID: 8310379877667124200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8718548044891509742
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ namespace UI.Localization
     public class LocalizationManager
     {
         public static readonly LocalizationManager Instance;
-        public StoredStringPersistentProperty CurrentLocale;
+        public StoredStringPersistentProperty CurrentLocale = new StoredStringPersistentProperty();
         private Dictionary<string, string> _localeDictionary = new Dictionary<string, string>();
         private ComposideDisposible _trash = new ComposideDisposible();
 
@@ -16,7 +16,6 @@ namespace UI.Localization
 
         public LocalizationManager()
         {
-            CurrentLocale = new StoredStringPersistentProperty();
             InitLocale();
         }
 
@@ -34,11 +33,17 @@ namespace UI.Localization
             _localeDictionary.Clear();
             foreach (var locale in localeDef.LocaleDefs)
             {
-                _localeDictionary.Add(locale._key, locale._value);
+				if (string.IsNullOrEmpty(locale._key)) 
+					continue;
+				
+				// Use upsert to avoid KeyAlreadyExists when there are duplicate keys in the file
+				_localeDictionary[locale._key] = locale._value ?? string.Empty;
             }
         }
 
         public string GetLocalizeText(string key) =>
             _localeDictionary.TryGetValue(key, out string value) ? value : $"###{key}###";
+        
+        
     }
 }
