@@ -17,6 +17,7 @@ namespace Creatures.Hero
         [SerializeField] private HeroAttackObject _attack;
         [SerializeField] private HeroHealthComponent _health;
         [SerializeField] private HeroInventory _inventory;
+        [SerializeField] private ShieldComponent _shield;
         private InputSystem_Actions _actions;
         
         private ComposideDisposible trash = new ComposideDisposible();
@@ -51,6 +52,12 @@ namespace Creatures.Hero
             trash.SubscribeInputStarted(_actions.Player.Throw, OnTrowStartecHandler);
             trash.SubscribeInputCanceled(_actions.Player.Throw, OnThrowCanceledHandler);
             trash.SubscribeInputPreformed(_actions.Player.NextItem, OnNextItemPerformedHandler);
+            trash.SubscribeInputPreformed(_actions.Player.UseShield, OnUseShieldHandler);
+        }
+
+        private void OnUseShieldHandler(InputAction.CallbackContext obj)
+        {
+            _shield.UseShield();
         }
 
         private void OnDisable()

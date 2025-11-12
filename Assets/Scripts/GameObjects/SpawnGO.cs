@@ -17,6 +17,15 @@ namespace GameObjects
             go.transform.localScale = transform.lossyScale; 
         }
 
+        public GameObject SpawnGO()
+        {
+            if (!_spawnPoint) _spawnPoint = transform;
+            GameObject go = SpawnExtensions.SpawnInParticleContainer(_prefab, _spawnPoint);
+            go.SetActive(true);
+            go.transform.localScale = transform.lossyScale; 
+            return go;
+        }
+
 
         public void SetPrefabe(GameObject throwableTrowItem)
         {

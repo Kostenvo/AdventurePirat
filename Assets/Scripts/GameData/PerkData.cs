@@ -9,11 +9,10 @@ namespace GameData
     [Serializable]
     public class PerkData
     {
-        [SerializeField] private string _activePerk;
+        [SerializeField] private PersistantProperty<string> _activePerk = new PersistantProperty<string>();
         [SerializeField] private List<string> UnlockedPerks = new List<string>();
-
-
-        public string ActivePerk => _activePerk;
+        
+        public PersistantProperty<string> ActivePerk => _activePerk;
 
         public void AddPerk(string perk)
         {
@@ -27,7 +26,7 @@ namespace GameData
         {
             if (UnlockedPerks.Contains(perk))
             {
-                _activePerk = perk;
+                _activePerk.Value = perk;
             }
         }
 

@@ -8,7 +8,7 @@ namespace Definitions
         [SerializeField] private TDefType[] _collections;
         
         public TDefType GetItem(string itemName) =>
-            _collections.FirstOrDefault(x => x.Name.Contains(itemName));
+            _collections.FirstOrDefault(x => x.Name == (itemName));
 
         public TDefType[] Items => _collections;
 

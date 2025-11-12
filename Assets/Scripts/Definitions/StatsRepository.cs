@@ -42,6 +42,7 @@ namespace Definitions
         Health,
         Damage,
         RangeDamage,
+        CriticalDamage,
         Speed,
     }
 }

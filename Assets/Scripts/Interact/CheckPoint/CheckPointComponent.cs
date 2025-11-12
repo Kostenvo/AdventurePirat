@@ -21,7 +21,7 @@ namespace Interact.CheckPoint
         private void Start()
         {
             _spriteAnimationComponent = _spriteAnimationComponent?? GetComponent<SpriteAnimationComponent>();
-            _gameSession = _gameSession?? FindObjectOfType<GameSession>();
+            _gameSession = _gameSession?? FindFirstObjectByType<GameSession>();
             var isCheked = _gameSession.IsCheckpointChecked(_checkPointName);
              SetStatus(isCheked);
         }

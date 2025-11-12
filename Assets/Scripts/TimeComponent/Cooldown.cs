@@ -8,13 +8,16 @@ namespace TimeComponent
     {
         [SerializeField] private float _cooldownTime;
         private float _nextCooldownTime;
+
         public Cooldown(float cooldownTime)
         {
             _cooldownTime = cooldownTime;
         }
+
         public void ResetCooldown() => _nextCooldownTime = Time.time + _cooldownTime;
         public bool IsReady() => Time.time >= _nextCooldownTime;
-        
         public void AddTimeCooldown() => _nextCooldownTime += _cooldownTime;
+        public void SetTimeCooldown(float newTime) => _cooldownTime = newTime;
+        public float RemainingTime() => Math.Max(0, _nextCooldownTime - Time.time);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Definitions;
 using GameData;
 using Scripts.Creatures;
+using TimeComponent;
 using UnityEngine;
 
 namespace Creatures.Hero
@@ -12,6 +13,7 @@ namespace Creatures.Hero
         private static readonly int Health = Animator.StringToHash("Health");
         private InventoryItemDef _poisonKey => _gameSession.QuickInventory.GetCurrentItemDef();
         public override int MaxHealth => (int)_gameSession.StatsModel.GetLevel(StatsType.Health).Value;
+        private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
 
         protected override int _currentHealth
         {
@@ -27,6 +29,7 @@ namespace Creatures.Hero
 
         protected override void Damage(int amount)
         {
+            if (_gameSession.PerksModel.IsActivePerk("Shield") && !PerkCooldown.IsReady()) return;
             base.Damage(amount);
             _animator.SetInteger(Health, _currentHealth);
         }

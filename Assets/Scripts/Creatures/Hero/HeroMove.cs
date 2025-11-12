@@ -12,10 +12,11 @@ namespace Creatures.Hero
         [SerializeField] private Cooldown _cooldown;
         private GameSession _gameSession;
         private PotionDef _currentPotionDef;
-        private bool isDoubleJump = true;
+        private bool _isDoubleJump = true;
         private ComposideDisposible _trash = new ComposideDisposible();
+        private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
 
-        private void ActivateDoubleJump() => isDoubleJump = true;
+        private void ActivateDoubleJump() => _isDoubleJump = true;
 
         private void Start()
         {
@@ -73,11 +74,12 @@ namespace Creatures.Hero
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
                     PlayFx();
                 }
-                else if (_gameSession.PerksModel.IsActivePerk("SuppreJamp") && isDoubleJump && rb.linearVelocity.y < minimumValueForJump)
+                else if (_gameSession.PerksModel.IsActivePerk("SuppreJamp") && PerkCooldown.IsReady() && _isDoubleJump && rb.linearVelocity.y < minimumValueForJump)
                 {
                     PlayFx();
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
-                    isDoubleJump = false;
+                    _isDoubleJump = false;
+                    PerkCooldown.ResetCooldown();
                 }
             }
             else if (!isDamage && rb.linearVelocity.y > minimumValueForJump)

@@ -2,19 +2,30 @@
 using Data;
 using Definitions;
 using Subscribe;
+using TimeComponent;
 using UnityEngine;
 
 namespace GameData
 {
-    public class PerkModel
+    public class PerkModel 
     {
         private StringStoredPersistantProperty _selectionPerk;
-
         public StringStoredPersistantProperty SelectionPerk => _selectionPerk;
 
         private PlayerData _playerData;
 
         private Action _perkChange;
+
+        private Cooldown _cooldownPerk = new Cooldown(1);
+
+        public Cooldown CooldownPerk => _cooldownPerk;
+
+        public string ActivePerk => _playerData.Perks.ActivePerk.Value;
+
+        public ActionDisposable SubscribeToActivePerk(PersistantProperty<string>.OnValueChanged onValueChanged)
+        {
+           return _playerData.Perks.ActivePerk.Subscribe(onValueChanged) ;
+        }
 
         public ActionDisposable Subscribe(Action perkChange)
         {
@@ -26,10 +37,11 @@ namespace GameData
         {
             _playerData = playerData;
             _selectionPerk = new StringStoredPersistantProperty();
+            _playerData.Perks.ActivePerk.Value ??=  "";
         }
 
 
-        public bool IsActivePerk(string perk) => perk == _playerData.Perks.ActivePerk;
+        public bool IsActivePerk(string perk) => perk == _playerData.Perks.ActivePerk.Value;
 
         public void BuyPerk(string perkName)
         {
@@ -59,5 +71,6 @@ namespace GameData
             var perkDef = DefsFacade.Instance.Perks.GetItem(perkName);
             return _playerData.Inventory.IsEnoughItem(perkDef.Price);
         }
+        
     }
 }

@@ -58,17 +58,26 @@ MonoBehaviour:
   _perks:
     _collections:
     - _name: SuppreJamp
-      _description: This is supper jamp perk
+      _description: This is Supper jamp perk
       _iconImage: {fileID: 21300000, guid: 1641ba70fc353b049a558b21a30a84ae, type: 3}
       _price:
         name: GreenDiamand
         count: 10
+      _cooldown: 5
     - _name: SuppreThrow
-      _description: This is supper throw perk
+      _description: This is Supper throw perk
       _iconImage: {fileID: 21300000, guid: 8884376817273464eaea71670e3a7cc5, type: 3}
       _price:
         name: GreenDiamand
         count: 20
+      _cooldown: 10
+    - _name: Shield
+      _description: This is Shild perk
+      _iconImage: {fileID: 21300000, guid: 2bea5e025f642fe42aa35c5eb5571b25, type: 3}
+      _price:
+        name: GreenDiamand
+        count: 20
+      _cooldown: 20
   _statsRepository:
     _collections:
     - _name: Health
@@ -143,8 +152,32 @@ MonoBehaviour:
         _price:
           name: Coin
           count: 6500
-    - _name: Speed
+    - _name: CriticalDamage
       _statType: 3
+      _icon: {fileID: 21300000, guid: 43d4b06c7ee86454b947b7d350c7ac9e, type: 3}
+      _levels:
+      - _value: 10
+        _price:
+          name: Coin
+          count: 500
+      - _value: 20
+        _price:
+          name: Coin
+          count: 800
+      - _value: 30
+        _price:
+          name: Coin
+          count: 1600
+      - _value: 50
+        _price:
+          name: Coin
+          count: 3200
+      - _value: 70
+        _price:
+          name: Coin
+          count: 6500
+    - _name: Speed
+      _statType: 4
       _icon: {fileID: 21300000, guid: 3478be75c73c0b74784964e33d4c680c, type: 3}
       _levels:
       - _value: 5

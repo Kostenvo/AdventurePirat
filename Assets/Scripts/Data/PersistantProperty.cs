@@ -8,6 +8,7 @@ namespace Data
         [SerializeField] protected TProperty _value;
         
         public  delegate void OnValueChanged(TProperty newValue, TProperty oldValue);
+        
 
         public event OnValueChanged ValueChanged;  
         
@@ -42,5 +43,7 @@ namespace Data
         {
             ValueChanged?.Invoke(_value, oldValue);
         }
+
+ 
     }
 }

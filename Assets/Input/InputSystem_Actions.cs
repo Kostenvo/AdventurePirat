@@ -143,7 +143,7 @@ namespace PlayerInput
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -152,7 +152,7 @@ namespace PlayerInput
                     ""name"": ""Previous"",
                     ""type"": ""Button"",
                     ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -161,7 +161,7 @@ namespace PlayerInput
                     ""name"": ""Next"",
                     ""type"": ""Button"",
                     ""id"": ""b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -170,7 +170,7 @@ namespace PlayerInput
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -188,6 +188,15 @@ namespace PlayerInput
                     ""name"": ""OnDrop"",
                     ""type"": ""Button"",
                     ""id"": ""11e6905f-b4de-4827-9bca-59ccf3b08b47"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseShield"",
+                    ""type"": ""Button"",
+                    ""id"": ""a67621aa-981a-4b3a-88b5-3fb66e96b987"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -623,6 +632,17 @@ namespace PlayerInput
                     ""action"": ""OnDrop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcf4ac5d-50c2-4d9c-9988-c7087bd2439c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1219,6 +1239,7 @@ namespace PlayerInput
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
             m_Player_NextItem = m_Player.FindAction("NextItem", throwIfNotFound: true);
             m_Player_OnDrop = m_Player.FindAction("OnDrop", throwIfNotFound: true);
+            m_Player_UseShield = m_Player.FindAction("UseShield", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1323,6 +1344,7 @@ namespace PlayerInput
         private readonly InputAction m_Player_Sprint;
         private readonly InputAction m_Player_NextItem;
         private readonly InputAction m_Player_OnDrop;
+        private readonly InputAction m_Player_UseShield;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1378,6 +1400,10 @@ namespace PlayerInput
             /// Provides access to the underlying input action "Player/OnDrop".
             /// </summary>
             public InputAction @OnDrop => m_Wrapper.m_Player_OnDrop;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/UseShield".
+            /// </summary>
+            public InputAction @UseShield => m_Wrapper.m_Player_UseShield;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1437,6 +1463,9 @@ namespace PlayerInput
                 @OnDrop.started += instance.OnOnDrop;
                 @OnDrop.performed += instance.OnOnDrop;
                 @OnDrop.canceled += instance.OnOnDrop;
+                @UseShield.started += instance.OnUseShield;
+                @UseShield.performed += instance.OnUseShield;
+                @UseShield.canceled += instance.OnUseShield;
             }
 
             /// <summary>
@@ -1481,6 +1510,9 @@ namespace PlayerInput
                 @OnDrop.started -= instance.OnOnDrop;
                 @OnDrop.performed -= instance.OnOnDrop;
                 @OnDrop.canceled -= instance.OnOnDrop;
+                @UseShield.started -= instance.OnUseShield;
+                @UseShield.performed -= instance.OnUseShield;
+                @UseShield.canceled -= instance.OnUseShield;
             }
 
             /// <summary>
@@ -1858,6 +1890,13 @@ namespace PlayerInput
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnOnDrop(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "UseShield" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnUseShield(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

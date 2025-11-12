@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using Creatures.Definitions;
+﻿using System.Collections;
 using Data;
 using Definitions;
 using GameData;
@@ -22,7 +20,7 @@ namespace Creatures.Hero
 
         [Header("Cooldowns")] [SerializeField] private Cooldown _attackCooldown;
         [SerializeField] private Cooldown _throwCooldown;
-        [SerializeField] private Cooldown _SuperThrowingCooldown;
+        [SerializeField] private Cooldown _superThrowingCooldown;
 
         [Header("Animations")] [SerializeField]
         private Animator _animator;
@@ -39,6 +37,7 @@ namespace Creatures.Hero
         private readonly int _throwKey = Animator.StringToHash("Throw");
         private readonly string _throwAudioKey = "Range";
         private readonly string _attackAudioKey = "Melee";
+        private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
 
         private GameSession _gameSession;
         private int _swordCount => _gameSession.PlayerData.Inventory.CountItem("Sword");
@@ -51,7 +50,7 @@ namespace Creatures.Hero
 
         public void StartButtonThrow()
         {
-            _SuperThrowingCooldown.ResetCooldown();
+            if (_gameSession.PerksModel.IsActivePerk("SuppreThrow")) _superThrowingCooldown.ResetCooldown();
         }
 
         private InventoryItemData QiItem => _gameSession.QuickInventory.GetCurrentItem();
@@ -72,7 +71,8 @@ namespace Creatures.Hero
         {
             if (!CanThrow()) return;
             if (!_throwCooldown.IsReady()) return;
-            if (_gameSession.PerksModel.IsActivePerk("SuppreThrow") && _SuperThrowingCooldown.IsReady())
+            if (_gameSession.PerksModel.IsActivePerk("SuppreThrow") && _superThrowingCooldown.IsReady() &&
+                PerkCooldown.IsReady())
             {
                 StartCoroutine(SuperTrowingCoroutine());
             }
@@ -92,18 +92,34 @@ namespace Creatures.Hero
                     yield return new WaitForSeconds(_superThrowDelay);
                 }
             }
+
+            PerkCooldown.ResetCooldown();
         }
 
         public void Throw()
         {
             var throwable = DefsFacade.Instance.ThrowableItem.GetItem(QiItem.name);
             _throwSpawner.SetPrefabe(throwable.TrowItem);
-            _throwSpawner.Spawn();
+            var damage = _throwSpawner.SpawnGO().GetComponent<HealthChangeComponent>();
+            damage.ChangeDamage(- ThrowableDamage());
             _audioList.Play(_throwAudioKey);
             _gameSession.PlayerData.Inventory.RemoveItem(QiItem.name, 1);
             _animator.SetTrigger(_throwKey);
             ChangeState();
             _throwCooldown.ResetCooldown();
+        }
+
+        private int ThrowableDamage()
+        {
+            var damage = (int)_gameSession.StatsModel.GetLevel(StatsType.RangeDamage).Value;
+            return CriticalDamage(damage);
+        }
+
+        private int CriticalDamage(int damage)
+        {
+            var chance = Random.Range(0, 100);
+            var crit = (int)_gameSession.StatsModel.GetLevel(StatsType.CriticalDamage).Value;
+            return chance < crit ? damage * 2 : damage;
         }
 
         protected override int Damage => (int)_gameSession.StatsModel.GetLevel(StatsType.Damage).Value;

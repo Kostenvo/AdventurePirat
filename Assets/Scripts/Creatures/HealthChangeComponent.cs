@@ -10,5 +10,10 @@ namespace Creatures
         {
             objectWithHealth.GetComponent<IHealthChangeComponent>()?.ChangeHealth(_healthChangeAmount);
         }
+
+        public void ChangeDamage(int damage)
+        {
+            _healthChangeAmount = damage;
+        }
     }
 }
