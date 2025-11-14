@@ -11,7 +11,8 @@ namespace Level
             var currentSession = FindAnyObjectByType<GameSession>();
             currentSession.Load();
             var scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            var levelLoader = FindAnyObjectByType<LevelLoader>();
+            levelLoader.LoadWithLoader(scene.name);
         }
     }
 }

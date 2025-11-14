@@ -1,4 +1,5 @@
-﻿using Definitions;
+﻿using CameraSet;
+using Definitions;
 using GameData;
 using Scripts.Creatures;
 using TimeComponent;
@@ -14,6 +15,7 @@ namespace Creatures.Hero
         private InventoryItemDef _poisonKey => _gameSession.QuickInventory.GetCurrentItemDef();
         public override int MaxHealth => (int)_gameSession.StatsModel.GetLevel(StatsType.Health).Value;
         private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
+        private ShakeCamera _shakeCamera;
 
         protected override int _currentHealth
         {
@@ -25,12 +27,14 @@ namespace Creatures.Hero
         {
             _gameSession = FindAnyObjectByType<GameSession>();
             _currentHealth = _gameSession.PlayerData.Health.Value;
+            _shakeCamera = FindAnyObjectByType<ShakeCamera>();
         }
 
         protected override void Damage(int amount)
         {
             if (_gameSession.PerksModel.IsActivePerk("Shield") && !PerkCooldown.IsReady()) return;
             base.Damage(amount);
+            _shakeCamera?.Shake();
             _animator.SetInteger(Health, _currentHealth);
         }
 

@@ -59,5 +59,8 @@ TagManager:
   - name: Foreground
     uniqueID: 2019296403
     locked: 0
+  - name: BloodSplash
+    uniqueID: 3126924223
+    locked: 0
   m_RenderingLayers:
   - Default

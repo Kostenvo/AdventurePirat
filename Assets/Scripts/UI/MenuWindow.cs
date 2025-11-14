@@ -1,4 +1,5 @@
 ﻿using System;
+using Level;
 using UnityEditor;
 using UnityEditor.Actions;
 using UnityEngine;
@@ -13,7 +14,11 @@ namespace UI
 
         public void StartGameButton()
         {
-            _onClose += () => SceneManager.LoadScene("Level_1");
+            _onClose += () =>
+            {
+                var levelLoader = FindAnyObjectByType<LevelLoader>();
+                levelLoader.LoadWithLoader("Level_1");
+            };
             CloseButton();
         }
 

@@ -10,8 +10,9 @@ namespace Level
         public void LoadLevel()
         {
             var currentSession = FindAnyObjectByType<GameSession>();
+            var levelLoader = FindAnyObjectByType<LevelLoader>();
             currentSession.Save();
-            SceneManager.LoadScene(_nextLevelName);
+            levelLoader.LoadWithLoader(_nextLevelName);
         }
     }
 }
