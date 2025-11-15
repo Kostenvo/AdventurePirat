@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using Sound.Extensions;
+using UI.Localization;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UI.Dialog
 {
@@ -24,14 +26,17 @@ namespace UI.Dialog
         protected int _dialogIndex;
 
         private Coroutine _dialogCoroutine;
+        private UnityEvent _onDialogFinished;
         protected virtual DialogContainer CurrentDialog => _dialog;
 
-        public void SetDialog(DialogData dialogData)
+        public void SetDialog(DialogData dialogData, UnityEvent onDialogFinished)
         {
+            _onDialogFinished = onDialogFinished;
             _dialogIndex = 0;
             if(_audioSource == null) _audioSource = SoundExtensions.GetSfxAudioSourceSource();
             _dialogData = dialogData;
             CurrentDialog.Text.text = string.Empty;
+            CurrentDialog.TrySetIcon(_dialogData.Sentence[_dialogIndex].Icon);
             ShowDialogBox();
             _animator.SetBool(ShowKey, true);
         }
@@ -51,8 +56,10 @@ namespace UI.Dialog
         public void OnSkip()
         {
             if(_dialogCoroutine == null) return;
-            StopCoroutine(_dialogCoroutine);
-            CurrentDialog.Text.text = _dialogData.Sentence[_dialogIndex].Text;
+            StopCoroutine(_dialogCoroutine); 
+            var sentenceKey = _dialogData.Sentence[_dialogIndex].Text;
+            var currentSentence= LocalizationManager.Instance.GetLocalizeText(sentenceKey);
+            CurrentDialog.Text.text = currentSentence;
             _dialogCoroutine = null;
         }
 
@@ -84,7 +91,8 @@ namespace UI.Dialog
 
         private IEnumerator StartTyping()
         {
-            var currentSentence = _dialogData.Sentence[_dialogIndex].Text;
+            var sentenceKey = _dialogData.Sentence[_dialogIndex].Text;
+            var currentSentence= LocalizationManager.Instance.GetLocalizeText(sentenceKey);
             foreach (var typingText in currentSentence)
             {
                 CurrentDialog.Text.text += typingText;
@@ -96,6 +104,7 @@ namespace UI.Dialog
 
         protected virtual void OnClose()
         {
+            _onDialogFinished?.Invoke();
             _dialogBox.SetActive(false);
             // CurrentDialog.Text.text = string.Empty;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Sound.Extensions;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
@@ -11,6 +12,7 @@ namespace UI.Dialog
         [SerializeField] private SentenceType _sentenceType;
         [SerializeField] private DialogData _dialogData;
         [SerializeField] private DialogDef _dialogDef;
+        [SerializeField] private UnityEvent _onFinishedDialog;
         private DialogBoxController _dialogBoxController;
 
         private DialogData CurrentDialogData
@@ -45,7 +47,7 @@ namespace UI.Dialog
             }
 
             _dialogBoxController = boxController.GetComponent<DialogBoxController>();
-            _dialogBoxController.SetDialog(CurrentDialogData);
+            _dialogBoxController.SetDialog(CurrentDialogData , _onFinishedDialog);
         }
 
         public void ShowDialogDef(DialogDef dialogDef)

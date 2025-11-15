@@ -16,7 +16,7 @@ namespace UI.Dialog.Editor
         public override void OnInspectorGUI()
         {
             EditorGUILayout.PropertyField(_showDialog);
-           // base.OnInspectorGUI();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_onFinishedDialog"));
             var enumNames = _showDialog.enumNames;
             var currentEnumString = enumNames[_showDialog.enumValueIndex];
             var isGettingEnum = Enum.TryParse<SentenceType>(currentEnumString, out SentenceType currentEnum);
