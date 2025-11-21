@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Animation
 {
@@ -6,7 +7,13 @@ namespace Animation
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private string _animationName;
-        private bool _active;
+        [SerializeField] private bool _setOnStart;
+        [SerializeField] private bool _active;
+
+        private void Start()
+        {
+            if (_setOnStart) _animator.SetBool(_animationName, _active);
+        }
 
         public void Switch()
         {

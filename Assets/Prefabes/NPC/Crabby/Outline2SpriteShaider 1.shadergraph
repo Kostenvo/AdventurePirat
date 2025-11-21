@@ -1095,7 +1095,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": -1.0,
+        "e00": -2.0,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
@@ -3745,7 +3745,7 @@
     "m_ObjectId": "7ed145a17c664db5bf9e72649b708693",
     "m_Title": "SU",
     "m_Position": {
-        "x": -2307.000244140625,
+        "x": -2412.0,
         "y": 2329.0
     }
 }
@@ -5062,9 +5062,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2569.0,
-            "y": 2784.0,
-            "width": 208.0,
+            "x": -2140.0,
+            "y": 2971.999755859375,
+            "width": 208.0001220703125,
             "height": 302.0
         }
     },
@@ -5795,7 +5795,7 @@
     "m_ObjectId": "ceffd2d6bc884930b40306685a1ffd0f",
     "m_Title": "SR",
     "m_Position": {
-        "x": -3453.000244140625,
+        "x": -3453.0,
         "y": 2292.0
     }
 }
@@ -5906,7 +5906,7 @@
     "m_ObjectId": "d9377215a4d743e0b6114ed2862b1c30",
     "m_Title": "SR",
     "m_Position": {
-        "x": -1781.0001220703125,
+        "x": -1781.0,
         "y": 2861.0
     }
 }
@@ -6734,8 +6734,8 @@
     "m_ObjectId": "f7ceda5fa4384cbdabb87db0c255e23b",
     "m_Title": "MainSample",
     "m_Position": {
-        "x": -1749.0001220703125,
-        "y": 1330.0001220703125
+        "x": -1749.0,
+        "y": 1330.0
     }
 }
 
@@ -6787,8 +6787,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2282.0,
-            "y": 2567.0,
+            "x": -2387.0,
+            "y": 2582.0,
             "width": 134.0,
             "height": 34.0
         }

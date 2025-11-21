@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Extensions;
 using UnityEngine;
 
 namespace Interact
@@ -21,9 +22,9 @@ namespace Interact
         {
             var rigidBody = target.GetComponent<Rigidbody2D>();
             rigidBody.simulated = false;
-            yield return SetAlpha(0);
+            yield return SetAlpha(1,0);
             yield return SetPosition(target);
-            yield return SetAlpha(1);
+            yield return SetAlpha(0,1);
             rigidBody.simulated = true;
         }
 
@@ -42,22 +43,23 @@ namespace Interact
             target.transform.position = _destinationTarget.position;
         }
 
-        private IEnumerator SetAlpha(float alpha)
+        private IEnumerator SetAlpha(float from, float to)
         {
             if (!_spriteRenderer) yield break;
-            
-            var startAlpha = _spriteRenderer.color.a; 
-            float elapsedTime = 0;
-            
-            while (elapsedTime < _changeAlphaTime)
-            {
-                elapsedTime += Time.deltaTime;
-                var progress = elapsedTime / _changeAlphaTime;
-                var currentAlpha = Mathf.Lerp(startAlpha, alpha, progress);
-                ChangeAlpha(currentAlpha);
-                yield return null;
-            }
-            ChangeAlpha(alpha);
+
+           yield return this.LerpFloatCoroutine(from, to, _changeAlphaTime, x => ChangeAlpha(x));
+            // var startAlpha = _spriteRenderer.color.a; 
+            // float elapsedTime = 0;
+            //
+            // while (elapsedTime < _changeAlphaTime)
+            // {
+            //     elapsedTime += Time.deltaTime;
+            //     var progress = elapsedTime / _changeAlphaTime;
+            //     var currentAlpha = Mathf.Lerp(startAlpha, alpha, progress);
+            //     ChangeAlpha(currentAlpha);
+            //     yield return null;
+            // }
+            // ChangeAlpha(alpha);
         }
 
         private void ChangeAlpha(float alpha)
