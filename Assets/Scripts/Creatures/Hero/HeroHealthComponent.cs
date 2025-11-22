@@ -32,7 +32,7 @@ namespace Creatures.Hero
 
         protected override void Damage(int amount)
         {
-            if (_gameSession.PerksModel.IsActivePerk("Shield") && !PerkCooldown.IsReady()) return;
+          //  if (_gameSession.PerksModel.IsActivePerk("Shield") && !PerkCooldown.IsReady()) return;
             base.Damage(amount);
             _shakeCamera?.Shake();
             _animator.SetInteger(Health, _currentHealth);

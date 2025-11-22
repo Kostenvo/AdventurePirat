@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 4822166252454341912}
   - component: {fileID: 6268858700894369516}
   - component: {fileID: 5986214674960646399}
+  - component: {fileID: 320440259181403741}
   m_Layer: 3
   m_Name: Hero
   m_TagString: Player
@@ -259,8 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _damageCooldown:
-    _cooldownTime: 0.1
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -295,6 +294,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Sound.AudioListComponent, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hurt
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 320440259181403741}
+        m_TargetAssemblyTypeName: Creatures.Hero.ImmuneAfterHit, Assembly-CSharp
+        m_MethodName: SetImmune
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -559,6 +570,20 @@ MonoBehaviour:
     - rid: 502548518300024971
       type: {class: ShadowShape2DProvider_Collider2D, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!114 &320440259181403741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358055760198012537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4976764e055d4bf3ba8c46c7fc88d505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Creatures.Hero.ImmuneAfterHit
+  _health: {fileID: 4113245417671130113}
+  _immuneTime: 1
 --- !u!1 &2596199940236979389
 GameObject:
   m_ObjectHideFlags: 0

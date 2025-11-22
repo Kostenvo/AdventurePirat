@@ -1,4 +1,5 @@
 ﻿using Creatures;
+using Creatures.Hero;
 using TimeComponent;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,12 +9,16 @@ namespace Scripts.Creatures
     public class HealthComponentBase : MonoBehaviour, IHealthChangeComponent
     {
         [SerializeField] private int _maxHealth = 100;
-        public virtual int MaxHealth => _maxHealth;
 
-        [SerializeField] private Cooldown _damageCooldown;
+
+        public virtual int MaxHealth => _maxHealth;
+        
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] public UnityEvent _onDeath;
+
+        private Lock _lock = new Lock();
+        public Lock Lock => _lock;
 
         public UnityEvent OnHeal => _onHeal;
 
@@ -39,9 +44,8 @@ namespace Scripts.Creatures
 
         protected virtual void Damage(int amount)
         {
-            if (_currentHealth <= 0) return;
-            if (!_damageCooldown.IsReady()) return;
-            _damageCooldown.ResetCooldown();
+            if (_currentHealth <= 0) return; 
+            if (_lock.IsImmune()) return;
             _currentHealth -= amount;
             if (_currentHealth <= 0)
             {

@@ -16,5 +16,13 @@ namespace Creatures
                 light.color = _lightColor;
             }
         }
+
+        public void ChangeLightColor(Color color)
+        {
+            foreach (var light in _lights)
+            {
+                light.color = color;
+            }
+        }
     }
 }

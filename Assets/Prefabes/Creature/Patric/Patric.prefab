@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 7258515776833247480}
   - component: {fileID: 5471920223976939520}
   - component: {fileID: 7145289899497617941}
+  - component: {fileID: 2912400874094230459}
+  - component: {fileID: 6326588387320662600}
+  - component: {fileID: 2675348822399723816}
   m_Layer: 8
   m_Name: Patric
   m_TagString: Enemy
@@ -168,8 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Creatures.CreatureHealthComponent
   _maxHealth: 100
-  _damageCooldown:
-    _cooldownTime: 0.2
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -182,6 +183,30 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Creatures.Boss.BossHealthBar, Assembly-CSharp
         m_MethodName: HideHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Creatures.Boss.BossHealthBar, Assembly-CSharp
+        m_MethodName: HideHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Animation.AnimatorSwitcher, Assembly-CSharp
+        m_MethodName: Switch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -222,26 +247,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Particles.CircularSpawner
   _circularLevels:
   - _spawnPrefab: {fileID: 9092095025510698134, guid: b1b7cba6ba38b814bb2713fae8b0f715, type: 3}
-    _count: 10
+    _count: 5
     _spawnDelay: 0.5
+  - _spawnPrefab: {fileID: 9092095025510698134, guid: b1b7cba6ba38b814bb2713fae8b0f715, type: 3}
+    _count: 10
+    _spawnDelay: 0.4
   - _spawnPrefab: {fileID: 9092095025510698134, guid: b1b7cba6ba38b814bb2713fae8b0f715, type: 3}
     _count: 20
     _spawnDelay: 0.3
   _levelUpEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7145289899497617941}
-        m_TargetAssemblyTypeName: Creatures.ChangeLight, Assembly-CSharp
-        m_MethodName: ChangeLightColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7145289899497617941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,4 +274,62 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _lightColor: {r: 3.937255, g: 0, b: 0, a: 0}
+  _lightColor: {r: 1, g: 0.0141509175, b: 0.0141509175, a: 1}
+--- !u!114 &2912400874094230459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432317335142849310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b93702439e84b6a81875e9c2bc09c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Creatures.Boss.WaterFall
+  _animator: {fileID: 0}
+  _timeToWaterFall: 10
+--- !u!114 &6326588387320662600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432317335142849310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51a963b1005416586e00ff75ccc55b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Checkers.CollisionInteractionWithGo
+  _onCollisionInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2675348822399723816}
+        m_TargetAssemblyTypeName: Creatures.HealthChangeComponent, Assembly-CSharp
+        m_MethodName: ChangeHealth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _tag: 
+--- !u!114 &2675348822399723816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432317335142849310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ddaddd605d4fe9bd5a45c9f471b160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Creatures.HealthChangeComponent
+  _healthChangeAmount: -1

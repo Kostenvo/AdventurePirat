@@ -1,7 +1,7 @@
 using Particles;
 using UnityEngine;
 
-public class PatricAttack : StateMachineBehaviour
+public class PatricAtackSpawn : StateMachineBehaviour
 {
     private CircularSpawner _circleSpawner;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
