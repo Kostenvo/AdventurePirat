@@ -73,7 +73,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3410733804051077928
 Transform:
   m_ObjectHideFlags: 0
@@ -172,8 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
-  _damageCooldown:
-    _cooldownTime: 0
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -266,6 +264,7 @@ MonoBehaviour:
   _heroInVision: {fileID: 7896795674859450137}
   _heroCanAttack: {fileID: 1467537576023859420}
   _spawnParticle: {fileID: 8209307538008347031}
+  _stopDistance: 0
 --- !u!114 &4331928884179627566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +425,21 @@ MonoBehaviour:
   _creatureMove: {fileID: 4331928884179627566}
   _checkPit: {fileID: 7042345762020427043}
   _checkEnemy: {fileID: 4137471579340839171}
+  _changeDirection:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4331928884179627566}
+        m_TargetAssemblyTypeName: Creatures.CreatureMove, Assembly-CSharp
+        m_MethodName: SetDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _direction: 1
 --- !u!1 &2596199940236979389
 GameObject:
@@ -976,6 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Creatures.HealthBarMob.HealthBarMobComponent
   _healthBar: {fileID: 8393348739038629492}
   _creatureHealth: {fileID: 0}
+  _destroyOnDeath: 1
 --- !u!1 &6831729475380295491
 GameObject:
   m_ObjectHideFlags: 0

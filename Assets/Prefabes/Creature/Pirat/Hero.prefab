@@ -247,6 +247,7 @@ MonoBehaviour:
   _health: {fileID: 4113245417671130113}
   _inventory: {fileID: 6268858700894369516}
   _shield: {fileID: 2521234865657995260}
+  _flashlight: {fileID: 1399048362155252466}
 --- !u!114 &4113245417671130113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Creatures.Hero.ImmuneAfterHit
   _health: {fileID: 4113245417671130113}
-  _immuneTime: 1
+  _immuneTime: 10
 --- !u!1 &2596199940236979389
 GameObject:
   m_ObjectHideFlags: 0
@@ -6102,8 +6103,41 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6577715466160591505, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1399048362155252466}
   m_SourcePrefab: {fileID: 100100000, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+--- !u!1 &2890426035088613753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6577715466160591505, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+  m_PrefabInstance: {fileID: 8310379877667124200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1399048362155252466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2890426035088613753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5598932b95542068fb101b567f83a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Creatures.Hero.Flashlight
+  _flashlight: {fileID: 3410670389395420962}
+  _fuelPerSecond: 0.3
+--- !u!114 &3410670389395420962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6629655794683757770, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}
+  m_PrefabInstance: {fileID: 8310379877667124200}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
 --- !u!4 &4998043068735762638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3893638711471899430, guid: 5f09a368e8896c540a2b841e6afa3c98, type: 3}

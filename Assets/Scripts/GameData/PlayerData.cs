@@ -11,7 +11,12 @@ namespace GameData
         [SerializeField] private InventoryData _inventory;
         [SerializeField] private PerkData _perks;
         [SerializeField] private StatsData _stats;
+
         public List<string> _storedGo = new List<string>();
+
+        public float Fuel;
+    
+
         public StatsData Stats => _stats;
 
         public PerkData Perks => _perks;

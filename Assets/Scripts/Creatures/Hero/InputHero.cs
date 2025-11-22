@@ -18,6 +18,7 @@ namespace Creatures.Hero
         [SerializeField] private HeroHealthComponent _health;
         [SerializeField] private HeroInventory _inventory;
         [SerializeField] private ShieldComponent _shield;
+        [SerializeField] private Flashlight _flashlight;
         private InputSystem_Actions _actions;
         
         private ComposideDisposible trash = new ComposideDisposible();
@@ -39,6 +40,7 @@ namespace Creatures.Hero
             _interaction ??= GetComponentInChildren<CheckInteractableObject>();
             _attack ??= GetComponentInChildren<HeroAttackObject>();
             _health ??= GetComponentInChildren<HeroHealthComponent>();
+            _flashlight ??= GetComponentInChildren<Flashlight>();
         }
 #endif
 
@@ -53,6 +55,12 @@ namespace Creatures.Hero
             trash.SubscribeInputCanceled(_actions.Player.Throw, OnThrowCanceledHandler);
             trash.SubscribeInputPreformed(_actions.Player.NextItem, OnNextItemPerformedHandler);
             trash.SubscribeInputPreformed(_actions.Player.UseShield, OnUseShieldHandler);
+            trash.SubscribeInputPreformed(_actions.Player.FlashLight, OnFlashLightPerformed);
+        }
+
+        private void OnFlashLightPerformed(InputAction.CallbackContext obj)
+        {
+            _flashlight.ActivateFlashlight();
         }
 
         private void OnUseShieldHandler(InputAction.CallbackContext obj)

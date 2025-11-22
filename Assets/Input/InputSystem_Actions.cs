@@ -201,6 +201,15 @@ namespace PlayerInput
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlashLight"",
+                    ""type"": ""Button"",
+                    ""id"": ""dca63e53-f7df-43f7-92be-dbf16264abd4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -641,6 +650,17 @@ namespace PlayerInput
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""UseShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""290281bf-ec67-48c4-b479-be5dc38af072"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlashLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1240,6 +1260,7 @@ namespace PlayerInput
             m_Player_NextItem = m_Player.FindAction("NextItem", throwIfNotFound: true);
             m_Player_OnDrop = m_Player.FindAction("OnDrop", throwIfNotFound: true);
             m_Player_UseShield = m_Player.FindAction("UseShield", throwIfNotFound: true);
+            m_Player_FlashLight = m_Player.FindAction("FlashLight", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1345,6 +1366,7 @@ namespace PlayerInput
         private readonly InputAction m_Player_NextItem;
         private readonly InputAction m_Player_OnDrop;
         private readonly InputAction m_Player_UseShield;
+        private readonly InputAction m_Player_FlashLight;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -1404,6 +1426,10 @@ namespace PlayerInput
             /// Provides access to the underlying input action "Player/UseShield".
             /// </summary>
             public InputAction @UseShield => m_Wrapper.m_Player_UseShield;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/FlashLight".
+            /// </summary>
+            public InputAction @FlashLight => m_Wrapper.m_Player_FlashLight;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -1466,6 +1492,9 @@ namespace PlayerInput
                 @UseShield.started += instance.OnUseShield;
                 @UseShield.performed += instance.OnUseShield;
                 @UseShield.canceled += instance.OnUseShield;
+                @FlashLight.started += instance.OnFlashLight;
+                @FlashLight.performed += instance.OnFlashLight;
+                @FlashLight.canceled += instance.OnFlashLight;
             }
 
             /// <summary>
@@ -1513,6 +1542,9 @@ namespace PlayerInput
                 @UseShield.started -= instance.OnUseShield;
                 @UseShield.performed -= instance.OnUseShield;
                 @UseShield.canceled -= instance.OnUseShield;
+                @FlashLight.started -= instance.OnFlashLight;
+                @FlashLight.performed -= instance.OnFlashLight;
+                @FlashLight.canceled -= instance.OnFlashLight;
             }
 
             /// <summary>
@@ -1897,6 +1929,13 @@ namespace PlayerInput
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnUseShield(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "FlashLight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnFlashLight(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
