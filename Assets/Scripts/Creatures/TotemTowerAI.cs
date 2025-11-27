@@ -13,7 +13,7 @@ namespace Creatures
         [SerializeField] private Cooldown _cooldownForAttack;
         private List<ShootingTrapAI> _traps = new List<ShootingTrapAI>();
         private int _currentTrap;
-        
+
 
         private void OnValidate()
         {
@@ -26,13 +26,14 @@ namespace Creatures
             {
                 InitializationTrap();
             }
-            _traps.ForEach(x => x.GetComponent<HealthComponentBase>()._onDeath.AddListener(()=>OnTrapDeath(x)));
+
+            _traps.ForEach(x => x.GetComponent<HealthComponentBase>()._onDeath.AddListener(() => OnTrapDeath(x)));
         }
 
         private void OnTrapDeath(ShootingTrapAI shootingTrapAI)
         {
             _traps.Remove(shootingTrapAI);
-            if (_currentTrap >0)
+            if (_currentTrap > 0)
             {
                 _currentTrap--;
             }
@@ -41,14 +42,29 @@ namespace Creatures
 
         private void Update()
         {
-            if (_traps.Count == 0) Destroy(gameObject,1f);
-            var isTouchedHero = _traps.Any(x => x.IsTouchedHero);
+            if (_traps.Count == 0) Destroy(gameObject, 1f);
+            var isTouchedHero = IsTouchedHero();
+
             if (isTouchedHero && _cooldownForAttack.IsReady())
             {
                 _traps[_currentTrap].Attack();
-                _currentTrap = (int) Mathf.Repeat(++_currentTrap, _traps.Count);
+                _currentTrap = (int)Mathf.Repeat(++_currentTrap, _traps.Count);
                 _cooldownForAttack.ResetCooldown();
             }
+        }
+
+        private bool IsTouchedHero()
+        {
+            var isTouchedHero = false;
+            foreach (var trap in _traps)
+            {
+                if (trap.IsTouchedHero)
+                {
+                    isTouchedHero = true;
+                    break;
+                }
+            }
+            return isTouchedHero;
         }
 
         private void InitializationTrap()

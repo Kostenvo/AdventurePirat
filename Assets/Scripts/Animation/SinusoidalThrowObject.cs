@@ -11,7 +11,9 @@ namespace Animation
         protected override void Start()
         {
             base.Start();
-            yPos = _rigidbody.position.y;
+            if (_poolItem != null) return;
+            time = 0;  
+            yPos = transform.position.y;
         }
 
         private float yPos;
@@ -22,6 +24,13 @@ namespace Animation
             var newPositionXposition = yPos + (Mathf.Sin(_frequency * time)) * _amplitude;
             time += Time.fixedDeltaTime;
             _rigidbody.MovePosition(new Vector3(_rigidbody.position.x + _speed * Direction, newPositionXposition));
+        }
+
+        public override void StartInPool()
+        {
+            time = 0;
+            base.StartInPool();
+            yPos = transform.position.y;
         }
     }
 }

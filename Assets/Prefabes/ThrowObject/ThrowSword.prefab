@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 0}
   _prefab: {fileID: 1612225992693774383, guid: 043bc5ffb4f6e39479d8884893a8153d, type: 3}
+  _isPoolObject: 1
 --- !u!1 &6718057611834601995
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,8 +63,8 @@ GameObject:
   - component: {fileID: 7964621548741614119}
   - component: {fileID: 732001688334751047}
   - component: {fileID: 7936381127104476183}
-  - component: {fileID: 6158238243396453641}
   - component: {fileID: 615794563070868846}
+  - component: {fileID: 4273171017688873828}
   m_Layer: 0
   m_Name: ThrowSword
   m_TagString: Untagged
@@ -107,6 +108,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -128,6 +131,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2019296403
   m_SortingLayer: 1
   m_SortingOrder: 10
@@ -205,9 +209,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6158238243396453641}
-        m_TargetAssemblyTypeName: GameObjects.DestroyGo, Assembly-CSharp
-        m_MethodName: DestroyObject
+      - m_Target: {fileID: 4273171017688873828}
+        m_TargetAssemblyTypeName: GameObjects.PoolItem, Assembly-CSharp
+        m_MethodName: Retain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -248,9 +252,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6158238243396453641}
-        m_TargetAssemblyTypeName: GameObjects.DestroyGo, Assembly-CSharp
-        m_MethodName: DestroyObject
+      - m_Target: {fileID: 4273171017688873828}
+        m_TargetAssemblyTypeName: GameObjects.PoolItem, Assembly-CSharp
+        m_MethodName: Retain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -330,19 +334,6 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   _animationClipName: 
---- !u!114 &6158238243396453641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6718057611834601995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93941c51e7a647db8fe904641bae4c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameObject: {fileID: 0}
 --- !u!114 &615794563070868846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,4 +347,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
-  _rigidbody: {fileID: 0}
+  _rigidbody: {fileID: 732001688334751047}
+--- !u!114 &4273171017688873828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718057611834601995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fc64ffe4f04295888b27387ff56d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.PoolItem
+  _onRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 615794563070868846}
+        m_TargetAssemblyTypeName: Creatures.ThrowObject, Assembly-CSharp
+        m_MethodName: StartInPool
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

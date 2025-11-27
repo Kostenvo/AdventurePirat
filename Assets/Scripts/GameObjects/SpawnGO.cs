@@ -8,22 +8,30 @@ namespace GameObjects
     {
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private GameObject _prefab;
-
-        public void Spawn()
-        {
-            if (!_spawnPoint) _spawnPoint = transform;
-            GameObject go = SpawnExtensions.SpawnInParticleContainer(_prefab, _spawnPoint);
-            go.SetActive(true);
-            go.transform.localScale = transform.lossyScale; 
-        }
+        [SerializeField] private bool _isPoolObject;
 
         public GameObject SpawnGO()
         {
             if (!_spawnPoint) _spawnPoint = transform;
-            GameObject go = SpawnExtensions.SpawnInParticleContainer(_prefab, _spawnPoint);
-            go.SetActive(true);
-            go.transform.localScale = transform.lossyScale; 
+            GameObject go;
+            PoolItem poolItem;
+            if (_isPoolObject && (poolItem = _prefab.GetComponent<PoolItem>()) != null)
+            {
+                go = Pool.Instance.Release(poolItem , _spawnPoint);
+            }
+            else
+            {
+                go = SpawnExtensions.SpawnInParticleContainer(_prefab, _spawnPoint);
+                go.transform.localScale = transform.lossyScale;
+                go.SetActive(true);
+            }
+
             return go;
+        }
+
+        public void Spawn()
+        {
+            SpawnGO();
         }
 
 

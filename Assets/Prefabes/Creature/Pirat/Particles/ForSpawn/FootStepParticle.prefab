@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 447637312518516634}
   - component: {fileID: 5723590930814116335}
   - component: {fileID: 6543254982887045057}
-  - component: {fileID: 8946236965800472749}
+  - component: {fileID: 8699956582329916937}
   m_Layer: 0
   m_Name: FootStepParticle
   m_TagString: Untagged
@@ -54,6 +54,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -75,6 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -105,7 +108,7 @@ MonoBehaviour:
   _framePerSecond: 10
   _spriteRenderer: {fileID: 0}
   _animationClips:
-  - ClipName: 
+  - ClipName: Idle
     Sprites:
     - {fileID: 21300000, guid: 1224cdc1295996348b42461a45e3dc91, type: 3}
     - {fileID: 21300000, guid: 0fd59dd3211655b4ea5bc6c163216c89, type: 3}
@@ -115,9 +118,9 @@ MonoBehaviour:
     OnAnimationFinished:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8946236965800472749}
-          m_TargetAssemblyTypeName: Scripts.GameObjects.DestroyGO, Assembly-CSharp
-          m_MethodName: DestroyObject
+        - m_Target: {fileID: 8699956582329916937}
+          m_TargetAssemblyTypeName: GameObjects.PoolItem, Assembly-CSharp
+          m_MethodName: Retain
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -128,7 +131,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _animationClipName: 
---- !u!114 &8946236965800472749
+--- !u!114 &8699956582329916937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +140,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3012840826529112640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93941c51e7a647db8fe904641bae4c8f, type: 3}
+  m_Script: {fileID: 11500000, guid: b8fc64ffe4f04295888b27387ff56d63, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  _gameObject: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.PoolItem
+  _onRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6543254982887045057}
+        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: ApplyClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Idle
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6755643251529681877}
   - component: {fileID: 7255664596764997819}
   - component: {fileID: 7527835333091880736}
-  - component: {fileID: 155650631642726514}
   - component: {fileID: 7602679638034201766}
   - component: {fileID: 6569000963821092437}
   - component: {fileID: 8265572283817754008}
+  - component: {fileID: 2534522759312434249}
   m_Layer: 0
   m_Name: SwordStucked
   m_TagString: Untagged
@@ -57,6 +57,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -78,6 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 2019296403
   m_SortingLayer: 1
   m_SortingOrder: 10
@@ -118,19 +121,6 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   _animationClipName: 
---- !u!114 &155650631642726514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612225992693774383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93941c51e7a647db8fe904641bae4c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameObject: {fileID: 0}
 --- !u!114 &7602679638034201766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,9 +160,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 155650631642726514}
-        m_TargetAssemblyTypeName: GameObjects.DestroyGo, Assembly-CSharp
-        m_MethodName: DestroyObject
+      - m_Target: {fileID: 2534522759312434249}
+        m_TargetAssemblyTypeName: GameObjects.PoolItem, Assembly-CSharp
+        m_MethodName: Retain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -246,3 +236,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Sword
   _count: 1
+--- !u!114 &2534522759312434249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612225992693774383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fc64ffe4f04295888b27387ff56d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObjects.PoolItem
+  _onRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7527835333091880736}
+        m_TargetAssemblyTypeName: Animation.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: ApplyClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: start
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6569000963821092437}
+        m_TargetAssemblyTypeName: UnityEngine.BoxCollider2D, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: start
+          m_BoolArgument: 1
+        m_CallState: 2

@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7944276583982824567, guid: a83aa6789cb18fc459ca6f309cd76e6b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.01
+      value: 18.77
       objectReference: {fileID: 0}
     - target: {fileID: 7944276583982824567, guid: a83aa6789cb18fc459ca6f309cd76e6b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -215,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 15858631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.99, y: -4.5, z: -0.076502785}
+  m_LocalPosition: {x: 1.86, y: -3.53, z: -0.076502785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8817,9 +8817,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.049132947
+    y: 0.050119333
     width: 1
-    height: 0.89902455
+    height: 0.90080553
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -8966,17 +8966,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seashel
       objectReference: {fileID: 0}
-    - target: {fileID: 1314337629646555589, guid: 6444582454e2cd6429f5f9074bd7b6e2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6154157127651216762, guid: 6444582454e2cd6429f5f9074bd7b6e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.84
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 6154157127651216762, guid: 6444582454e2cd6429f5f9074bd7b6e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.001288414
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 6154157127651216762, guid: 6444582454e2cd6429f5f9074bd7b6e2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9635,14 +9631,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06e933322524db5a44dc0e5cfbd759b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultCheckPoint: level2_checkpoint1
   _playerData:
     _inventory:
       _items:
       - name: Coin
         count: 10
+    _perks:
+      UnlockedPerks: []
+    _stats:
+      _stats: []
+    _storedGo: []
+    Fuel: 0
     Health:
       _value: 5
-  _defaultCheckPoint: level2_checkpoint1
 --- !u!4 &719765348
 Transform:
   m_ObjectHideFlags: 0
@@ -14952,7 +14954,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -59511137
   m_SortingLayer: -3
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bb667432414abcd428b50db970bd1861, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

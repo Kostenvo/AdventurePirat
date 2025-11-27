@@ -631,6 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 252191910155422317}
   _prefab: {fileID: 3012840826529112640, guid: 4bb641ba0440a574b8b91e140afbc621, type: 3}
+  _isPoolObject: 0
 --- !u!1 &3235916812575269798
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 9043025075205827787}
   _prefab: {fileID: 3012840826529112640, guid: bfa2f96efb59ab34bafb0a5e466180e6, type: 3}
+  _isPoolObject: 1
 --- !u!1 &3871284058993770529
 GameObject:
   m_ObjectHideFlags: 0
@@ -5617,6 +5619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 6365748456390354770}
   _prefab: {fileID: 3012840826529112640, guid: 61afcf73db981394db91ec9541492bb6, type: 3}
+  _isPoolObject: 0
 --- !u!1 &4907005381766418287
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,7 +5973,7 @@ Transform:
   m_GameObject: {fileID: 8728094805025630178}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.336, y: -0.025, z: 0}
+  m_LocalPosition: {x: 0.464, y: -0.009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5990,6 +5993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 788797133998379647}
   _prefab: {fileID: 6718057611834601995, guid: 641df941db3f3844995c4ec19ab98a18, type: 3}
+  _isPoolObject: 1
 --- !u!1 &8743098419132625565
 GameObject:
   m_ObjectHideFlags: 0
@@ -6036,6 +6040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 7561442786300892686}
   _prefab: {fileID: 3012840826529112640, guid: d1812da6c2cf63943817219b6ee1efdc, type: 3}
+  _isPoolObject: 0
 --- !u!1001 &8310379877667124200
 PrefabInstance:
   m_ObjectHideFlags: 0

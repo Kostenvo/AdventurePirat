@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 8436937053357097575}
   _prefab: {fileID: 6718057611834601995, guid: 2533d5077a7e5ac488da2ac2223b9dd5, type: 3}
+  _isPoolObject: 1
 --- !u!1 &1314337629646555589
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,8 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scripts.Creatures.HealthComponentBase
   _maxHealth: 100
-  _damageCooldown:
-    _cooldownTime: 0
   _onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -328,6 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObjects.DestroyGo
   _gameObject: {fileID: 0}
+  _restoreState: {fileID: 0}
 --- !u!114 &5118700541027830847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 4853791265319228889}
   _prefab: {fileID: 4917144340439679501, guid: 0dec27dfee257d84688d6ab18ff6c5cd, type: 3}
+  _isPoolObject: 0
 --- !u!1 &6548469202996467932
 GameObject:
   m_ObjectHideFlags: 0
