@@ -16,18 +16,16 @@ namespace UI.Stats
 
         private ComposideDisposible _trash = new ComposideDisposible();
         private ItemController<StatItem, StatDef> _statController;
-        private GameSession _session;
 
         private float _timeScale;
 
         protected override void Start()
         {
-            _session = FindAnyObjectByType<GameSession>();
             _timeScale = Time.timeScale;
             Time.timeScale = 0;
             _statController = new ItemController<StatItem, StatDef>(_statItem, _statsContainer);
-            _trash.Retain(_session.StatsModel.Subscribe(UpdateWindow));
-            _trash.Retain(_session.StatsModel.SelectedStats.Subscribe((_, _) => UpdateWindow()));
+            _trash.Retain(GameSession.Instance.StatsModel.Subscribe(UpdateWindow));
+            _trash.Retain(GameSession.Instance.StatsModel.SelectedStats.Subscribe((_, _) => UpdateWindow()));
             UpdateWindow();
             base.Start();
         }
@@ -35,7 +33,7 @@ namespace UI.Stats
         private void UpdateWindow()
         {
             _statController.Rebuild(DefsFacade.Instance.StatsRepository.Items);
-            var nextLevel = _session.StatsModel.GetNextLevel(_session.StatsModel.SelectedStats.Value);
+            var nextLevel = GameSession.Instance.StatsModel.GetNextLevel(GameSession.Instance.StatsModel.SelectedStats.Value);
             if (nextLevel.Price == null)
             {
                 _updateButton.gameObject.SetActive(false);
@@ -44,7 +42,7 @@ namespace UI.Stats
             else
             {
                 _updateButton.gameObject.SetActive(true);
-                _updateButton.interactable = _session.PlayerData.Inventory.IsEnoughItem(nextLevel.Price);
+                _updateButton.interactable = GameSession.Instance.PlayerData.Inventory.IsEnoughItem(nextLevel.Price);
                 _priceBox.SetActive(true);
                 _priceItem.SetPrice(nextLevel.Price);
             }
@@ -52,7 +50,7 @@ namespace UI.Stats
 
         public void OnClickUpdateButton()
         {
-            _session.StatsModel.UpgradeStats(_session.StatsModel.SelectedStats.Value);
+            GameSession.Instance.StatsModel.UpgradeStats(GameSession.Instance.StatsModel.SelectedStats.Value);
         }
 
 

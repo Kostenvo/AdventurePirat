@@ -23,8 +23,7 @@ namespace UI
 
         private void Start()
         {
-            var session = FindAnyObjectByType<GameSession>();
-            _trash.Retain(session.QuickInventory.CurrentSelect.SubscribeAndInvoke(ChangeSelector));
+            _trash.Retain(GameSession.Instance.QuickInventory.CurrentSelect.SubscribeAndInvoke(ChangeSelector));
         }
 
         public void SetItem(InventoryItemData item, int id)

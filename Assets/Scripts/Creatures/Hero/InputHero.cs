@@ -22,12 +22,9 @@ namespace Creatures.Hero
         private InputSystem_Actions _actions;
         
         private ComposideDisposible trash = new ComposideDisposible();
-        private GameSession _gameSession;
+       
 
-        private void Start()
-        {
-            _gameSession = FindAnyObjectByType<GameSession>();
-        }
+
         private void Awake()
         {
             _actions = new InputSystem_Actions();
@@ -78,7 +75,7 @@ namespace Creatures.Hero
 
         private void OnThrowCanceledHandler(InputAction.CallbackContext obj)
         {
-            var def = _gameSession.QuickInventory.GetCurrentItemDef();
+            var def = GameSession.Instance.QuickInventory.GetCurrentItemDef();
             if (def.HasType(InventoryItemType.Throwable)) _attack.EndButtonThrow();
             else if (def.HasType(InventoryItemType.Healable)) _health.HeroHeal();
             else if (def.HasType(InventoryItemType.Speadable)) _move.SpeedUpPosion();

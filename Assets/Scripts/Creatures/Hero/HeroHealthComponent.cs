@@ -10,29 +10,28 @@ namespace Creatures.Hero
     public class HeroHealthComponent : HealthComponentBase
     {
         [SerializeField] private Animator _animator;
-        private GameSession _gameSession;
+
         private static readonly int Health = Animator.StringToHash("Health");
-        private InventoryItemDef _poisonKey => _gameSession.QuickInventory.GetCurrentItemDef();
-        public override int MaxHealth => (int)_gameSession.StatsModel.GetLevel(StatsType.Health).Value;
-        private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
+        private InventoryItemDef _poisonKey => GameSession.Instance.QuickInventory.GetCurrentItemDef();
+        public override int MaxHealth => (int)GameSession.Instance.StatsModel.GetLevel(StatsType.Health).Value;
+        private Cooldown PerkCooldown => GameSession.Instance.PerksModel.CooldownPerk;
         private ShakeCamera _shakeCamera;
 
         protected override int _currentHealth
         {
-            get =>  _gameSession.PlayerData.Health.Value;
-            set =>  _gameSession.PlayerData.Health.Value = value;
+            get =>  GameSession.Instance.PlayerData.Health.Value;
+            set =>  GameSession.Instance.PlayerData.Health.Value = value;
         }
 
         private void Start()
         {
-            _gameSession = FindAnyObjectByType<GameSession>();
-            _currentHealth = _gameSession.PlayerData.Health.Value;
+            _currentHealth = GameSession.Instance.PlayerData.Health.Value;
             _shakeCamera = FindAnyObjectByType<ShakeCamera>();
         }
 
         protected override void Damage(int amount)
         {
-          //  if (_gameSession.PerksModel.IsActivePerk("Shield") && !PerkCooldown.IsReady()) return;
+          //  if (GameSession.Instance.PerksModel.IsActivePerk("Shield") && !PerkCooldown.IsReady()) return;
             base.Damage(amount);
             _shakeCamera?.Shake();
             _animator.SetInteger(Health, _currentHealth);
@@ -46,9 +45,9 @@ namespace Creatures.Hero
 
         public void HeroHeal()
         {
-            if (_gameSession.PlayerData.Inventory.CountItem(_poisonKey.Name) < 1) return;
+            if (GameSession.Instance.PlayerData.Inventory.CountItem(_poisonKey.Name) < 1) return;
             var healAmount = (int)DefsFacade.Instance.Potion.GetItem(_poisonKey.Name).EffectValue;
-            _gameSession.PlayerData.Inventory.RemoveItem(_poisonKey.Name, 1);
+            GameSession.Instance.PlayerData.Inventory.RemoveItem(_poisonKey.Name, 1);
             Heal(healAmount);
         }
         

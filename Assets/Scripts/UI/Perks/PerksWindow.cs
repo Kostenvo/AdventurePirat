@@ -30,7 +30,7 @@ namespace UI.Perks
             _timeScale = Time.timeScale;
             Time.timeScale = 0;
             _perks = new PredefinedItemController<PerkItem, PerkDef>(_perkItem, _perksContainer);
-            _session = FindFirstObjectByType<GameSession>();
+            _session = GameSession.Instance;
             base.Start();
             _selectedPerk.Value = DefsFacade.Instance.Perks.Items[0].Name;
             _trash.Retain(_selectedPerk.Subscribe((value, oldValue) => Redraw()));

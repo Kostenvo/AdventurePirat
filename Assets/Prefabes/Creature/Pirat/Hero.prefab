@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Creatures.Hero.ImmuneAfterHit
   _health: {fileID: 4113245417671130113}
-  _immuneTime: 10
+  _immuneTime: 0.2
 --- !u!1 &2596199940236979389
 GameObject:
   m_ObjectHideFlags: 0

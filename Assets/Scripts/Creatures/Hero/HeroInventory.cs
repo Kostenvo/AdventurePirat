@@ -9,13 +9,10 @@ public class HeroInventory : MonoBehaviour, IChangeItem
     [SerializeField] private ParticleSystem _coinParticle;
     [SerializeField] private ProbabilityDropComponent _probabilityDropComponent;
     [SerializeField] private HeroAttackObject _heroAttackObject;
-    private GameSession _gameSession;
-    private int CountItem(string item) => _gameSession.PlayerData.Inventory.CountItem(item);
 
-    private void Start()
-    {
-        _gameSession = FindAnyObjectByType<GameSession>();
-    }
+    private int CountItem(string item) => GameSession.Instance.PlayerData.Inventory.CountItem(item);
+
+
 
     public void ChangeItems(string itemName, int count)
     {
@@ -33,14 +30,14 @@ public class HeroInventory : MonoBehaviour, IChangeItem
 
     private void AddCoin(int count, string itemName)
     {
-        _gameSession.PlayerData.Inventory.AddItem(itemName, count);
+        GameSession.Instance.PlayerData.Inventory.AddItem(itemName, count);
     }
 
     private void RemoveCoin(int count, string itemName)
     {
         if (CountItem(itemName) <= 0) return;
         int maxCoinsForRemove = Mathf.Min(-count, CountItem(itemName));
-        _gameSession.PlayerData.Inventory.RemoveItem(itemName, maxCoinsForRemove);
+        GameSession.Instance.PlayerData.Inventory.RemoveItem(itemName, maxCoinsForRemove);
         // if (itemName.Contains("Coin")) SpawnParticles(maxCoinsForRemove);
         if (itemName.Contains("Coin")) SpawnRBParticles(maxCoinsForRemove);
     }
@@ -61,6 +58,6 @@ public class HeroInventory : MonoBehaviour, IChangeItem
 
     public void NextInInventory()
     {
-        _gameSession.QuickInventory.NetItem();
+        GameSession.Instance.QuickInventory.NetItem();
     }
 }

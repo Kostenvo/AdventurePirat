@@ -1,7 +1,6 @@
-﻿using Creatures.Boss;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Creatures.Patrolling
+namespace Creatures.Boss
 {
     public class PatricAttackWaterFall : StateMachineBehaviour
     {

@@ -14,15 +14,13 @@ namespace Interact.CheckPoint
         [SerializeField] private SpawnGo _spawnGo;
         [SerializeField] private UnityEvent _setChecked;
         [SerializeField] private UnityEvent _setUnchecked;
-        private GameSession _gameSession;
 
         public string CheckPointName => _checkPointName;
 
         private void Start()
         {
-            _spriteAnimationComponent = _spriteAnimationComponent?? GetComponent<SpriteAnimationComponent>();
-            _gameSession = _gameSession?? FindFirstObjectByType<GameSession>();
-            var isCheked = _gameSession.IsCheckpointChecked(_checkPointName);
+    
+            var isCheked = GameSession.Instance.IsCheckpointChecked(_checkPointName);
              SetStatus(isCheked);
         }
 
@@ -40,7 +38,7 @@ namespace Interact.CheckPoint
 
         public void Check()
         {
-            _gameSession.AddCheckPoint(_checkPointName);
+            GameSession.Instance.AddCheckPoint(_checkPointName);
         }
     }
 }

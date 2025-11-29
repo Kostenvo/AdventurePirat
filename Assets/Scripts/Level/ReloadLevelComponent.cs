@@ -8,8 +8,9 @@ namespace Level
     {
         public void Reload()
         {
-            var currentSession = FindAnyObjectByType<GameSession>();
-            currentSession.Load();
+            
+           
+            GameSession.Instance.Load();
             var scene = SceneManager.GetActiveScene();
             var levelLoader = FindAnyObjectByType<LevelLoader>();
             levelLoader.LoadWithLoader(scene.name);

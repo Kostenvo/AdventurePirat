@@ -13,7 +13,7 @@ namespace Creatures.Hero
         private float _baseIntensity;
         private void Start()
         {
-            _playerData = FindAnyObjectByType<GameSession>().PlayerData;
+            _playerData = GameSession.Instance.PlayerData;
             _baseIntensity = _flashlight.intensity;
         }
 

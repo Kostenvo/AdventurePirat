@@ -15,6 +15,8 @@ namespace GameData
         [SerializeField] private string _defaultCheckPoint;
         [SerializeField] private PlayerData _playerData;
         private StatsModel _statsModel;
+        
+        public static GameSession Instance { get; private set; }
 
         public StatsModel StatsModel => _statsModel;
         public PlayerData PlayerData => _playerData;
@@ -45,6 +47,7 @@ namespace GameData
             {
                 AddCheckPoint(_defaultCheckPoint);
                 InitUI();
+                Instance = this;
                 DontDestroyOnLoad(this.gameObject);
             }
         }
@@ -134,6 +137,7 @@ namespace GameData
 
         private void OnDestroy()
         {
+      
             _trash.Dispose();
         }
     }

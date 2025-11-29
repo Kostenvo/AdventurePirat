@@ -37,23 +37,22 @@ namespace Creatures.Hero
         private readonly int _throwKey = Animator.StringToHash("Throw");
         private readonly string _throwAudioKey = "Range";
         private readonly string _attackAudioKey = "Melee";
-        private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
-
-        private GameSession _gameSession;
-        private int _swordCount => _gameSession.PlayerData.Inventory.CountItem("Sword");
+        private Cooldown PerkCooldown => GameSession.Instance.PerksModel.CooldownPerk;
+        
+        private int _swordCount => GameSession.Instance.PlayerData.Inventory.CountItem("Sword");
 
         private void Start()
         {
-            _gameSession = FindAnyObjectByType<GameSession>();
+            
             ChangeState();
         }
 
         public void StartButtonThrow()
         {
-            if (_gameSession.PerksModel.IsActivePerk("SuppreThrow")) _superThrowingCooldown.ResetCooldown();
+            if (GameSession.Instance.PerksModel.IsActivePerk("SuppreThrow")) _superThrowingCooldown.ResetCooldown();
         }
 
-        private InventoryItemData QiItem => _gameSession.QuickInventory.GetCurrentItem();
+        private InventoryItemData QiItem => GameSession.Instance.QuickInventory.GetCurrentItem();
         private InventoryItemDef DefItem => DefsFacade.Instance.Inventory.GetItem(QiItem.name);
 
         public bool CanThrow()
@@ -71,7 +70,7 @@ namespace Creatures.Hero
         {
             if (!CanThrow()) return;
             if (!_throwCooldown.IsReady()) return;
-            if (_gameSession.PerksModel.IsActivePerk("SuppreThrow") && _superThrowingCooldown.IsReady() &&
+            if (GameSession.Instance.PerksModel.IsActivePerk("SuppreThrow") && _superThrowingCooldown.IsReady() &&
                 PerkCooldown.IsReady())
             {
                 StartCoroutine(SuperTrowingCoroutine());
@@ -103,7 +102,7 @@ namespace Creatures.Hero
             var damage = _throwSpawner.SpawnGO().GetComponent<HealthChangeComponent>();
             damage.ChangeDamage(- ThrowableDamage());
             _audioList.Play(_throwAudioKey);
-            _gameSession.PlayerData.Inventory.RemoveItem(QiItem.name, 1);
+            GameSession.Instance.PlayerData.Inventory.RemoveItem(QiItem.name, 1);
             _animator.SetTrigger(_throwKey);
             ChangeState();
             _throwCooldown.ResetCooldown();
@@ -111,18 +110,18 @@ namespace Creatures.Hero
 
         private int ThrowableDamage()
         {
-            var damage = (int)_gameSession.StatsModel.GetLevel(StatsType.RangeDamage).Value;
+            var damage = (int)GameSession.Instance.StatsModel.GetLevel(StatsType.RangeDamage).Value;
             return CriticalDamage(damage);
         }
 
         private int CriticalDamage(int damage)
         {
             var chance = Random.Range(0, 100);
-            var crit = (int)_gameSession.StatsModel.GetLevel(StatsType.CriticalDamage).Value;
+            var crit = (int)GameSession.Instance.StatsModel.GetLevel(StatsType.CriticalDamage).Value;
             return chance < crit ? damage * 2 : damage;
         }
 
-        protected override int Damage => (int)_gameSession.StatsModel.GetLevel(StatsType.Damage).Value;
+        protected override int Damage => (int)GameSession.Instance.StatsModel.GetLevel(StatsType.Damage).Value;
 
         public override void Attack()
         {

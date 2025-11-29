@@ -22,12 +22,12 @@ namespace UI.Stats
 
         private void Start()
         {
-            _session = FindFirstObjectByType<GameSession>();
+            _session = GameSession.Instance;
         }
 
         public void SetItem(StatDef curDef, int id)
         {
-            _session ??= FindFirstObjectByType<GameSession>();
+            _session ??= GameSession.Instance;
             _statType = curDef.StatType;
             _icon.sprite = curDef.Icon;
             _label.text = Localization.LocalizationManager.Instance.GetLocalizeText(curDef.Name);

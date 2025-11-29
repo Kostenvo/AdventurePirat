@@ -10,24 +10,23 @@ namespace Creatures.Hero
     public class HeroMove : CreatureMove
     {
         [SerializeField] private Cooldown _cooldown;
-        private GameSession _gameSession;
+
         private PotionDef _currentPotionDef;
         private bool _isDoubleJump = true;
         private ComposideDisposible _trash = new ComposideDisposible();
-        private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
+        private Cooldown PerkCooldown => GameSession.Instance.PerksModel.CooldownPerk;
 
         private void ActivateDoubleJump() => _isDoubleJump = true;
 
         private void Start()
         {
-            _gameSession = FindAnyObjectByType<GameSession>();
-            _trash.Retain( _gameSession.StatsModel.Subscribe(UpdateSpeed));
+            _trash.Retain( GameSession.Instance.StatsModel.Subscribe(UpdateSpeed));
         }
 
         private void UpdateSpeed()
         {
-            if (_gameSession.StatsModel.SelectedStats.Value == StatsType.Speed)
-                _moveSpeed = _gameSession.StatsModel.GetLevel(StatsType.Speed).Value;
+            if (GameSession.Instance.StatsModel.SelectedStats.Value == StatsType.Speed)
+                _moveSpeed = GameSession.Instance.StatsModel.GetLevel(StatsType.Speed).Value;
         }
 
         protected override void ChangeStatusOnGround()
@@ -49,18 +48,18 @@ namespace Creatures.Hero
 
         public void SpeedUpPosion()
         {
-            var def = _gameSession.QuickInventory.GetCurrentItemDef();
+            var def = GameSession.Instance.QuickInventory.GetCurrentItemDef();
             if (string.IsNullOrEmpty(_currentPotionDef.Name) || !_currentPotionDef.Name.Contains(def.Name))
                 ChangeDef(def);
             if (!_cooldown.IsReady())
             {
                 _cooldown.AddTimeCooldown();
-                _gameSession.PlayerData.Inventory.RemoveItem(_currentPotionDef.Name, 1);
+                GameSession.Instance.PlayerData.Inventory.RemoveItem(_currentPotionDef.Name, 1);
             }
             else
             {
                 _cooldown.ResetCooldown();
-                _gameSession.PlayerData.Inventory.RemoveItem(_currentPotionDef.Name, 1);
+                GameSession.Instance.PlayerData.Inventory.RemoveItem(_currentPotionDef.Name, 1);
             }
         }
 
@@ -74,7 +73,7 @@ namespace Creatures.Hero
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);
                     PlayFx();
                 }
-                else if (_gameSession.PerksModel.IsActivePerk("SuppreJamp") && PerkCooldown.IsReady() && _isDoubleJump && rb.linearVelocity.y < minimumValueForJump)
+                else if (GameSession.Instance.PerksModel.IsActivePerk("SuppreJamp") && PerkCooldown.IsReady() && _isDoubleJump && rb.linearVelocity.y < minimumValueForJump)
                 {
                     PlayFx();
                     rb.AddForceY(_jumpSpeed, ForceMode2D.Impulse);

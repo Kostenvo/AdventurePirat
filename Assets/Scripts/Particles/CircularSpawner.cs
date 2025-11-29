@@ -16,6 +16,7 @@ namespace Particles
 
         private int _currentLevel;
 
+        [ContextMenu("Spawn")]
         public void Spawn()
         {
             StartCoroutine(SpawnCoroutine());
@@ -31,7 +32,7 @@ namespace Particles
         {
             var currentLevelData = _circularLevels[_currentLevel];
             var deltaAngle = Mathf.PI * 2 / currentLevelData.Count;
-            for (int i = 0; i < currentLevelData.Count; i++)
+            for (int i = 0, group = 1; i < currentLevelData.Count; i++ , group++)
             {
                 var currentAngle = i * deltaAngle;
                 var dirX = Mathf.Sin(currentAngle);
@@ -41,6 +42,8 @@ namespace Particles
                     SpawnExtensions.SpawnInObjectContainer(currentLevelData.SpawnPrefab.GameObject(),
                         transform).GetComponent<ThrowDirectional>();
                 spawnObject.SpawnTowards(direction);
+                if (group < currentLevelData.BatchSize) continue;
+                group = 0;
                 yield return new WaitForSeconds(currentLevelData.SpawnDelay);
             }
         }
@@ -50,8 +53,11 @@ namespace Particles
     public struct CircularProjectTile
     {
         [SerializeField] private ThrowDirectional _spawnPrefab;
+        [SerializeField] private float _batchSize;
         [SerializeField] private float _count;
         [SerializeField] private float _spawnDelay;
+
+        public float BatchSize => _batchSize;
 
         public float SpawnDelay => _spawnDelay;
         public float Count => _count;

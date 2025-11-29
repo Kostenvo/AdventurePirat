@@ -8,19 +8,18 @@ namespace Creatures.Hero
 {
     public class ShieldComponent: MonoBehaviour
     {
-        private GameSession _gameSession;
+
         private HealthComponentBase _healthComponent;
-        private Cooldown PerkCooldown => _gameSession.PerksModel.CooldownPerk;
+        private Cooldown PerkCooldown => GameSession.Instance.PerksModel.CooldownPerk;
 
         private void Start()
         {
-            _gameSession = FindFirstObjectByType<GameSession>();
             _healthComponent ??= GetComponentInParent<HealthComponentBase>();
         }
 
         public void UseShield()
         {
-            if (!_gameSession.PerksModel.IsActivePerk("Shield") || !PerkCooldown.IsReady()) return;
+            if (!GameSession.Instance.PerksModel.IsActivePerk("Shield") || !PerkCooldown.IsReady()) return;
             _healthComponent.Lock.AddLock(this);
             PerkCooldown.ResetCooldown();
             gameObject.SetActive(true);

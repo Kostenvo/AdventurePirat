@@ -9,9 +9,8 @@ namespace Level
         [SerializeField] private string _nextLevelName;
         public void LoadLevel()
         {
-            var currentSession = FindAnyObjectByType<GameSession>();
             var levelLoader = FindAnyObjectByType<LevelLoader>();
-            currentSession.Save();
+            GameSession.Instance.Save();
             levelLoader.LoadWithLoader(_nextLevelName);
         }
     }

@@ -10,12 +10,10 @@ namespace UI.Perks
     {
         [SerializeField] private Image _icon;
         [SerializeField] private Image _fillArea;
-        private GameSession _gameSession;
         private PerkDef _def;
 
         public void SetPerk(PerkDef def, GameSession gameSession)
         {
-            _gameSession = gameSession;
             if (string.IsNullOrEmpty(def.Name))
             {
                 gameObject.SetActive(false);
@@ -29,7 +27,7 @@ namespace UI.Perks
 
         private void Update()
         {
-             _fillArea.fillAmount = _gameSession.PerksModel.CooldownPerk.RemainingTime() / _def.Cooldown;
+             _fillArea.fillAmount = GameSession.Instance.PerksModel.CooldownPerk.RemainingTime() / _def.Cooldown;
         }
     }
 }
